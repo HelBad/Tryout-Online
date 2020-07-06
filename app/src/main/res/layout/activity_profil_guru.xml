@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".guru.utama.FragmentAkunGuru">
+    android:orientation="vertical"
+    tools:context=".guru.ActivityProfilGuru">
     <androidx.appcompat.widget.Toolbar
-        app:title="Guru"
+        app:title="Profil Guru"
         app:titleTextColor="@android:color/white"
-        android:id="@+id/toolbarAkun"
+        android:id="@+id/toolbarProfil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
@@ -19,75 +20,141 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbarAkun"
+        android:layout_below="@id/toolbarProfil"
         android:scrollbars="none">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-                android:id="@+id/mainAkun"
+                android:id="@+id/mainProfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="15dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
                 <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="35dp"
+                    app:cardCornerRadius="60dp"
                     app:cardBackgroundColor="@android:color/transparent"
-                    android:id="@+id/gambarProfilAkun"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:id="@+id/imgProfile"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:layout_gravity="center_horizontal">
                     <ImageView
-                        android:id="@+id/gambarAkun"
+                        android:id="@+id/dataDesign"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"/>
                 </androidx.cardview.widget.CardView>
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="15dp"
-                    android:layout_toRightOf="@+id/gambarProfilAkun">
-                    <TextView
-                        android:id="@+id/namaAkun"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nama"
-                        android:textColor="@android:color/black"
-                        android:textSize="22sp"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:id="@+id/nipAkun"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="NIP"
-                        android:textSize="15sp"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:id="@+id/editAkun"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="Edit Profil >"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="15sp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
+                    android:layout_height="3dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#8F8B8B" />
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/akunUsername"
+                android:id="@+id/profilNip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/mainAkun"
+                android:layout_below="@id/mainProfil"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_margin="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/icon_id"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nomor Induk Pegawai"
+                            android:layout_marginBottom="2dp"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/nipProfil"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="198xxxx"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardBackgroundColor="@android:color/white"
+                android:id="@+id/profilNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profilNip"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_margin="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/icon_face"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nama"
+                            android:layout_marginBottom="2dp"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/namaProfil"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Julio"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardBackgroundColor="@android:color/white"
+                android:id="@+id/profilUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profilNama"
+                android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
                 <LinearLayout
@@ -118,7 +185,7 @@
                             android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/usernameAkun"
+                            android:id="@+id/usernameProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Julio123"
@@ -130,10 +197,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/akunEmail"
+                android:id="@+id/profilEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/akunUsername"
+                android:layout_below="@id/profilUsername"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -165,7 +232,7 @@
                             android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/emailAkun"
+                            android:id="@+id/emailProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="email@gmail.com"
@@ -177,10 +244,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/akunMapel"
+                android:id="@+id/profilMapel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/akunEmail"
+                android:layout_below="@id/profilEmail"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -212,7 +279,7 @@
                             android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/mapelAkun"
+                            android:id="@+id/mapelProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Matematika"
@@ -224,10 +291,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/akunTtl"
+                android:id="@+id/profilTtl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/akunMapel"
+                android:layout_below="@id/profilMapel"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -259,7 +326,7 @@
                             android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/ttlAkun"
+                            android:id="@+id/ttlProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Surabaya, 01 January 1980"
@@ -271,10 +338,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/akunGender"
+                android:id="@+id/profilGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/akunTtl"
+                android:layout_below="@id/profilTtl"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -306,7 +373,7 @@
                             android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/genderAkun"
+                            android:id="@+id/genderProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Laki-Laki"
@@ -318,10 +385,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/akunAlamat"
+                android:id="@+id/profilAlamat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/akunGender"
+                android:layout_below="@id/profilGender"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -353,7 +420,7 @@
                             android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/alamatAkun"
+                            android:id="@+id/alamatProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Surabaya"
@@ -365,10 +432,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/akunTelp"
+                android:id="@+id/profilTelp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/akunAlamat"
+                android:layout_below="@id/profilAlamat"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="15dp"
                 android:layout_marginRight="10dp"
@@ -401,7 +468,7 @@
                             android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/telpAkun"
+                            android:id="@+id/telpProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="+62 08xxxx"
@@ -412,4 +479,4 @@
             </androidx.cardview.widget.CardView>
         </RelativeLayout>
     </ScrollView>
-</RelativeLayout>
+</LinearLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,9 +8,11 @@
     android:background="@drawable/login_background"
     tools:context=".ActivityLogin">
     <LinearLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:orientation="vertical">
         <ImageView
             android:layout_width="match_parent"
@@ -29,11 +31,12 @@
             android:textColor="@android:color/white"
             android:textAlignment="center"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
             <EditText
                 android:id="@+id/textUser"
                 android:layout_width="match_parent"
@@ -43,10 +46,7 @@
                 android:paddingLeft="60dp"
                 android:hint="Username"
                 android:inputType="textEmailAddress"
-                android:background="@drawable/text_username"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:background="@drawable/text_username"/>
 
             <EditText
                 android:id="@+id/textPass"
@@ -57,11 +57,8 @@
                 android:paddingLeft="60dp"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:background="@drawable/text_password"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textUser" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:background="@drawable/text_password" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textForgotPass"
@@ -83,4 +80,4 @@
             android:text="Sign in"
             android:textColor="@android:color/white" />
     </LinearLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

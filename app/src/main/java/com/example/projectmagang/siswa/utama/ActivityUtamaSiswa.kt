@@ -1,4 +1,4 @@
-package com.example.projectmagang.siswa
+package com.example.projectmagang.siswa.utama
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
