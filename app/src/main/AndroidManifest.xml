@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".guru.utama.ActivityUtamaGuru" />
-        <activity android:name=".guru.ActivityProfilGuru" />
+        <activity android:name=".guru.utama.ActivityUtama" />
+        <activity android:name=".guru.ActivityProfil" />
         <activity android:name=".siswa.utama.ActivityUtamaSiswa" />
     </application>
 

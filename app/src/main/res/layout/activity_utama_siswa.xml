@@ -15,7 +15,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        app:menu="@menu/nav_bottom"
+        app:menu="@menu/nav_bottom_siswa"
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

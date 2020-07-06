@@ -6,12 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import com.example.projectmagang.R
-import com.example.projectmagang.guru.ActivityProfilGuru
+import com.example.projectmagang.guru.ActivityProfil
 import kotlinx.android.synthetic.main.fragment_akun_guru.*
 
-class FragmentAkunGuru : Fragment() {
+class FragmentAkun : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,7 +23,7 @@ class FragmentAkunGuru : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         editAkun.setOnClickListener {
-            val intent = Intent(activity, ActivityProfilGuru::class.java)
+            val intent = Intent(activity, ActivityProfil::class.java)
             startActivity(intent)
         }
     }

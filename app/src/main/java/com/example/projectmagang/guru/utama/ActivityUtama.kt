@@ -7,19 +7,23 @@ import com.example.projectmagang.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_utama_guru.*
 
-class ActivityUtamaGuru : AppCompatActivity() {
+class ActivityUtama : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
-            R.id.home -> {
-                replaceFragment(FragmentHomeGuru())
+            R.id.homeGuru -> {
+                replaceFragment(FragmentHome())
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.aktivitas -> {
-                replaceFragment(FragmentAktivitasGuru())
+            R.id.siswaGuru -> {
+                replaceFragment(FragmentSiswa())
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.akun -> {
-                replaceFragment(FragmentAkunGuru())
+            R.id.soalGuru -> {
+                replaceFragment(FragmentSoal())
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.akunGuru -> {
+                replaceFragment(FragmentAkun())
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -31,7 +35,7 @@ class ActivityUtamaGuru : AppCompatActivity() {
         setContentView(R.layout.activity_utama_guru)
 
         bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        replaceFragment(FragmentHomeGuru())
+        replaceFragment(FragmentHome())
     }
 
     private fun replaceFragment(fragment: Fragment) {

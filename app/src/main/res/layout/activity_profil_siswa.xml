@@ -84,7 +84,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nomor Induk Pegawai"
+                            android:text="NISN"
                             android:layout_marginBottom="2dp"
                             android:textColor="@android:color/black"
                             android:textSize="15sp"
@@ -94,7 +94,7 @@
                             android:id="@+id/nipProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="198xxxx"
+                            android:text="000xxxx"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -141,7 +141,7 @@
                             android:id="@+id/namaProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Julio"
+                            android:text="Julia"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -188,7 +188,7 @@
                             android:id="@+id/usernameProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Julio123"
+                            android:text="Julia123"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -376,7 +376,7 @@
                             android:id="@+id/ttlProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Surabaya, 01 January 1980"
+                            android:text="Surabaya, 01 January 2000"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -423,7 +423,7 @@
                             android:id="@+id/genderProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Laki-Laki"
+                            android:text="Perempuan"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
