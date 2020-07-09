@@ -7,19 +7,19 @@ import com.example.projectmagang.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_utama_siswa.*
 
-class ActivityUtamaSiswa : AppCompatActivity() {
+class ActivityUtama : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
-            R.id.home -> {
-                replaceFragment(FragmentHomeSiswa())
+            R.id.homeSiswa -> {
+                replaceFragment(FragmentHome())
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.aktivitas -> {
-                replaceFragment(FragmentAktivitasSiswa())
+            R.id.nilaiSiswa -> {
+                replaceFragment(FragmentNilai())
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.akun -> {
-                replaceFragment(FragmentAkunSiswa())
+            R.id.akunSiswa -> {
+                replaceFragment(FragmentAkun())
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -31,7 +31,7 @@ class ActivityUtamaSiswa : AppCompatActivity() {
         setContentView(R.layout.activity_utama_siswa)
 
         bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        replaceFragment(FragmentHomeSiswa())
+        replaceFragment(FragmentHome())
     }
 
     private fun replaceFragment(fragment: Fragment) {

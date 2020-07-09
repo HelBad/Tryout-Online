@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
-import com.example.projectmagang.guru.utama.ActivityUtama
-import com.example.projectmagang.siswa.utama.ActivityUtamaSiswa
 import kotlinx.android.synthetic.main.activity_login.*
 
 class ActivityLogin : AppCompatActivity() {
@@ -29,7 +27,7 @@ class ActivityLogin : AppCompatActivity() {
                     val intent = Intent(this, ActivityUtama::class.java)
                     startActivity(intent)
                 } else if(textUser.text.toString() == "Siswa") {
-                    val intent = Intent(this, ActivityUtamaSiswa::class.java)
+                    val intent = Intent(this, ActivityUtama::class.java)
                     startActivity(intent)
                 } else {
                     Toast.makeText(this, "Gagal Masuk", Toast.LENGTH_SHORT).show()

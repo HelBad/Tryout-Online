@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".siswa.ActivityProfilSiswa">
+    tools:context=".siswa.ActivityProfil">
     <androidx.appcompat.widget.Toolbar
         app:title="Profil Siswa"
         app:titleTextColor="@android:color/white"

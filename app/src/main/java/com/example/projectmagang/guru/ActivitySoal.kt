@@ -5,15 +5,15 @@ import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import com.example.projectmagang.R
 
-class ActivityProfil : AppCompatActivity() {
-    lateinit var toolbarProfil: Toolbar
+class ActivitySoal : AppCompatActivity() {
+    lateinit var toolbarSoal: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profil_guru)
+        setContentView(R.layout.activity_soal_guru)
 
-        toolbarProfil = findViewById(R.id.toolbarProfil)
-        setSupportActionBar(toolbarProfil)
+        toolbarSoal = findViewById(R.id.toolbarSoal)
+        setSupportActionBar(toolbarSoal)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 }

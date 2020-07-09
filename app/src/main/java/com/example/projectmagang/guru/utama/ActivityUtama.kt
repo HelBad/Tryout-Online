@@ -18,8 +18,8 @@ class ActivityUtama : AppCompatActivity() {
                 replaceFragment(FragmentSiswa())
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.soalGuru -> {
-                replaceFragment(FragmentSoal())
+            R.id.nilaiGuru -> {
+                replaceFragment(FragmentNilai())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.akunGuru -> {

@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:id="@+id/home"
+            android:id="@+id/homeSiswa"
             android:title="Home"
             android:icon="@drawable/nav_home" />
 
     <item
-        android:id="@+id/aktivitas"
-        android:title="Aktivitas"
+        android:id="@+id/nilaiSiswa"
+        android:title="Nilai"
         android:icon="@drawable/nav_aktivitas" />
 
     <item
-            android:id="@+id/akun"
+            android:id="@+id/akunSiswa"
             android:title="Akun"
             android:icon="@drawable/nav_akun" />
 

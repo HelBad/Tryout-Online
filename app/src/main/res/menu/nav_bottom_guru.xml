@@ -12,8 +12,8 @@
         android:icon="@drawable/nav_group" />
 
     <item
-        android:id="@+id/soalGuru"
-        android:title="Data Soal"
+        android:id="@+id/nilaiGuru"
+        android:title="Nilai"
         android:icon="@drawable/nav_aktivitas" />
 
     <item

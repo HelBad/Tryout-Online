@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".guru.utama.FragmentSoal">
-
+    android:orientation="vertical"
+    tools:context=".guru.utama.FragmentNilai">
     <androidx.appcompat.widget.Toolbar
         app:title="Guru"
         app:titleTextColor="@android:color/white"
@@ -17,4 +17,8 @@
         android:minHeight="?attr/actionBarSize">
     </androidx.appcompat.widget.Toolbar>
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerNilai"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
