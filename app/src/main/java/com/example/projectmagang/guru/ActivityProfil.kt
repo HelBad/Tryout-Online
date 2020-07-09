@@ -15,5 +15,8 @@ class ActivityProfil : AppCompatActivity() {
         toolbarProfil = findViewById(R.id.toolbarProfil)
         setSupportActionBar(toolbarProfil)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        toolbarProfil.setNavigationOnClickListener {
+            finish()
+        }
     }
 }

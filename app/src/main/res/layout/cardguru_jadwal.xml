@@ -36,12 +36,26 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tanggalJadwal"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="30 Juli 2020"
-            android:textStyle="bold"
-            android:textColor="@color/colorAccent" />
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tanggalJadwal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="30 Juli 2020"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/jamJadwal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12.00 PM"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent" />
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

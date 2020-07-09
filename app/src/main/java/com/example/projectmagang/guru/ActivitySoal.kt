@@ -15,5 +15,8 @@ class ActivitySoal : AppCompatActivity() {
         toolbarSoal = findViewById(R.id.toolbarSoal)
         setSupportActionBar(toolbarSoal)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        toolbarSoal.setNavigationOnClickListener {
+            finish()
+        }
     }
 }

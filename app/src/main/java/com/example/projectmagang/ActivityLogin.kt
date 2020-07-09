@@ -24,10 +24,10 @@ class ActivityLogin : AppCompatActivity() {
         btnSignin.setOnClickListener {
             if(textUser.text.isNotEmpty()) {
                 if(textUser.text.toString() == "Guru") {
-                    val intent = Intent(this, ActivityUtama::class.java)
+                    val intent = Intent(this, com.example.projectmagang.guru.utama.ActivityUtama::class.java)
                     startActivity(intent)
                 } else if(textUser.text.toString() == "Siswa") {
-                    val intent = Intent(this, ActivityUtama::class.java)
+                    val intent = Intent(this, com.example.projectmagang.siswa.utama.ActivityUtama::class.java)
                     startActivity(intent)
                 } else {
                     Toast.makeText(this, "Gagal Masuk", Toast.LENGTH_SHORT).show()

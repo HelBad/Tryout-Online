@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".guru.ActivitySoal"></activity>
+        <activity android:name=".guru.ActivityAddSoal"></activity>
+        <activity android:name=".guru.ActivitySoal" />
         <activity android:name=".ActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
