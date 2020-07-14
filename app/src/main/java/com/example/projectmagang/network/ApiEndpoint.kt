@@ -1,6 +1,6 @@
 package com.example.projectmagang.network
 
-import com.example.projectmagang.data.ResponseLogin
+import com.example.projectmagang.modul.ResponseLogin
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded

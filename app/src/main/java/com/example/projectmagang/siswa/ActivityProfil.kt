@@ -3,17 +3,9 @@ package com.example.projectmagang.siswa
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.example.projectmagang.R
-import com.example.projectmagang.adapter.ListAdapter
 import com.example.projectmagang.api.BaseApiService
-import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.modul.ReadDataResponse
-import com.example.projectmagang.modul.Record
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class ActivityProfil : AppCompatActivity() {
     lateinit var toolbarProfilS: Toolbar
@@ -67,36 +59,36 @@ class ActivityProfil : AppCompatActivity() {
 //        alamatProfilS.text = intent.getStringExtra("alamat")
 //        telpProfilS.text = intent.getStringExtra("telp")
 
-        getDataForId()
+//        getDataForId()
     }
 
-    private val mSiswaDataList = ArrayList<ReadDataResponse>()
-    private val siswaList = ArrayList<Record>()
-    lateinit var mListAdapter: ListAdapter
-
-    fun getDataForId() {
-        mApiService = UtilsAPI().apiService
-        mApiService.getReponse("").enqueue(object: Callback<Record> {
-            override fun onResponse(call: Call<Record>, response: Response<Record>) {
-                val myResponse = response.body()
-//                namaProfilS = findViewById(R.id.namaProfilS)
-//                namaProfilS.text = intent.getStringExtra("nama")
-//                if (myResponse!!.nama == intent.getStringExtra("nama")) {
-                    Toast.makeText(applicationContext, "Inside on Response", Toast.LENGTH_SHORT).show()
-                    runOnUiThread(object:Runnable {
-                        override fun run() {
-//                            nisnProfilS = findViewById(R.id.nisnProfilS)
-//                            nisnProfilS.text = myResponse!!.nip
-//                            namaProfilS = findViewById(R.id.namaProfilS)
-//                            namaProfilS.text = intent.getStringExtra("nama")
-
-                        }
-                    })
-//                }
-            }
-            override fun onFailure(call: Call<Record>, t: Throwable) {
-                Toast.makeText(applicationContext, "Failed", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
+//    private val mSiswaDataList = ArrayList<ReadDataResponse>()
+//    private val siswaList = ArrayList<Record>()
+//    lateinit var mListAdapter: ListAdapter
+//
+//    fun getDataForId() {
+//        mApiService = UtilsAPI().apiService
+//        mApiService.getReponse("").enqueue(object: Callback<Record> {
+//            override fun onResponse(call: Call<Record>, response: Response<Record>) {
+//                val myResponse = response.body()
+////                namaProfilS = findViewById(R.id.namaProfilS)
+////                namaProfilS.text = intent.getStringExtra("nama")
+////                if (myResponse!!.nama == intent.getStringExtra("nama")) {
+//                    Toast.makeText(applicationContext, "Inside on Response", Toast.LENGTH_SHORT).show()
+//                    runOnUiThread(object:Runnable {
+//                        override fun run() {
+////                            nisnProfilS = findViewById(R.id.nisnProfilS)
+////                            nisnProfilS.text = myResponse!!.nip
+////                            namaProfilS = findViewById(R.id.namaProfilS)
+////                            namaProfilS.text = intent.getStringExtra("nama")
+//
+//                        }
+//                    })
+////                }
+//            }
+//            override fun onFailure(call: Call<Record>, t: Throwable) {
+//                Toast.makeText(applicationContext, "Failed", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+//    }
 }

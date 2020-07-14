@@ -3,11 +3,11 @@ package com.example.projectmagang.modul
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class ReadDataResponse(records:List<Record>) {
-    @SerializedName("guru")
+class DataSiswaResponse(recordsiswa:List<Siswa>) {
+    @SerializedName("siswa")
     @Expose
-    var records: List<Record>? = null
+    var recordsiswa: List<Siswa>? = null
     init{
-        this.records = records
+        this.recordsiswa = recordsiswa
     }
 }

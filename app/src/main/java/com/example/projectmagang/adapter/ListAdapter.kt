@@ -9,12 +9,13 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
-import com.example.projectmagang.modul.Record
+import com.example.projectmagang.guru.ActivityDetailSiswa
+import com.example.projectmagang.modul.Siswa
 import com.example.projectmagang.siswa.ActivityProfil
 
-class ListAdapter(siswaList: List<Record>, activity: Activity) :
+class ListAdapter(siswaList: List<Siswa>, activity: Activity) :
     RecyclerView.Adapter<ListAdapter.MyViewHolder?>() {
-    private val siswaList: List<Record>
+    private val siswaList: List<Siswa>
     private val activity: Activity
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -37,15 +38,14 @@ class ListAdapter(siswaList: List<Record>, activity: Activity) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val siswa: Record = siswaList[position]
+        val siswa: Siswa = siswaList[position]
         holder.namaSiswa.text = siswa.nama
-        holder.nisnSiswa.text = siswa.nip
-        holder.kelasSiswa.text = siswa.id_mapel
+        holder.nisnSiswa.text = siswa.nisn
+        holder.kelasSiswa.text = siswa.nama_kelas
         holder.cardguruSiswa.setOnClickListener {
-            val goDetail = Intent(activity, ActivityProfil::class.java)
-
-            goDetail.putExtra("id_user", siswa.id_user)
-            goDetail.putExtra("nip", siswa.nip)
+            val goDetail = Intent(activity, ActivityDetailSiswa::class.java)
+            goDetail.putExtra("id", siswa.id_user)
+            goDetail.putExtra("nisn", siswa.nisn)
             goDetail.putExtra("nama", siswa.nama)
             goDetail.putExtra("email", siswa.email)
             goDetail.putExtra("jenis_kelamin", siswa.jenis_kelamin)
@@ -54,7 +54,8 @@ class ListAdapter(siswaList: List<Record>, activity: Activity) :
             goDetail.putExtra("tanggal_lahir", siswa.tanggal_lahir)
             goDetail.putExtra("tempat_lahir", siswa.tempat_lahir)
             goDetail.putExtra("username", siswa.username)
-            goDetail.putExtra("id_mapel", siswa.id_mapel)
+            goDetail.putExtra("nama_kelas", siswa.nama_kelas)
+            goDetail.putExtra("nama_jurusan", siswa.nama_jurusan)
             activity.startActivity(goDetail)
         }
     }

@@ -3,14 +3,14 @@ package com.example.projectmagang.modul
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class Record(id_user:String, nip:String, nama:String, email:String, jenis_kelamin:String, telp:String,
-             alamat:String, tanggal_lahir:String, tempat_lahir:String, username:String, id_mapel:String) {
+class Siswa(id_user:String, nisn:String, nama:String, email:String, jenis_kelamin:String, telp:String, alamat:String,
+             tanggal_lahir:String, tempat_lahir:String, username:String, nama_kelas:String, nama_jurusan:String) {
     @SerializedName("id_user")
     @Expose
     var id_user:String
-    @SerializedName("nip")
+    @SerializedName("nisn")
     @Expose
-    var nip:String
+    var nisn:String
     @SerializedName("nama")
     @Expose
     var nama:String
@@ -35,13 +35,16 @@ class Record(id_user:String, nip:String, nama:String, email:String, jenis_kelami
     @SerializedName("username")
     @Expose
     var username:String
-    @SerializedName("id_mapel")
+    @SerializedName("nama_kelas")
     @Expose
-    var id_mapel:String
+    var nama_kelas:String
+    @SerializedName("nama_jurusan")
+    @Expose
+    var nama_jurusan:String
 
     init{
         this.id_user = id_user
-        this.nip = nip
+        this.nisn = nisn
         this.nama = nama
         this.email = email
         this.jenis_kelamin = jenis_kelamin
@@ -50,6 +53,7 @@ class Record(id_user:String, nip:String, nama:String, email:String, jenis_kelami
         this.tanggal_lahir = tanggal_lahir
         this.tempat_lahir = tempat_lahir
         this.username = username
-        this.id_mapel = id_mapel
+        this.nama_kelas = nama_kelas
+        this.nama_jurusan = nama_jurusan
     }
 }

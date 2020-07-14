@@ -1,20 +1,14 @@
 package com.example.projectmagang.api
 
-import com.example.projectmagang.modul.ReadDataResponse
-import com.example.projectmagang.modul.Record
+import com.example.projectmagang.modul.DataSiswaResponse
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface BaseApiService {
     @FormUrlEncoded
-    @POST("load_guru")
+    @POST("load_siswa")
     fun readData(@Field("nama") nama:String,
-                 @Field("nip") nip:String,
-                 @Field("id_mapel") id_mapel:String): Call<ReadDataResponse>
+                 @Field("nisn") nisn:String,
+                 @Field("nama_kelas") nama_kelas:String): Call<DataSiswaResponse>
 
-    @FormUrlEncoded
-    @POST("load_guru")
-    fun getReponse(@Field("nama") nama:String): Call<Record>
 }
