@@ -7,6 +7,7 @@ import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
 import com.example.projectmagang.data.ResponseLogin
+import com.example.projectmagang.guru.utama.ActivityUtama
 import com.example.projectmagang.network.ApiService
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -59,7 +60,21 @@ class ActivityLogin : AppCompatActivity() {
                 ) {
                     if(response.isSuccessful){
                         val responseLogin: ResponseLogin? = response.body()
-                        showMessage(responseLogin!!.message+"  "+responseLogin.level)
+                        if(responseLogin!!.response){
+                            if(responseLogin!!.level == "G"){
+                                showMessage(responseLogin!!.message)
+                                startActivity(Intent(applicationContext,ActivityUtama::class.java))
+                            }else if(responseLogin!!.level == "S"){
+                                showMessage(responseLogin!!.message)
+                                startActivity(Intent(applicationContext,com.example.projectmagang.siswa.utama.ActivityUtama::class.java))
+                            }else{
+                                showMessage("Pengguna Tidak Ditemukan")
+                            }
+
+                        }else{
+                            showMessage(responseLogin!!.message)
+                        }
+
                     }
                 }
 
