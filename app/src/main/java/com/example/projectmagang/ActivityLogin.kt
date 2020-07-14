@@ -32,19 +32,6 @@ class ActivityLogin : AppCompatActivity() {
 
         btnSignin.setOnClickListener {
             doLogin(textUser.text.toString(), textPass.text.toString())
-//            if(textUser.text.isNotEmpty()) {
-//                if(textUser.text.toString() == "Guru") {
-//                    val intent = Intent(this, com.example.projectmagang.guru.utama.ActivityUtama::class.java)
-//                    startActivity(intent)
-//                } else if(textUser.text.toString() == "Siswa") {
-//                    val intent = Intent(this, com.example.projectmagang.siswa.utama.ActivityUtama::class.java)
-//                    startActivity(intent)
-//                } else {
-//                    Toast.makeText(this, "Gagal Masuk", Toast.LENGTH_SHORT).show()
-//                }
-//            } else {
-//                Toast.makeText(this, "Gagal Masuk", Toast.LENGTH_SHORT).show()
-//            }
         }
 
 
@@ -66,34 +53,15 @@ class ActivityLogin : AppCompatActivity() {
                         if(responseLogin!!.response){
                             if(responseLogin.level == "G"){
                                 showMessage(responseLogin.message)
-                                setSPGuru(
-                                    responseLogin.level,
-                                    responseLogin.data!!.nama.toString(),
-                                    responseLogin.data.nip!!.toInt(),
-                                    responseLogin.data.jenkel.toString(),
-                                    responseLogin.data.email.toString(),
-                                    responseLogin.data.username.toString(),
-                                    responseLogin.data.telp!!.toInt(),
-                                    responseLogin.data.tempat_lahir.toString(),
-                                    responseLogin.data.tanggal_lahir.toString(),
-                                    responseLogin.data.alamat.toString()
-                                    )
+                                val editor = SP.edit()
+                                editor.putString("iduser", responseLogin.id)
+                                editor.apply()
                                 startActivity(Intent(applicationContext,ActivityUtama::class.java))
                             }else if(responseLogin.level == "S"){
                                 showMessage(responseLogin.message)
-//                                setSPSiswa(
-//                                    responseLogin.level,
-//                                    responseLogin.data!!.nama.toString(),
-//                                    123,
-////                                    responseLogin.data.nisn!!.toInt(),
-//                                    responseLogin.data.jenkel.toString(),
-//                                    responseLogin.data.email.toString(),
-//                                    responseLogin.data.username.toString(),
-//                                    responseLogin.data.telp!!.toInt(),
-//                                    responseLogin.data.tempat_lahir.toString(),
-//                                    responseLogin.data.tanggal_lahir.toString(),
-//                                    responseLogin.data.alamat.toString()
-//                                )
+                                val editor = SP.edit()
+                                editor.putString("iduser", responseLogin.id)
+                                editor.apply()
                                 startActivity(Intent(applicationContext,com.example.projectmagang.siswa.utama.ActivityUtama::class.java))
                             }else{
                                 showMessage("Pengguna Tidak Ditemukan")
@@ -109,54 +77,7 @@ class ActivityLogin : AppCompatActivity() {
             })
     }
 
-    fun setSPGuru(level : String,
-                  nama: String,
-                  nip: Int,
-                  jenkel : String,
-                  email : String,
-                  username: String,
-                  telp : Int,
-                  tempatlahir : String,
-                  tanggallahir : String,
-                  alamat : String){
 
-        val editor = SP.edit()
-        editor.putString("level",level)
-        editor.putString("nama", nama)
-        editor.putInt("nip", nip)
-        editor.putString("jenkel", jenkel)
-        editor.putString("email", email)
-        editor.putString("username", username)
-        editor.putInt("telp", telp)
-        editor.putString("tempatLahir", tempatlahir)
-        editor.putString("tanggalLahir", tanggallahir)
-        editor.putString("alamat", alamat)
-        editor.apply()
-    }
-
-    fun setSPSiswa(level : String,
-                   nama: String,
-                   nisn: Int,
-                   jenkel : String,
-                   email : String,
-                   username: String,
-                   telp : Int,
-                   tempatlahir : String,
-                   tanggallahir : String,
-                   alamat : String){
-        val editor = SP.edit()
-        editor.putString("level",level)
-        editor.putString("nama", nama)
-        editor.putInt("nisn", nisn)
-        editor.putString("jenkel", jenkel)
-        editor.putString("email", email)
-        editor.putString("username", username)
-        editor.putInt("telp", telp)
-        editor.putString("tempatLahir", tempatlahir)
-        editor.putString("tanggalLahir", tanggallahir)
-        editor.putString("alamat", alamat)
-        editor.apply()
-    }
     fun showMessage(message : String){
          Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
