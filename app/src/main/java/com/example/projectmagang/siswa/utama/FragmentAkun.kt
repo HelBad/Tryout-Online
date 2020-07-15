@@ -1,60 +1,117 @@
 package com.example.projectmagang.siswa.utama
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import com.example.projectmagang.ActivityLogin
 import com.example.projectmagang.R
+import com.example.projectmagang.data.ProfilGuru
+import com.example.projectmagang.data.ProfilSiswa
+import com.example.projectmagang.network.ApiService
+import com.squareup.picasso.Picasso
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentAkunGuru.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FragmentAkun : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var SP : SharedPreferences
+    lateinit var textNama : TextView
+    lateinit var textNISN : TextView
+    lateinit var textUsername : TextView
+    lateinit var textEmail : TextView
+    lateinit var textTTL : TextView
+    lateinit var textJenKel : TextView
+    lateinit var textAlamat : TextView
+    lateinit var textTelp : TextView
+    lateinit var gambarAkun : ImageView
+    lateinit var btn_logout : Button
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_akun_siswa, container, false)
+        val view = inflater.inflate(R.layout.fragment_akun_siswa, container, false)
+        SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
+        textNama = view.findViewById(R.id.namaAkunS)
+        textNISN = view.findViewById(R.id.nisnAkunS)
+        textUsername = view.findViewById(R.id.usernameAkunS)
+        textEmail = view.findViewById(R.id.emailAkunS)
+        textTTL = view.findViewById(R.id.ttlAkunS)
+        textJenKel = view.findViewById(R.id.genderAkunS)
+        textAlamat = view.findViewById(R.id.alamatAkunS)
+        textTelp = view.findViewById(R.id.telpAkunS)
+        gambarAkun = view.findViewById(R.id.gambarAkunS)
+        btn_logout = view.findViewById(R.id.btn_logoutS)
+
+        btn_logout.setOnClickListener {
+            doLogout()
+        }
+        getContent(SP.getString("iduser","").toString())
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentAkunGuru.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragmentAkun().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    fun doLogout(){
+        val editor = SP.edit()
+        editor.putString("iduser","")
+        editor.apply()
+        startActivity(Intent(activity!!.applicationContext, ActivityLogin::class.java))
+        activity!!.finish()
     }
+    fun dateFormat (date : String): String {
+        val tahun = date.subSequence(0,4).toString()
+        val bulan = date.subSequence(5,7).toString()
+        val hari = date.subSequence(8,10).toString()
+        return when(bulan.toInt()){
+            1-> "$hari Januari $tahun"
+            2-> "$hari Februari $tahun"
+            3-> "$hari Maret $tahun"
+            4-> "$hari April $tahun"
+            5-> "$hari Mei $tahun"
+            6-> "$hari Juni $tahun"
+            7-> "$hari Juli $tahun"
+            8-> "$hari Agustus $tahun"
+            9-> "$hari September $tahun"
+            10-> "$hari Oktober $tahun"
+            11-> "$hari November $tahun"
+            12-> "$hari Desember $tahun"
+            else -> ""
+        }
+    }
+
+    private fun getContent(id : String){
+        ApiService.endpoint.profilSiswa(id)
+            .enqueue(object : Callback<ProfilSiswa> {
+                override fun onFailure(call: Call<ProfilSiswa>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<ProfilSiswa>, response: Response<ProfilSiswa>) {
+                    if(response.isSuccessful){
+                        val dataProfil : ProfilSiswa? = response.body()
+                        textNama.text = dataProfil!!.nama
+                        textNISN.text = dataProfil.nisn
+                        textUsername.text = dataProfil.username
+                        textEmail.text = dataProfil.email
+                        textTTL.text = dataProfil.tempat_lahir+", "+dateFormat(dataProfil.tanggal_lahir.toString())
+                        textJenKel.text = dataProfil.jenkel
+                        textAlamat.text = dataProfil.alamat
+                        textTelp.text = "+62 "+dataProfil.telp.toString()
+
+                        Picasso.get().load("http://192.168.1.13/tryoutonline/storage/foto/siswa/"+dataProfil.foto).into(gambarAkun)
+                    }
+                }
+
+            })
+    }
+
 }
