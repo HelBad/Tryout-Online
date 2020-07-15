@@ -90,10 +90,12 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <TextView
+                        <EditText
                             android:id="@+id/nisnProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:textColor="@color/colorGray"
                             android:text="000xxxx"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
@@ -137,10 +139,12 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <TextView
+                        <EditText
                             android:id="@+id/namaProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:textColor="@color/colorGray"
                             android:text="Julia"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
@@ -184,10 +188,12 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <TextView
+                        <EditText
                             android:id="@+id/usernameProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:textColor="@color/colorGray"
                             android:text="Julia123"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
@@ -231,10 +237,12 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <TextView
+                        <EditText
                             android:id="@+id/emailProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:textColor="@color/colorGray"
                             android:text="email@gmail.com"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
@@ -278,10 +286,12 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <TextView
+                        <EditText
                             android:id="@+id/kelasProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:textColor="@color/colorGray"
                             android:text="XII - IPA 5"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
@@ -325,10 +335,12 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <TextView
+                        <EditText
                             android:id="@+id/jurusanProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:textColor="@color/colorGray"
                             android:text="Ilmu Pengetahuan Alam"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
@@ -376,10 +388,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
-                            <TextView
+                            <EditText
                                 android:id="@+id/tempatlahirProfilS"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:background="@android:color/white"
+                                android:textColor="@color/colorGray"
                                 android:text="Surabaya"
                                 android:textSize="15sp"
                                 android:textStyle="bold"/>
@@ -392,10 +406,12 @@
                                 android:textSize="15sp"
                                 android:textStyle="bold"/>
 
-                            <TextView
+                            <EditText
                                 android:id="@+id/tgllahirProfilS"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:background="@android:color/white"
+                                android:textColor="@color/colorGray"
                                 android:text="01 January 2000"
                                 android:textSize="15sp"
                                 android:textStyle="bold"/>
@@ -440,10 +456,12 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <TextView
+                        <EditText
                             android:id="@+id/genderProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:textColor="@color/colorGray"
                             android:text="Perempuan"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
@@ -487,10 +505,12 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <TextView
+                        <EditText
                             android:id="@+id/alamatProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:textColor="@color/colorGray"
                             android:text="Surabaya"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
@@ -505,7 +525,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/profilAlamatS"
                 android:layout_marginTop="2dp"
-                android:layout_marginBottom="15dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
                 <LinearLayout
@@ -535,10 +554,12 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <TextView
+                        <EditText
                             android:id="@+id/telpProfilS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/white"
+                            android:textColor="@color/colorGray"
                             android:text="+62 08xxxx"
                             android:textSize="15sp"
                             android:textStyle="bold"/>

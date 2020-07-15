@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
-import com.example.projectmagang.modul.ResponseLogin
+import com.example.projectmagang.api.UtilsAPI
+import com.example.projectmagang.modul.LoginResponse
 import com.example.projectmagang.guru.utama.ActivityUtama
-import com.example.projectmagang.network.ApiService
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,18 +48,18 @@ class ActivityLogin : AppCompatActivity() {
     }
 
     fun doLogin(username: String, password: String){
-        ApiService.endpoint.loginUser(username, password)
-            .enqueue(object : Callback<ResponseLogin>{
-                override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
+        UtilsAPI().apiService.loginUser(username, password)
+            .enqueue(object : Callback<LoginResponse>{
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     showMessage("gagal")
                 }
 
                 override fun onResponse(
-                    call: Call<ResponseLogin>,
-                    response: Response<ResponseLogin>
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>
                 ) {
                     if(response.isSuccessful){
-                        val responseLogin: ResponseLogin? = response.body()
+                        val responseLogin: LoginResponse? = response.body()
                         if(responseLogin!!.response){
                             if(responseLogin.level == "G"){
                                 showMessage(responseLogin.message)

@@ -38,7 +38,7 @@
                     android:layout_margin="15dp"
                     android:layout_gravity="center_vertical"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/icon_id"/>
+                    android:src="@drawable/icon_class"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -55,10 +55,12 @@
                         android:textSize="15sp"
                         android:textStyle="bold"/>
 
-                    <TextView
+                    <EditText
                         android:id="@+id/kelasSoal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@android:color/white"
+                        android:textColor="@color/colorGray"
                         android:text="XII - IPA 5"
                         android:textSize="15sp"
                         android:textStyle="bold"/>
@@ -85,7 +87,7 @@
                     android:layout_margin="15dp"
                     android:layout_gravity="center_vertical"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/icon_face"/>
+                    android:src="@drawable/icon_jam"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -102,10 +104,12 @@
                         android:textSize="15sp"
                         android:textStyle="bold"/>
 
-                    <TextView
+                    <EditText
                         android:id="@+id/jamSoal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@android:color/white"
+                        android:textColor="@color/colorGray"
                         android:text="12.00 PM"
                         android:textSize="15sp"
                         android:textStyle="bold"/>
@@ -133,7 +137,7 @@
                     android:layout_margin="15dp"
                     android:layout_gravity="center_vertical"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/icon_face"/>
+                    android:src="@drawable/icon_kalender"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -150,10 +154,12 @@
                         android:textSize="15sp"
                         android:textStyle="bold"/>
 
-                    <TextView
+                    <EditText
                         android:id="@+id/tanggalSoal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@android:color/white"
+                        android:textColor="@color/colorGray"
                         android:text="30 Juli 2020"
                         android:textSize="15sp"
                         android:textStyle="bold"/>

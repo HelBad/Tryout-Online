@@ -6,11 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".guru.ActivityAddSoal">
-    <androidx.cardview.widget.CardView
-        app:cardBackgroundColor="@android:color/white"
+    <androidx.appcompat.widget.Toolbar
+        app:title="Tambah Soal"
+        app:titleTextColor="@android:color/white"
+        android:id="@+id/toolbarAddSoal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="5dp"
+        android:background="@color/colorPrimaryDark"
+        android:minHeight="?attr/actionBarSize">
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.cardview.widget.CardView
+        app:cardBackgroundColor="@android:color/white"
+        android:id="@+id/cardAddSoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarAddSoal"
+        android:layout_marginTop="15dp"
         android:layout_marginHorizontal="10dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,121 +78,127 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:orientation="vertical">
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
                         <TextView
-                            android:id="@+id/opsiAAdd"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="10dp"
                             android:text="A"
                             android:textSize="16dp"
                             android:textStyle="bold"/>
 
-                        <TextView
-                            android:id="@+id/opsiBAdd"
+                        <EditText
+                            android:id="@+id/uraianAAdd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginBottom="5dp"
-                            android:text="B"
+                            android:hint="Tambahkan Uraian Opsi A"
                             android:textSize="16dp"
-                            android:textStyle="bold"/>
-
-                        <TextView
-                            android:id="@+id/opsiCAdd"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginBottom="5dp"
-                            android:text="C"
-                            android:textSize="16dp"
-                            android:textStyle="bold"/>
-
-                        <TextView
-                            android:id="@+id/opsiDAdd"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginBottom="5dp"
-                            android:text="D"
-                            android:textSize="16dp"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:id="@+id/opsiEAdd"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginBottom="5dp"
-                            android:text="E"
-                            android:textSize="16dp"
-                            android:textStyle="bold"/>
+                            android:background="@android:color/white"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
                         <TextView
-                            android:id="@+id/uraianAAdd"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginBottom="5dp"
-                            android:hint="Tambahkan Uraian Opsi A"
+                            android:layout_marginRight="10dp"
+                            android:text="B"
                             android:textSize="16dp"
-                            android:background="@android:color/white"/>
+                            android:textStyle="bold"/>
 
-                        <TextView
+                        <EditText
                             android:id="@+id/uraianBAdd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginBottom="5dp"
                             android:hint="Tambahkan Uraian Opsi B"
                             android:textSize="16dp"
                             android:background="@android:color/white"/>
+                    </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text="C"
+                            android:textSize="16dp"
+                            android:textStyle="bold"/>
+
+                        <EditText
                             android:id="@+id/uraianCAdd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginBottom="5dp"
                             android:hint="Tambahkan Uraian Opsi C"
                             android:textSize="16dp"
                             android:background="@android:color/white"/>
+                    </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text="D"
+                            android:textSize="16dp"
+                            android:textStyle="bold"/>
+
+                        <EditText
                             android:id="@+id/uraianDAdd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginBottom="5dp"
                             android:hint="Tambahkan Uraian Opsi D"
                             android:textSize="16dp"
                             android:background="@android:color/white"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text="E"
+                            android:textSize="16dp"
+                            android:textStyle="bold"/>
+
+                        <EditText
                             android:id="@+id/uraianEAdd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="2dp"
-                            android:layout_marginBottom="5dp"
                             android:hint="Tambahkan Uraian Opsi E"
                             android:textSize="16dp"
                             android:background="@android:color/white"/>
@@ -204,7 +222,7 @@
                     android:textSize="16dp"
                     android:textStyle="bold"/>
 
-                <TextView
+                <EditText
                     android:id="@+id/kunciAdd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -219,4 +237,15 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/btnSaveProfilS"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/cardAddSoal"
+        android:background="@color/colorAccent"
+        android:text="SAVE"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 </RelativeLayout>
