@@ -63,12 +63,23 @@ class FragmentAkun : Fragment() {
 
         editAkun.setOnClickListener {
             val intent = Intent(activity!!.applicationContext, ActivityProfil::class.java)
-            intent.putExtra("nama", "")
+            intent.putExtra("nama", textNama.text.toString())
+            intent.putExtra("nip", textNIP.text.toString())
+            intent.putExtra("email", textEmail.text.toString())
+            intent.putExtra("alamat", textAlamat.text.toString())
+            intent.putExtra("jenkel", textJenKel.text.toString())
+            intent.putExtra("username", textUsername.text.toString())
+            intent.putExtra("telp", textTelp.text.toString())
+            startActivity(intent)
         }
         getContent(SP.getString("iduser","").toString())
         return view
     }
 
+    override fun onPause() {
+        super.onPause()
+        getContent(SP.getString("iduser","").toString())
+    }
 
     fun doLogout(){
         val editor = SP.edit()

@@ -37,15 +37,15 @@ interface ApiEndpoint{
     ) : Call<CekLevel>
 
     @FormUrlEncoded
-    @POST("edit_guru")
-    fun editGuru(
+    @POST("edit_profil")
+    fun editProfil(
         @Field("id") id : String,
         @Field("nama") nama : String,
         @Field("alamat") alamat : String,
-        @Field("telp") telp : BigInteger,
-        @Field("jenis_kelamin") jenis_kelamin : String,
-        @Field("tempat_lahir") tempat_lahir : String,
-        @Field("tanggal_lahir") tanggal_lahir : Date
+        @Field("telp") telp : Long
+//        @Field("jenis_kelamin") jenis_kelamin : String,
+//        @Field("tempat_lahir") tempat_lahir : String,
+//        @Field("tanggal_lahir") tanggal_lahir : Date
     ) : Call<CekMessage>
 
 
