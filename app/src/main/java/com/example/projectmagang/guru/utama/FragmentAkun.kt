@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.example.projectmagang.ActivityLogin
 import com.example.projectmagang.R
 import com.example.projectmagang.data.ProfilGuru
@@ -36,6 +35,7 @@ class FragmentAkun : Fragment() {
     lateinit var textTelp : TextView
     lateinit var gambarAkun : ImageView
     lateinit var btn_logout : Button
+    lateinit var editAkun : TextView
     lateinit var data : ProfilGuru
 
 
@@ -55,10 +55,15 @@ class FragmentAkun : Fragment() {
         textTelp = view.findViewById(R.id.telpAkun)
         gambarAkun = view.findViewById(R.id.gambarAkun)
         btn_logout = view.findViewById(R.id.btn_logout)
-
+        editAkun = view.findViewById(R.id.editAkun)
 
         btn_logout.setOnClickListener {
             doLogout()
+        }
+
+        editAkun.setOnClickListener {
+            val intent = Intent(activity!!.applicationContext, ActivityProfil::class.java)
+            intent.putExtra("nama", "")
         }
         getContent(SP.getString("iduser","").toString())
         return view
@@ -96,11 +101,10 @@ class FragmentAkun : Fragment() {
     }
 
     private fun getContent(id : String){
-        val data : ProfilGuru?
         ApiService.endpoint.profilGuru(id)
             .enqueue(object : Callback<ProfilGuru>{
                 override fun onFailure(call: Call<ProfilGuru>, t: Throwable) {
-                    t.printStackTrace();
+                    t.printStackTrace()
                 }
 
                 override fun onResponse(call: Call<ProfilGuru>, response: Response<ProfilGuru>) {
