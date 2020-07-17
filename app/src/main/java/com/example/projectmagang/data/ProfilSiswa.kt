@@ -15,5 +15,5 @@ data class ProfilSiswa(
     @SerializedName("email") val email:String,
     @SerializedName("username") val username:String,
     @SerializedName("nisn") val nisn:String,
-    @SerializedName("foto") val foto:String?
+    @SerializedName("foto") val foto:String
 )

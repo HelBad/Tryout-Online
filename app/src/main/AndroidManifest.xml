@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityLogin"></activity>
+        <activity android:name=".guru.ActivityNilaiGuru.ActivityNilaiGuru"></activity>
+        <activity android:name=".ActivityLogin" />
         <activity android:name=".guru.ActivityAddSoal" />
         <activity android:name=".guru.ActivitySoal" />
         <activity android:name=".SplashScreen">

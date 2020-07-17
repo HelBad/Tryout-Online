@@ -6,7 +6,6 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.projectmagang.data.CekLevel
-import com.example.projectmagang.data.ProfilSiswa
 import com.example.projectmagang.network.ApiService
 import com.example.projectmagang.siswa.utama.ActivityUtama
 import retrofit2.Call

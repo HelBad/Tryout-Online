@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.example.projectmagang.R
@@ -14,8 +13,6 @@ import kotlinx.android.synthetic.main.activity_profil_guru.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.math.BigInteger
-import kotlin.toString as toString1
 
 class ActivityProfil : AppCompatActivity() {
     lateinit var toolbarProfil: Toolbar

@@ -1,13 +1,12 @@
 package com.example.projectmagang.network
 
 import com.example.projectmagang.data.*
+import com.example.projectmagang.data.Mapel.ResponseListDataMapel
+import com.example.projectmagang.data.Nilai.ResponseListDataNilaiGuru
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
 import retrofit2.http.POST
-import java.math.BigInteger
-import java.util.*
 
 interface ApiEndpoint{
 
@@ -48,5 +47,17 @@ interface ApiEndpoint{
 //        @Field("tanggal_lahir") tanggal_lahir : Date
     ) : Call<CekMessage>
 
+    @FormUrlEncoded
+    @POST("mapel_guru")
+    fun mapelGuru(
+        @Field("id") id: String
+    ) :Call<ResponseListDataMapel>
+
+    @FormUrlEncoded
+    @POST("nilai_guru")
+    fun guruNilai(
+        @Field("id") id: String,
+        @Field("id_mapel") id_mapel: Int
+    ) :Call<ResponseListDataNilaiGuru>
 
 }

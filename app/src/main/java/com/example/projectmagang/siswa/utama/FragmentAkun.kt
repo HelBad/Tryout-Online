@@ -13,7 +13,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.projectmagang.ActivityLogin
 import com.example.projectmagang.R
-import com.example.projectmagang.data.ProfilGuru
 import com.example.projectmagang.data.ProfilSiswa
 import com.example.projectmagang.network.ApiService
 import com.squareup.picasso.Picasso
@@ -34,7 +33,7 @@ class FragmentAkun : Fragment() {
     lateinit var textTelp : TextView
     lateinit var gambarAkun : ImageView
     lateinit var btn_logout : Button
-
+    lateinit var data : ProfilSiswa
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -98,7 +97,8 @@ class FragmentAkun : Fragment() {
                 override fun onResponse(call: Call<ProfilSiswa>, response: Response<ProfilSiswa>) {
                     if(response.isSuccessful){
                         val dataProfil : ProfilSiswa? = response.body()
-                        textNama.text = dataProfil!!.nama
+                        data = dataProfil!!
+                        textNama.text = dataProfil.nama
                         textNISN.text = dataProfil.nisn
                         textUsername.text = dataProfil.username
                         textEmail.text = dataProfil.email

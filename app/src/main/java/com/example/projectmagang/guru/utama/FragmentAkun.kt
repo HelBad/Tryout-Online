@@ -17,11 +17,9 @@ import com.example.projectmagang.data.ProfilGuru
 import com.example.projectmagang.guru.ActivityProfil
 import com.example.projectmagang.network.ApiService
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_akun_guru.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.IOException
 
 class FragmentAkun : Fragment() {
     lateinit var SP : SharedPreferences
@@ -63,13 +61,13 @@ class FragmentAkun : Fragment() {
 
         editAkun.setOnClickListener {
             val intent = Intent(activity!!.applicationContext, ActivityProfil::class.java)
-            intent.putExtra("nama", textNama.text.toString())
-            intent.putExtra("nip", textNIP.text.toString())
-            intent.putExtra("email", textEmail.text.toString())
-            intent.putExtra("alamat", textAlamat.text.toString())
-            intent.putExtra("jenkel", textJenKel.text.toString())
-            intent.putExtra("username", textUsername.text.toString())
-            intent.putExtra("telp", textTelp.text.toString())
+            intent.putExtra("nama", data.nama)
+            intent.putExtra("nip", data.nip)
+            intent.putExtra("email", data.email)
+            intent.putExtra("alamat", data.alamat)
+            intent.putExtra("jenkel", data.jenkel)
+            intent.putExtra("username", data.username)
+            intent.putExtra("telp", data.telp)
             startActivity(intent)
         }
         getContent(SP.getString("iduser","").toString())
@@ -121,8 +119,8 @@ class FragmentAkun : Fragment() {
                 override fun onResponse(call: Call<ProfilGuru>, response: Response<ProfilGuru>) {
                     if(response.isSuccessful){
                         val dataProfil : ProfilGuru? = response.body()
-
-                        textNama.text = dataProfil!!.nama
+                        data = dataProfil!!
+                        textNama.text = dataProfil.nama
                         textNIP.text = dataProfil.nip
                         textUsername.text = dataProfil.username
                         textEmail.text = dataProfil.email
