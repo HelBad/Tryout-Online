@@ -7,9 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.projectmagang.R
+import com.example.projectmagang.data.KetDashboard
 import com.example.projectmagang.guru.ActivityProfil
 import com.example.projectmagang.guru.ActivitySoal
+import com.example.projectmagang.network.ApiService
 import kotlinx.android.synthetic.main.fragment_home_guru.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class FragmentHome : Fragment() {
     override fun onCreateView(
@@ -22,10 +27,30 @@ class FragmentHome : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        getContent()
 
-        addHome.setOnClickListener {
-            val intent = Intent(activity, ActivitySoal::class.java)
-            startActivity(intent)
-        }
+    }
+
+    fun getContent(){
+        ApiService.endpoint.dashboard()
+            .enqueue(object :Callback<KetDashboard>{
+                override fun onFailure(call: Call<KetDashboard>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(
+                    call: Call<KetDashboard>,
+                    response: Response<KetDashboard>
+                ) {
+                    if(response.isSuccessful){
+                        val data = response.body()
+                        jumGuru.text = data!!.jumlah_guru.toString()
+                        jumKelas.text = data.jumlah_kelas.toString()
+                        jumMapel.text = data.jumlah_mapel.toString()
+                        jumSiswa.text = data.jumlah_siswa.toString()
+                    }
+                }
+
+            })
     }
 }

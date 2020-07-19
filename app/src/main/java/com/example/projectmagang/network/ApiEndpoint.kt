@@ -6,6 +6,7 @@ import com.example.projectmagang.data.Nilai.ResponseListDataNilaiGuru
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiEndpoint{
@@ -60,4 +61,6 @@ interface ApiEndpoint{
         @Field("id_mapel") id_mapel: Int
     ) :Call<ResponseListDataNilaiGuru>
 
+    @GET("dashboard")
+    fun dashboard(): Call<KetDashboard>
 }
