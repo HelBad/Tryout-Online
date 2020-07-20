@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".guru.utama.nilai.ActivityNilaiGuru">
+    <androidx.appcompat.widget.Toolbar
+        app:title="Daftar Nilai"
+        app:titleTextColor="@android:color/white"
+        android:id="@+id/toolbarSoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:minHeight="?attr/actionBarSize">
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNilai"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

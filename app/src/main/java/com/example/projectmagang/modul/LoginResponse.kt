@@ -8,3 +8,7 @@ data class LoginResponse(
     @SerializedName("message") val message: String,
     @SerializedName("id") val id: String
 )
+
+data class CekMessage (
+    @SerializedName("message") val message: String
+)

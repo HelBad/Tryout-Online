@@ -2,21 +2,21 @@ package com.example.projectmagang.guru
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.projectmagang.R
 import com.example.projectmagang.api.UtilsAPI
 import com.example.projectmagang.modul.CekMessage
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profil_guru.*
+//import org.jetbrains.anko.startActivityForResult
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.math.BigInteger
 
 class ActivityProfil : AppCompatActivity() {
     lateinit var toolbarProfil: Toolbar
@@ -50,7 +50,8 @@ class ActivityProfil : AppCompatActivity() {
             editProfil(SP.getString("id_user","")!!.toString(), namaProfil.text.toString(),
                 genderProfil.text.toString(), tempatlahirProfil.text.toString(), tgllahirProfil.text.toString(),
                 telpProfil.text.toString(), alamatProfil.text.toString(), emailProfil.text.toString(),
-                usernameProfil.text.toString(), nipProfil.text.toString(), gambarProfil.toString())
+                usernameProfil.text.toString(), gambarProfil.toString())
+//            startActivityForResult<ActivityProfil>(1)
             finish()
         }
     }
@@ -80,9 +81,9 @@ class ActivityProfil : AppCompatActivity() {
     }
 
     fun editProfil(id: String, nama: String, jenis_kelamin: String, tempat_lahir: String, tanggal_lahir: String,
-                   telp: String, alamat: String, email: String, username: String, nip: String, foto: String) {
+                   telp: String, alamat: String, email: String, username: String, foto: String) {
         UtilsAPI().apiService.updateGuru(id, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, telp, alamat, email,
-            username, nip, foto).enqueue(object : Callback<CekMessage> {
+            username, foto).enqueue(object : Callback<CekMessage> {
                 override fun onFailure(call: Call<CekMessage>, t: Throwable) {
                     t.printStackTrace()
                 }

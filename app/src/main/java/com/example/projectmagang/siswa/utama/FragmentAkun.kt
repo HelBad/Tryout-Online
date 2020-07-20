@@ -13,7 +13,8 @@ import androidx.appcompat.widget.Toolbar
 import com.example.projectmagang.ActivityLogin
 import com.example.projectmagang.R
 import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.modul.SiswaResponse
+import com.example.projectmagang.modul.ProfilSiswa
+import com.example.projectmagang.siswa.ActivityProfil
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,8 +31,8 @@ class FragmentAkun : Fragment() {
     lateinit var genderAkunS : TextView
     lateinit var alamatAkunS : TextView
     lateinit var telpAkunS : TextView
-    lateinit var kelasAkunS : TextView
-    lateinit var jurusanAkunS : TextView
+//    lateinit var kelasAkunS : TextView
+//    lateinit var jurusanAkunS : TextView
     lateinit var gambarAkunS : ImageView
     lateinit var editAkunS : TextView
     var dataFoto: String? = null
@@ -61,13 +62,13 @@ class FragmentAkun : Fragment() {
         genderAkunS = view!!.findViewById(R.id.genderAkunS)
         alamatAkunS = view!!.findViewById(R.id.alamatAkunS)
         telpAkunS = view!!.findViewById(R.id.telpAkunS)
-        kelasAkunS = view!!.findViewById(R.id.kelasAkunS)
-        jurusanAkunS = view!!.findViewById(R.id.jurusanAkunS)
+//        kelasAkunS = view!!.findViewById(R.id.kelasAkunS)
+//        jurusanAkunS = view!!.findViewById(R.id.jurusanAkunS)
         gambarAkunS = view!!.findViewById(R.id.gambarAkunS)
         editAkunS = view!!.findViewById(R.id.editAkunS)
 
         editAkunS.setOnClickListener {
-            val intent = Intent(activity!!.applicationContext, com.example.projectmagang.siswa.ActivityProfil::class.java)
+            val intent = Intent(activity!!.applicationContext, ActivityProfil::class.java)
             intent.putExtra("nisn", nisnAkunS.text.toString())
             intent.putExtra("nama", namaAkunS.text.toString())
             intent.putExtra("username", usernameAkunS.text.toString())
@@ -77,8 +78,8 @@ class FragmentAkun : Fragment() {
             intent.putExtra("gender", genderAkunS.text.toString())
             intent.putExtra("alamat", alamatAkunS.text.toString())
             intent.putExtra("telp", telpAkunS.text.toString())
-            intent.putExtra("kelas", kelasAkunS.text.toString())
-            intent.putExtra("jurusan", jurusanAkunS.text.toString())
+//            intent.putExtra("kelas", kelasAkunS.text.toString())
+//            intent.putExtra("jurusan", jurusanAkunS.text.toString())
             intent.putExtra("foto", dataFoto.toString())
             startActivity(intent)
         }
@@ -120,25 +121,25 @@ class FragmentAkun : Fragment() {
     }
 
     private fun getContent(id : String){
-        UtilsAPI().apiService.profilSiswa(id).enqueue(object : Callback<SiswaResponse> {
-            override fun onFailure(call: Call<SiswaResponse>, t: Throwable) {
+        UtilsAPI().apiService.profilSiswa(id).enqueue(object : Callback<ProfilSiswa> {
+            override fun onFailure(call: Call<ProfilSiswa>, t: Throwable) {
                 t.printStackTrace()
             }
-            override fun onResponse(call: Call<SiswaResponse>, response: Response<SiswaResponse>) {
+            override fun onResponse(call: Call<ProfilSiswa>, response: Response<ProfilSiswa>) {
                 if(response.isSuccessful) {
-                    val dataProfil : SiswaResponse? = response.body()
-                    namaAkunS.text = dataProfil!!.recordsiswa!!.nama
-                    nisnAkunS.text = dataProfil.recordsiswa!!.nisn
-                    usernameAkunS.text = dataProfil.recordsiswa!!.username
-                    emailAkunS.text = dataProfil.recordsiswa!!.email
-                    tempatlahirAkunS.text = dataProfil.recordsiswa!!.tempat_lahir
-                    tgllahirAkunS.text = dateFormat(dataProfil.recordsiswa!!.tanggal_lahir.toString())
-                    genderAkunS.text = dataProfil.recordsiswa!!.jenis_kelamin
-                    alamatAkunS.text = dataProfil.recordsiswa!!.alamat
-                    telpAkunS.text = "+62 "+dataProfil.recordsiswa!!.telp.toString()
+                    val dataProfil : ProfilSiswa? = response.body()
+                    namaAkunS.text = dataProfil!!.nama
+                    nisnAkunS.text = dataProfil.nisn
+                    usernameAkunS.text = dataProfil.username
+                    emailAkunS.text = dataProfil.email
+                    tempatlahirAkunS.text = dataProfil.tempat_lahir
+                    tgllahirAkunS.text = dateFormat(dataProfil.tanggal_lahir.toString())
+                    genderAkunS.text = dataProfil.jenis_kelamin
+                    alamatAkunS.text = dataProfil.alamat
+                    telpAkunS.text = "+62 "+dataProfil.telp.toString()
 //                    kelasAkunS.text = dataProfil.nama_kelas
 //                    jurusanAkunS.text = dataProfil.nama_jurusan
-                    dataFoto = "http://192.168.1.16/tryoutonline/storage/foto/siswa/" + dataProfil.recordsiswa!!.foto
+                    dataFoto = "http://192.168.1.18/tryoutonline/storage/foto/siswa/" + dataProfil.foto
                     Picasso.get().load(dataFoto).into(gambarAkunS)
                 }
             }

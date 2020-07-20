@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.projectmagang.R
+import com.example.projectmagang.guru.utama.nilai.FragmentNilai
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_utama_guru.*
 
@@ -42,6 +43,7 @@ class ActivityUtama : AppCompatActivity() {
         alertDialog = AlertDialog.Builder(this)
         bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         replaceFragment(FragmentHome())
+//        addFragment(FragmentHome())
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -49,6 +51,12 @@ class ActivityUtama : AppCompatActivity() {
         fragmentTransition.replace(R.id.fragmentContainer, fragment)
         fragmentTransition.commit()
     }
+
+//    private fun addFragment(fragment: Fragment) {
+//        val fragmentTransition = supportFragmentManager.beginTransaction()
+//        fragmentTransition.add(R.id.fragmentContainer, fragment)
+//        fragmentTransition.commit()
+//    }
 
     override fun onBackPressed() {
         Toast.makeText(this, "Back is Clicked", Toast.LENGTH_SHORT).show()
