@@ -5,6 +5,6 @@
     <color name="colorAccent">#EA6036</color>
     <color name="hitam">#000</color>
     <color name="putih">#fff</color>
-
+    <color name="putih_abu">#ebebeb</color>
     <color name="colorGray">#5b5b5b</color>
 </resources>
