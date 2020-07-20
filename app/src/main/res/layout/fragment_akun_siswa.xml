@@ -57,7 +57,6 @@
                         android:id="@+id/namaAkunS"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nama"
                         android:textColor="@android:color/black"
                         android:textSize="22sp"
                         android:textStyle="bold"/>
@@ -67,7 +66,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:text="NISN"
                         android:textSize="15sp"
                         android:textStyle="bold"/>
 
@@ -122,7 +120,6 @@
                             android:id="@+id/usernameAkunS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Julia123"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -169,7 +166,6 @@
                             android:id="@+id/emailAkunS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="email@gmail.com"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -216,7 +212,6 @@
                             android:id="@+id/kelasAkunS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="XII - IPA 5"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -263,7 +258,6 @@
                             android:id="@+id/jurusanAkunS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Ilmu Pengetahuan Alam"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -306,13 +300,31 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <TextView
-                            android:id="@+id/ttlAkunS"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Surabaya, 01 January 2000"
-                            android:textSize="15sp"
-                            android:textStyle="bold"/>
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/tempatlahirAkunS"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:text=","
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:id="@+id/tgllahirAkunS"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -357,7 +369,6 @@
                             android:id="@+id/genderAkunS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Perempuan"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -404,7 +415,6 @@
                             android:id="@+id/alamatAkunS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Surabaya"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -452,7 +462,6 @@
                             android:id="@+id/telpAkunS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="+62 08xxxx"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>

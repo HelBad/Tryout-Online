@@ -51,7 +51,7 @@ class FragmentSiswa : Fragment() {
                         val total = response.body()!!.recordsiswa!!.size
                         for (a in 0 until total) {
                             val modelSeatGroup = Siswa(
-                                response.body()!!.recordsiswa!!.get(a).id_user,
+                                response.body()!!.recordsiswa!!.get(a).id,
                                 response.body()!!.recordsiswa!!.get(a).nisn,
                                 response.body()!!.recordsiswa!!.get(a).nama,
                                 response.body()!!.recordsiswa!!.get(a).email,
@@ -61,8 +61,9 @@ class FragmentSiswa : Fragment() {
                                 response.body()!!.recordsiswa!!.get(a).tanggal_lahir,
                                 response.body()!!.recordsiswa!!.get(a).tempat_lahir,
                                 response.body()!!.recordsiswa!!.get(a).username,
-                                response.body()!!.recordsiswa!!.get(a).nama_kelas,
-                                response.body()!!.recordsiswa!!.get(a).nama_jurusan)
+//                                response.body()!!.recordsiswa!!.get(a).nama_kelas,
+//                                response.body()!!.recordsiswa!!.get(a).nama_jurusan,
+                                response.body()!!.recordsiswa!!.get(a).foto)
                             siswaList.add(modelSeatGroup)
                         }
                         val item = DataSiswaResponse(siswaList)

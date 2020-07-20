@@ -40,7 +40,7 @@
                     android:layout_height="120dp"
                     android:layout_gravity="center_horizontal">
                     <ImageView
-                        android:id="@+id/dataDesign"
+                        android:id="@+id/gambarProfil"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
@@ -96,7 +96,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="198xxxx"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -145,7 +144,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="Julio"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -194,7 +192,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="Julio123"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -243,7 +240,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="email@gmail.com"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -292,7 +288,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="Matematika"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -345,7 +340,6 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/white"
                                 android:textColor="@color/colorGray"
-                                android:text="Surabaya"
                                 android:textSize="15sp"
                                 android:textStyle="bold"/>
 
@@ -363,7 +357,6 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/white"
                                 android:textColor="@color/colorGray"
-                                android:text="01 January 2000"
                                 android:textSize="15sp"
                                 android:textStyle="bold"/>
                         </LinearLayout>
@@ -413,7 +406,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="Laki-Laki"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -462,7 +454,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="Surabaya"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -511,7 +502,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="+62 08xxxx"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -519,7 +509,7 @@
             </androidx.cardview.widget.CardView>
 
             <Button
-                android:id="@+id/btnSaveProfilS"
+                android:id="@+id/btnSaveProfil"
                 android:layout_width="210dp"
                 android:layout_height="50dp"
                 android:layout_margin="15dp"

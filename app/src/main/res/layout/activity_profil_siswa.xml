@@ -40,7 +40,7 @@
                     android:layout_height="120dp"
                     android:layout_gravity="center_horizontal">
                     <ImageView
-                        android:id="@+id/fotoProfilS"
+                        android:id="@+id/gambarProfilS"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
@@ -96,7 +96,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="000xxxx"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -145,7 +144,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="Julia"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -194,7 +192,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="Julia123"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -243,7 +240,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="email@gmail.com"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -292,7 +288,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="XII - IPA 5"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -341,7 +336,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="Ilmu Pengetahuan Alam"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -394,7 +388,6 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/white"
                                 android:textColor="@color/colorGray"
-                                android:text="Surabaya"
                                 android:textSize="15sp"
                                 android:textStyle="bold"/>
 
@@ -412,7 +405,6 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/white"
                                 android:textColor="@color/colorGray"
-                                android:text="01 January 2000"
                                 android:textSize="15sp"
                                 android:textStyle="bold"/>
                         </LinearLayout>
@@ -462,7 +454,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="Perempuan"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -511,7 +502,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="Surabaya"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -560,7 +550,6 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:text="+62 08xxxx"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>

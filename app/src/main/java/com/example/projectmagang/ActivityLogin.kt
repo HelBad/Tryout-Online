@@ -1,11 +1,15 @@
 package com.example.projectmagang
 
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.projectmagang.api.UtilsAPI
 import com.example.projectmagang.modul.LoginResponse
 import com.example.projectmagang.guru.utama.ActivityUtama
@@ -17,6 +21,8 @@ import retrofit2.Response
 class ActivityLogin : AppCompatActivity() {
     lateinit var textUser: EditText
     lateinit var textPass: EditText
+    lateinit var SP : SharedPreferences
+    lateinit var alertDialog: AlertDialog.Builder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,63 +30,61 @@ class ActivityLogin : AppCompatActivity() {
 
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
+        alertDialog = AlertDialog.Builder(this)
+        SP = getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
         textUser = findViewById(R.id.textUser)
         textPass = findViewById(R.id.textPass)
-
         btnSignin.setOnClickListener {
             doLogin(textUser.text.toString(), textPass.text.toString())
-//            if(textUser.text.isNotEmpty()) {
-//                if(textUser.text.toString() == "Guru") {
-//                    val intent = Intent(this, com.example.projectmagang.guru.utama.ActivityUtama::class.java)
-//                    startActivity(intent)
-//                } else if(textUser.text.toString() == "Siswa") {
-//                    val intent = Intent(this, com.example.projectmagang.siswa.utama.ActivityUtama::class.java)
-//                    startActivity(intent)
-//                } else {
-//                    Toast.makeText(this, "Gagal Masuk", Toast.LENGTH_SHORT).show()
-//                }
-//            } else {
-//                Toast.makeText(this, "Gagal Masuk", Toast.LENGTH_SHORT).show()
-//            }
         }
-
-
     }
 
     fun doLogin(username: String, password: String){
-        UtilsAPI().apiService.loginUser(username, password)
-            .enqueue(object : Callback<LoginResponse>{
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    showMessage("gagal")
-                }
-
-                override fun onResponse(
-                    call: Call<LoginResponse>,
-                    response: Response<LoginResponse>
-                ) {
-                    if(response.isSuccessful){
-                        val responseLogin: LoginResponse? = response.body()
-                        if(responseLogin!!.response){
-                            if(responseLogin.level == "G"){
-                                showMessage(responseLogin.message)
-                                startActivity(Intent(applicationContext,ActivityUtama::class.java))
-                            }else if(responseLogin.level == "S"){
-                                showMessage(responseLogin.message)
-                                startActivity(Intent(applicationContext,com.example.projectmagang.siswa.utama.ActivityUtama::class.java))
-                            }else{
-                                showMessage("Pengguna Tidak Ditemukan")
-                            }
-
-                        } else{
+        UtilsAPI().apiService.loginUser(username, password).enqueue(object : Callback<LoginResponse> {
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                showMessage("gagal")
+            }
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                if(response.isSuccessful){
+                    val responseLogin: LoginResponse? = response.body()
+                    if(responseLogin!!.response) {
+                        if(responseLogin.level == "G"){
                             showMessage(responseLogin.message)
-                        }
-
-                    }
+                            val editor = SP.edit()
+                            editor.putString("id_user", responseLogin.id)
+                            editor.apply()
+                            startActivity(Intent(applicationContext,ActivityUtama::class.java))
+                        } else if(responseLogin.level == "S"){
+                            showMessage(responseLogin.message)
+                            val editor = SP.edit()
+                            editor.putString("id_user", responseLogin.id)
+                            editor.apply()
+                            startActivity(Intent(applicationContext,com.example.projectmagang.siswa.utama.ActivityUtama::class.java))
+                        } else { showMessage("Pengguna Tidak Ditemukan") }
+                    } else{ showMessage(responseLogin.message) }
                 }
-
-            })
+            }
+        })
     }
+
     fun showMessage(message : String){
-         Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onBackPressed() {
+        Toast.makeText(this@ActivityLogin, "Back is Clicked", Toast.LENGTH_SHORT).show()
+        alertDialog.setTitle("Close Application")
+        alertDialog.setMessage("Do you want to close the application ?")
+            .setCancelable(false)
+            .setPositiveButton("YES", object: DialogInterface.OnClickListener {
+                override fun onClick(dialog: DialogInterface, id:Int) {
+                    finishAffinity()
+                }
+            })
+            .setNegativeButton("NO", object: DialogInterface.OnClickListener {
+                override fun onClick(dialog: DialogInterface, id:Int) {
+                    dialog.cancel()
+                }
+            }).create().show()
     }
 }

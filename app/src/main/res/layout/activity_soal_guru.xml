@@ -55,15 +55,29 @@
                         android:textSize="15sp"
                         android:textStyle="bold"/>
 
-                    <EditText
-                        android:id="@+id/kelasSoal"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/white"
-                        android:textColor="@color/colorGray"
-                        android:text="XII - IPA 5"
-                        android:textSize="15sp"
-                        android:textStyle="bold"/>
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical">
+                        <Spinner
+                            android:id="@+id/spinnerKelasSoal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:backgroundTint="@android:color/black"/>
+
+                        <TextView
+                            android:id="@+id/kelasSoal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="50dp"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/colorGray"
+                            android:text="XII - IPA 5"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:background="@android:color/white" />
+                    </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -104,7 +118,7 @@
                         android:textSize="15sp"
                         android:textStyle="bold"/>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/jamSoal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -154,7 +168,7 @@
                         android:textSize="15sp"
                         android:textStyle="bold"/>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/tanggalSoal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

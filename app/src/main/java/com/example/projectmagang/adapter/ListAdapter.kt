@@ -41,10 +41,10 @@ class ListAdapter(siswaList: List<Siswa>, activity: Activity) :
         val siswa: Siswa = siswaList[position]
         holder.namaSiswa.text = siswa.nama
         holder.nisnSiswa.text = siswa.nisn
-        holder.kelasSiswa.text = siswa.nama_kelas
+        holder.kelasSiswa.text = siswa.alamat
         holder.cardguruSiswa.setOnClickListener {
             val goDetail = Intent(activity, ActivityDetailSiswa::class.java)
-            goDetail.putExtra("id", siswa.id_user)
+//            goDetail.putExtra("id", siswa.id_user)
             goDetail.putExtra("nisn", siswa.nisn)
             goDetail.putExtra("nama", siswa.nama)
             goDetail.putExtra("email", siswa.email)
@@ -54,8 +54,8 @@ class ListAdapter(siswaList: List<Siswa>, activity: Activity) :
             goDetail.putExtra("tanggal_lahir", siswa.tanggal_lahir)
             goDetail.putExtra("tempat_lahir", siswa.tempat_lahir)
             goDetail.putExtra("username", siswa.username)
-            goDetail.putExtra("nama_kelas", siswa.nama_kelas)
-            goDetail.putExtra("nama_jurusan", siswa.nama_jurusan)
+//            goDetail.putExtra("nama_kelas", siswa.nama_kelas)
+//            goDetail.putExtra("nama_jurusan", siswa.nama_jurusan)
             activity.startActivity(goDetail)
         }
     }

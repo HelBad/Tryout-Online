@@ -18,6 +18,8 @@ import java.util.*
 
 class ActivitySoal : AppCompatActivity() {
     lateinit var toolbarSoal: Toolbar
+    lateinit var spinnerKelasSoal: Spinner
+    lateinit var kelasSoal: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,30 +36,29 @@ class ActivitySoal : AppCompatActivity() {
             val intent = Intent(this, ActivityAddSoal::class.java)
             startActivity(intent)
         }
+
+        dataSoal()
     }
 
-//    lateinit var spinnerBerangkat: Spinner
-//    lateinit var textBerangkat: TextView
-//
-//    val formatHari = SimpleDateFormat("EEEE")
-//    var formatTgl = SimpleDateFormat("dd MMM YYYY")
-//    val berangkat = Calendar.getInstance()
-//    var formatWaktu = SimpleDateFormat("hh:mm aa")
-//
-//    fun dataSoal() {
-//        spinnerBerangkat = findViewById(R.id.spinnerBerangkat)
-//        textBerangkat = findViewById(R.id.textBerangkat)
-//        val lokasiBerangkat = arrayOf("Malang", "Surabaya")
-//        spinnerBerangkat.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, lokasiBerangkat)
-//        spinnerBerangkat.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                textBerangkat.text = "Pilih Lokasi"
-//            }
-//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                textBerangkat.text = lokasiBerangkat[position]
-//            }
-//        }
-//
+    val formatHari = SimpleDateFormat("EEEE")
+    var formatTgl = SimpleDateFormat("dd MMM YYYY")
+    val jadwal = Calendar.getInstance()
+    var formatWaktu = SimpleDateFormat("hh:mm aa")
+
+    fun dataSoal() {
+        spinnerKelasSoal = findViewById(R.id.spinnerKelasSoal)
+        kelasSoal = findViewById(R.id.kelasSoal)
+        val kelas = arrayOf("XII - IPA 1", "XII - IPS 1")
+        spinnerKelasSoal.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, kelas)
+        spinnerKelasSoal.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                kelasSoal.text = "Pilih Kelas"
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                kelasSoal.text = kelas[position]
+            }
+        }
+
 //        imgBerangkat.setOnClickListener {
 //            val dateBerangkat = DatePickerDialog(this, DatePickerDialog.OnDateSetListener {
 //                    view, year, month, dayOfMonth -> val selectedDate = Calendar.getInstance()
@@ -86,5 +87,5 @@ class ActivitySoal : AppCompatActivity() {
 //            }, berangkat.get(Calendar.HOUR_OF_DAY), berangkat.get(Calendar.MINUTE), false)
 //            timeBerangkat.show()
 //        }
-//    }
+    }
 }

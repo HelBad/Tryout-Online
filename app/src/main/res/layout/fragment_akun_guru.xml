@@ -56,7 +56,6 @@
                         android:id="@+id/namaAkun"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nama"
                         android:textColor="@android:color/black"
                         android:textSize="22sp"
                         android:textStyle="bold"/>
@@ -66,7 +65,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:text="NIP"
                         android:textSize="15sp"
                         android:textStyle="bold"/>
 
@@ -121,7 +119,6 @@
                             android:id="@+id/usernameAkun"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Julio123"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -168,7 +165,6 @@
                             android:id="@+id/emailAkun"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="email@gmail.com"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -215,7 +211,6 @@
                             android:id="@+id/mapelAkun"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Matematika"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -258,13 +253,31 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <TextView
-                            android:id="@+id/ttlAkun"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Surabaya, 01 January 1980"
-                            android:textSize="15sp"
-                            android:textStyle="bold"/>
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/tempatlahirAkun"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:text=","
+                                android:textSize="15sp"/>
+
+                            <TextView
+                                android:id="@+id/tgllahirAkun"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -309,7 +322,6 @@
                             android:id="@+id/genderAkun"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Laki-Laki"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -356,7 +368,6 @@
                             android:id="@+id/alamatAkun"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Surabaya"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -404,7 +415,6 @@
                             android:id="@+id/telpAkun"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="+62 08xxxx"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
