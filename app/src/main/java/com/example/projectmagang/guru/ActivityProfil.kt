@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.example.projectmagang.R
-import com.example.projectmagang.data.CekMessage
+import com.example.projectmagang.data.ResponseMessage
 import com.example.projectmagang.network.ApiService
 import kotlinx.android.synthetic.main.activity_profil_guru.*
 import retrofit2.Call
@@ -52,12 +52,12 @@ class ActivityProfil : AppCompatActivity() {
 
     fun editProfil(id: String, nama: String, alamat: String, telp: Long){
         ApiService.endpoint.editProfil(id,nama,alamat,telp)
-            .enqueue(object : Callback<CekMessage>{
-                override fun onFailure(call: Call<CekMessage>, t: Throwable) {
+            .enqueue(object : Callback<ResponseMessage>{
+                override fun onFailure(call: Call<ResponseMessage>, t: Throwable) {
                     t.printStackTrace()
                 }
 
-                override fun onResponse(call: Call<CekMessage>, response: Response<CekMessage>) {
+                override fun onResponse(call: Call<ResponseMessage>, response: Response<ResponseMessage>) {
                     if(response.isSuccessful){
                         val data = response.body()
                         Toast.makeText(applicationContext, data!!.message, Toast.LENGTH_SHORT).show()

@@ -2,8 +2,10 @@ package com.example.projectmagang.network
 
 import com.example.projectmagang.data.*
 import com.example.projectmagang.data.Mapel.ResponseListDataMapel
+import com.example.projectmagang.data.Mapel.ResponseListDataMapelDiajukan
 import com.example.projectmagang.data.Nilai.ResponseListDataNilaiGuru
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -46,7 +48,7 @@ interface ApiEndpoint{
 //        @Field("jenis_kelamin") jenis_kelamin : String,
 //        @Field("tempat_lahir") tempat_lahir : String,
 //        @Field("tanggal_lahir") tanggal_lahir : Date
-    ) : Call<CekMessage>
+    ) : Call<ResponseMessage>
 
     @FormUrlEncoded
     @POST("mapel_guru")
@@ -63,4 +65,21 @@ interface ApiEndpoint{
 
     @GET("dashboard")
     fun dashboard(): Call<KetDashboard>
+
+//    @FormUrlEncoded
+//    @POST("mapel_diajukan")
+//    fun mapelDiajukan(
+//        @Field("id") id : String
+//    ): Call<ResponseListDataMapelDiajukan>
+
+    @GET("mapel_tersedia")
+    fun mapelTersedia(): Call<ResponseListDataMapelDiajukan>
+
+    @FormUrlEncoded
+    @POST("tambah_mapel_diajukan")
+    fun tambahMapelDiajukan(
+        @Field("id_mapel") id_mapel: Int,
+        @Field("id") id : String
+    ) : Call<ResponseMessage>
+
 }

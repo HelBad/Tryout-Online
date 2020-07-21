@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.projectmagang.R
 import com.example.projectmagang.data.KetDashboard
-import com.example.projectmagang.guru.ActivityProfil
-import com.example.projectmagang.guru.ActivitySoal
+import com.example.projectmagang.guru.ActivityAjukanMapel.ActivityAjukanMapel
+import com.example.projectmagang.guru.ActivityMapelSoal.ActivityMapelSoal
 import com.example.projectmagang.network.ApiService
 import kotlinx.android.synthetic.main.fragment_home_guru.*
 import retrofit2.Call
@@ -29,6 +29,13 @@ class FragmentHome : Fragment() {
         super.onActivityCreated(savedInstanceState)
         getContent()
 
+        btn_ajukanMapel.setOnClickListener {
+            startActivity(Intent(activity!!.applicationContext, ActivityAjukanMapel::class.java))
+        }
+
+        btn_tambahSoal.setOnClickListener {
+            startActivity(Intent(activity!!.applicationContext, ActivityMapelSoal::class.java))
+        }
     }
 
     fun getContent(){

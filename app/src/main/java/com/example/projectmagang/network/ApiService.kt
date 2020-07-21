@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApiService{
-    var BASE_URL: String = "http://192.168.1.68/tryoutonline/public/api/"
+    var BASE_URL: String = "http://192.168.1.9/tryoutonline/public/api/"
     val endpoint: ApiEndpoint
     get(){
         val interceptor = HttpLoggingInterceptor()

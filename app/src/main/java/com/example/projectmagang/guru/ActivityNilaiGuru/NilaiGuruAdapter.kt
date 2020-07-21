@@ -20,25 +20,17 @@ class NilaiGuruAdapter (val context : Context, var dataNilai : ArrayList<DataNil
     override fun getItemCount() = dataNilai.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if(position==0){
-            holder.bing(dataNilai[position], "")
-        }else{
-            holder.bing(dataNilai[position], dataNilai[position-1].nama_kelas.toString())
-        }
+        holder.bing(dataNilai[position])
     }
 
     class ViewHolder(view : View): RecyclerView.ViewHolder(view){
         val view = view
 
-        fun bing(dataNilai: DataNilai, kelas : String){
+        fun bing(dataNilai: DataNilai){
             view.namaNilai.text = dataNilai.nama_siswa
             view.nisnNilai.text = dataNilai.nisn.toString()
             view.kelasNilai.text = dataNilai.nama_kelas
             view.hasilNilai.text = dataNilai.nilai.toString()
-            if(dataNilai.nama_kelas != kelas){
-                view.headKelas.visibility = View.VISIBLE
-                view.headKelas.text = dataNilai.nama_kelas
-            }
         }
     }
 
@@ -47,5 +39,7 @@ class NilaiGuruAdapter (val context : Context, var dataNilai : ArrayList<DataNil
         dataNilai.addAll(newDataNilai)
         notifyDataSetChanged()
     }
+
+
 
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".guru.ActivityNilaiGuru.ActivityNilaiGuru">
+    <androidx.appcompat.widget.Toolbar
+        app:title="Ajukan Mapel"
+        app:titleTextColor="@android:color/white"
+        android:id="@+id/toolbarSoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:minHeight="?attr/actionBarSize">
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:id="@+id/mapelDiajukan"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mapel Dalam Pengajuan"
+            android:textStyle="bold"
+            android:textColor="@color/hitam"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:background="@color/putih"
+            android:layout_below="@id/menu"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMapelDiajukan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/mapelTersedia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mapel Tersedia"
+            android:textStyle="bold"
+            android:textColor="@color/hitam"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:background="@color/putih"
+            android:layout_below="@id/menu"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMapelTersedia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
