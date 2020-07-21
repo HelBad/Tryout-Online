@@ -1,4 +1,4 @@
-package com.example.projectmagang.guru
+package com.example.projectmagang.guru.akun
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -96,6 +96,4 @@ class ActivityProfil : AppCompatActivity() {
 
             })
     }
-
-
 }

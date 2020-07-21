@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
-import com.example.projectmagang.modul.DataMapel
 import com.example.projectmagang.modul.DataSiswa
 import kotlinx.android.synthetic.main.cardguru_siswa.view.*
-import kotlinx.android.synthetic.main.cardnilai_tryout.view.*
 
 //class ListSiswaAdapter(siswaList: List<Siswa>, activity: Activity) :
 //    RecyclerView.Adapter<ListSiswaAdapter.MyViewHolder?>() {
@@ -67,8 +65,8 @@ import kotlinx.android.synthetic.main.cardnilai_tryout.view.*
 //        return siswaList.size
 //    }
 //}
-class ListSiswaAdapter (val context : Context, var dataSiswa: ArrayList<DataSiswa>):
-RecyclerView.Adapter<ListSiswaAdapter.ViewHolder>() {
+class SiswaAdapter (val context : Context, var dataSiswa: ArrayList<DataSiswa>):
+RecyclerView.Adapter<SiswaAdapter.ViewHolder>() {
     lateinit var onDetail : OnItemClickCallback
 
     fun setOnDetailCallback(onItemClickCallback: OnItemClickCallback) {

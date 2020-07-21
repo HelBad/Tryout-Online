@@ -1,4 +1,4 @@
-package com.example.projectmagang.guru.utama
+package com.example.projectmagang.guru.akun
 
 import android.content.Context
 import android.content.Intent
@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import com.example.projectmagang.ActivityLogin
 import com.example.projectmagang.R
 import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.guru.ActivityProfil
 import com.example.projectmagang.modul.ProfilGuru
 import com.squareup.picasso.Picasso
 import retrofit2.Call
@@ -131,7 +130,7 @@ class FragmentAkun : Fragment() {
                     genderAkun.text = dataProfil.jenis_kelamin
                     alamatAkun.text = dataProfil.alamat
                     telpAkun.text = "+62 "+dataProfil.telp.toString()
-                    dataFoto = "http://192.168.1.18/tryoutonline/storage/foto/guru/" + dataProfil.foto
+                    dataFoto = "http://192.168.1.16/tryoutonline/storage/foto/guru/" + dataProfil.foto
                     Picasso.get().load(dataFoto).into(gambarAkun)
                 }
             }

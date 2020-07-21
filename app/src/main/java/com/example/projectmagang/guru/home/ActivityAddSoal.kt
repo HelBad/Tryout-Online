@@ -1,4 +1,4 @@
-package com.example.projectmagang.guru
+package com.example.projectmagang.guru.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

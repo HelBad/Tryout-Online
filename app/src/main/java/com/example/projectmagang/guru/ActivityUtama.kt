@@ -1,4 +1,4 @@
-package com.example.projectmagang.guru.utama
+package com.example.projectmagang.guru
 
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.projectmagang.R
-import com.example.projectmagang.guru.utama.nilai.FragmentNilai
+import com.example.projectmagang.guru.akun.FragmentAkun
+import com.example.projectmagang.guru.home.FragmentHome
+import com.example.projectmagang.guru.nilai.FragmentNilai
+import com.example.projectmagang.guru.siswa.FragmentSiswa
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_utama_guru.*
 

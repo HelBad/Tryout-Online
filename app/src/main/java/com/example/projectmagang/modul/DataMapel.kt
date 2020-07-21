@@ -12,7 +12,7 @@ data class DataMapel(
     @SerializedName("nama_kelas") val nama_kelas : String?
 )
 
-data class ResponseListDataMapel (
+data class ResponseDataMapel (
     @SerializedName("response") val response : Boolean,
     @SerializedName("message") val message : String,
     @SerializedName("data") val data : List<DataMapel>

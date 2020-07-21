@@ -1,4 +1,4 @@
-package com.example.projectmagang.guru.utama.nilai
+package com.example.projectmagang.guru.nilai
 
 import android.content.Context
 import android.content.Intent
@@ -12,16 +12,17 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
+import com.example.projectmagang.adapter.MapelAdapter
 import com.example.projectmagang.api.UtilsAPI
 import com.example.projectmagang.modul.DataMapel
-import com.example.projectmagang.modul.ResponseListDataMapel
+import com.example.projectmagang.modul.ResponseDataMapel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class FragmentNilai : Fragment() {
     lateinit var rvMapel : RecyclerView
-    lateinit var nilaiMapelAdapter: NilaiMapelAdapter
+    lateinit var nilaiMapelAdapter: MapelAdapter
     lateinit var SP : SharedPreferences
 
     override fun onCreateView(
@@ -33,13 +34,13 @@ class FragmentNilai : Fragment() {
         SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
         getMapel(SP.getString("id_user","").toString())
         rvMapel = view.findViewById(R.id.recyclerNilai)
-        nilaiMapelAdapter = NilaiMapelAdapter (activity!!.applicationContext, arrayListOf())
+        nilaiMapelAdapter = MapelAdapter(activity!!.applicationContext, arrayListOf())
 
         rvMapel.apply {
             layoutManager = LinearLayoutManager(activity!!.applicationContext)
-            nilaiMapelAdapter.setOnDetailCallback(object : NilaiMapelAdapter.OnItemClickCallback {
+            nilaiMapelAdapter.setOnDetailCallback(object : MapelAdapter.OnItemClickCallback {
                 override fun onItemClicked(data: DataMapel) {
-                    val intent = Intent(activity!!.applicationContext, ActivityNilaiGuru::class.java)
+                    val intent = Intent(activity!!.applicationContext, ActivityNilai::class.java)
                     intent.putExtra("nama_guru", data.nama_guru)
                     startActivity(intent)
                 }
@@ -50,22 +51,17 @@ class FragmentNilai : Fragment() {
     }
 
     fun getMapel(id : String){
-        UtilsAPI().apiService.mapelGuru(id).enqueue(object :Callback<ResponseListDataMapel> {
-            override fun onFailure(call: Call<ResponseListDataMapel>, t: Throwable) {
+        UtilsAPI().apiService.mapelGuru(id).enqueue(object :Callback<ResponseDataMapel> {
+            override fun onFailure(call: Call<ResponseDataMapel>, t: Throwable) {
                 t.printStackTrace()
             }
-            override fun onResponse(call: Call<ResponseListDataMapel>, responseList: Response<ResponseListDataMapel>) {
+            override fun onResponse(call: Call<ResponseDataMapel>, responseList: Response<ResponseDataMapel>) {
                 if(responseList.isSuccessful) {
-                    showMessage("Data berhasil di load")
                     val data = responseList.body()
                     val dataMapel : List<DataMapel> = data!!.data
                     nilaiMapelAdapter.setData(dataMapel)
                 }
             }
         })
-    }
-
-    fun showMessage(msg : String){
-        Toast.makeText(activity!!.applicationContext, msg, Toast.LENGTH_SHORT).show()
     }
 }

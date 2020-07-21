@@ -1,4 +1,4 @@
-package com.example.projectmagang.guru.utama
+package com.example.projectmagang.guru.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.projectmagang.R
-import com.example.projectmagang.guru.ActivityProfil
-import com.example.projectmagang.guru.ActivitySoal
 import kotlinx.android.synthetic.main.fragment_home_guru.*
 
 class FragmentHome : Fragment() {

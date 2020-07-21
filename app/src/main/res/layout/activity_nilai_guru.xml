@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".guru.utama.nilai.ActivityNilaiGuru">
+    tools:context=".guru.nilai.ActivityNilai">
     <androidx.appcompat.widget.Toolbar
         app:title="Daftar Nilai"
         app:titleTextColor="@android:color/white"

@@ -7,7 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.modul.LoginResponse
+import com.example.projectmagang.guru.ActivityUtama
+import com.example.projectmagang.modul.ResponseLogin
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,19 +38,20 @@ class SplashScreen : AppCompatActivity() {
 
     private fun getStatusLogin(id: String) {
         if (id != "") {
-            UtilsAPI().apiService.cekLevel(id).enqueue(object : Callback<LoginResponse> {
-                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+            UtilsAPI().apiService.cekLevel(id).enqueue(object : Callback<ResponseLogin> {
+                    override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
                         t.printStackTrace()
                     }
-                    override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                    override fun onResponse(call: Call<ResponseLogin>, response: Response<ResponseLogin>) {
                         if (response.isSuccessful) {
                             val data = response.body()
                             if (data!!.level == "G") {
-                                startActivity(Intent(applicationContext,com.example.projectmagang.guru.utama.ActivityUtama::class.java))
+                                startActivity(Intent(applicationContext,
+                                    ActivityUtama::class.java))
                                 finish()
                             }
                             else if (data.level == "S") {
-                                startActivity(Intent(applicationContext, com.example.projectmagang.siswa.utama.ActivityUtama::class.java))
+                                startActivity(Intent(applicationContext, com.example.projectmagang.siswa.ActivityUtama::class.java))
                                 finish()
                             }
                         }

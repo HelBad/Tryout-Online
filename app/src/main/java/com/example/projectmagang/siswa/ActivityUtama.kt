@@ -1,4 +1,4 @@
-package com.example.projectmagang.siswa.utama
+package com.example.projectmagang.siswa
 
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.projectmagang.R
+import com.example.projectmagang.siswa.akun.FragmentAkun
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_utama_siswa.*
 

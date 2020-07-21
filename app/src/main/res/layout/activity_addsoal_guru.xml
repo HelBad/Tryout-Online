@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".guru.ActivityAddSoal">
+    tools:context=".guru.home.ActivityAddSoal">
     <androidx.appcompat.widget.Toolbar
         app:title="Tambah Soal"
         app:titleTextColor="@android:color/white"

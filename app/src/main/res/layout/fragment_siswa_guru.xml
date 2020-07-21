@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".guru.utama.FragmentSiswa">
+    tools:context=".guru.siswa.FragmentSiswa">
     <androidx.appcompat.widget.Toolbar
         app:title="Guru"
         app:titleTextColor="@android:color/white"

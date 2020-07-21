@@ -1,4 +1,4 @@
-package com.example.projectmagang.guru.utama.nilai
+package com.example.projectmagang.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,17 +7,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
 import com.example.projectmagang.modul.DataMapel
-import kotlinx.android.synthetic.main.cardnilai_tryout.view.*
+import kotlinx.android.synthetic.main.cardguru_mapelnilai.view.*
 
-class NilaiMapelAdapter (val context : Context, var dataMapel: ArrayList<DataMapel>):
-    RecyclerView.Adapter<NilaiMapelAdapter.ViewHolder>() {
+class MapelAdapter (val context : Context, var dataMapel: ArrayList<DataMapel>):
+    RecyclerView.Adapter<MapelAdapter.ViewHolder>() {
     lateinit var onDetail : OnItemClickCallback
 
     fun setOnDetailCallback(onItemClickCallback: OnItemClickCallback) {
         this.onDetail = onItemClickCallback
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.cardnilai_tryout, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.cardguru_mapelnilai, parent, false)
         )
     override fun getItemCount() = dataMapel.size
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

@@ -11,8 +11,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.modul.LoginResponse
-import com.example.projectmagang.guru.utama.ActivityUtama
+import com.example.projectmagang.modul.ResponseLogin
+import com.example.projectmagang.guru.ActivityUtama
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -40,27 +40,29 @@ class ActivityLogin : AppCompatActivity() {
     }
 
     fun doLogin(username: String, password: String){
-        UtilsAPI().apiService.loginUser(username, password).enqueue(object : Callback<LoginResponse> {
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+        UtilsAPI().apiService.loginUser(username, password).enqueue(object : Callback<ResponseLogin> {
+            override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
                 showMessage("gagal")
             }
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+            override fun onResponse(call: Call<ResponseLogin>, response: Response<ResponseLogin>) {
                 if(response.isSuccessful){
-                    val responseLogin: LoginResponse? = response.body()
+                    val responseLogin: ResponseLogin? = response.body()
                     if(responseLogin!!.response) {
                         if(responseLogin.level == "G"){
                             showMessage(responseLogin.message)
                             val editor = SP.edit()
                             editor.putString("id_user", responseLogin.id)
                             editor.apply()
-                            startActivity(Intent(applicationContext,ActivityUtama::class.java))
+                            startActivity(Intent(applicationContext,
+                                ActivityUtama::class.java))
                             finish()
                         } else if(responseLogin.level == "S"){
                             showMessage(responseLogin.message)
                             val editor = SP.edit()
                             editor.putString("id_user", responseLogin.id)
                             editor.apply()
-                            startActivity(Intent(applicationContext,com.example.projectmagang.siswa.utama.ActivityUtama::class.java))
+                            startActivity(Intent(applicationContext,
+                                com.example.projectmagang.siswa.ActivityUtama::class.java))
                             finish()
                         } else { showMessage("Pengguna Tidak Ditemukan") }
                     } else{ showMessage(responseLogin.message) }
