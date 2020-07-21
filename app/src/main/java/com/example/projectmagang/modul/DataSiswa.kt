@@ -13,7 +13,8 @@ data class DataSiswa(
     @SerializedName("tanggal_lahir") val tanggal_lahir : String?,
     @SerializedName("tempat_lahir") val tempat_lahir : String?,
     @SerializedName("username") val username : String?,
-    @SerializedName("nama_kelas") val nama_kelas : String?
+    @SerializedName("nama_kelas") val nama_kelas : String?,
+    @SerializedName("foto") val foto : String?
 )
 
 data class ResponseDataSiswa (

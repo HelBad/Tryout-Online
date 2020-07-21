@@ -82,7 +82,7 @@ class ActivityProfil : AppCompatActivity() {
 
     fun editProfil(id: String, nama: String, jenis_kelamin: String, tempat_lahir: String, tanggal_lahir: String,
                    telp: String, alamat: String, email: String, username: String, foto: String) {
-        UtilsAPI().apiService.updateGuru(id, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, telp, alamat, email,
+        UtilsAPI().apiService.updateProfil(id, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, telp, alamat, email,
             username, foto).enqueue(object : Callback<CekMessage> {
                 override fun onFailure(call: Call<CekMessage>, t: Throwable) {
                     t.printStackTrace()

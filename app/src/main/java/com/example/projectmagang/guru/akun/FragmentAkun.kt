@@ -130,7 +130,7 @@ class FragmentAkun : Fragment() {
                     genderAkun.text = dataProfil.jenis_kelamin
                     alamatAkun.text = dataProfil.alamat
                     telpAkun.text = "+62 "+dataProfil.telp.toString()
-                    dataFoto = "http://192.168.1.16/tryoutonline/storage/foto/guru/" + dataProfil.foto
+                    dataFoto = "http://192.168.43.176/tryoutonline/storage/foto/guru/" + dataProfil.foto
                     Picasso.get().load(dataFoto).into(gambarAkun)
                 }
             }

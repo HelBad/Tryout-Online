@@ -36,7 +36,18 @@ class FragmentSiswa : Fragment() {
             listSiswaAdapter.setOnDetailCallback(object : SiswaAdapter.OnItemClickCallback {
                 override fun onItemClicked(data: DataSiswa) {
                     val intent = Intent(activity!!.applicationContext, ActivityDetailSiswa::class.java)
-//                    intent.putExtra("nama_guru", data.nama_guru)
+                    intent.putExtra("id_user", data.id_user)
+                    intent.putExtra("nisn", data.nisn)
+                    intent.putExtra("nama", data.nama)
+                    intent.putExtra("username", data.username)
+                    intent.putExtra("email", data.email)
+                    intent.putExtra("nama_kelas", data.nama_kelas)
+                    intent.putExtra("tempat_lahir", data.tempat_lahir)
+                    intent.putExtra("tanggal_lahir", data.tanggal_lahir)
+                    intent.putExtra("jenis_kelamin", data.jenis_kelamin)
+                    intent.putExtra("alamat", data.alamat)
+                    intent.putExtra("telp", data.telp)
+                    intent.putExtra("foto", "http://192.168.43.176/tryoutonline/storage/foto/siswa/" + data.foto)
                     startActivity(intent)
                 }
             })

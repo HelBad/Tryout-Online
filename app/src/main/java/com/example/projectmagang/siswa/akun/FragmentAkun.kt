@@ -138,7 +138,7 @@ class FragmentAkun : Fragment() {
                     telpAkunS.text = "+62 "+dataProfil.telp.toString()
 //                    kelasAkunS.text = dataProfil.nama_kelas
 //                    jurusanAkunS.text = dataProfil.nama_jurusan
-                    dataFoto = "http://192.168.1.16/tryoutonline/storage/foto/siswa/" + dataProfil.foto
+                    dataFoto = "http://192.168.43.176/tryoutonline/storage/foto/siswa/" + dataProfil.foto
                     Picasso.get().load(dataFoto).into(gambarAkunS)
                 }
             }

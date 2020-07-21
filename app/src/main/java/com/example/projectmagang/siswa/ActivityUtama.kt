@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.projectmagang.R
 import com.example.projectmagang.siswa.akun.FragmentAkun
+import com.example.projectmagang.siswa.home.FragmentHome
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_utama_siswa.*
 

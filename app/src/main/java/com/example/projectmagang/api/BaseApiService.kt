@@ -30,16 +30,16 @@ interface BaseApiService {
 
     @FormUrlEncoded
     @POST("edit_profil")
-    fun updateGuru(@Field("id") id : String,
-                   @Field("nama") nama : String,
-                   @Field("jenis_kelamin") jenis_kelamin : String,
-                   @Field("tempat_lahir") tempat_lahir : String,
-                   @Field("tanggal_lahir") tanggal_lahir : String,
-                   @Field("telp") telp : String,
-                   @Field("alamat") alamat : String,
-                   @Field("email") email : String,
-                   @Field("username") username : String,
-                   @Field("foto") foto : String) : Call<CekMessage>
+    fun updateProfil(@Field("id") id : String,
+                     @Field("nama") nama : String,
+                     @Field("jenis_kelamin") jenis_kelamin : String,
+                     @Field("tempat_lahir") tempat_lahir : String,
+                     @Field("tanggal_lahir") tanggal_lahir : String,
+                     @Field("telp") telp : String,
+                     @Field("alamat") alamat : String,
+                     @Field("email") email : String,
+                     @Field("username") username : String,
+                     @Field("foto") foto : String) : Call<CekMessage>
 
     @FormUrlEncoded
     @POST("mapel_guru")
@@ -53,4 +53,8 @@ interface BaseApiService {
     @FormUrlEncoded
     @POST("nilai_siswa")
     fun siswaNilai(@Field("id") id: String) :Call<ResponseDataNilaiSiswa>
+
+    @FormUrlEncoded
+    @POST("load_jadwal")
+    fun listJadwal(@Field("id") id: String) :Call<ResponseDataJadwal>
 }
