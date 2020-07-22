@@ -4,13 +4,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
 import com.example.projectmagang.adapter.NilaiGuruAdapter
 import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.modul.ResponseDataNilaiGuru
+import com.example.projectmagang.model.ResponseDataNilaiGuru
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

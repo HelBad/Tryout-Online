@@ -1,9 +1,10 @@
-package com.example.projectmagang.modul
+package com.example.projectmagang.model
 
 import com.google.gson.annotations.SerializedName
 
 data class DataJadwal(
     @SerializedName("id") val id: String?,
+    @SerializedName("id_mapel") val id_mapel : String?,
     @SerializedName("mapel") val mapel : String?,
     @SerializedName("kelas") val kelas : String?,
     @SerializedName("tanggal") val tanggal : String?,

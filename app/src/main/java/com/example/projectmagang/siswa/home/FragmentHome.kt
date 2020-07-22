@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
 import com.example.projectmagang.adapter.JadwalAdapter
 import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.modul.DataJadwal
-import com.example.projectmagang.modul.ResponseDataJadwal
+import com.example.projectmagang.model.DataJadwal
+import com.example.projectmagang.model.ResponseDataJadwal
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,7 +40,7 @@ class FragmentHome : Fragment() {
             jadwalAdapter.setOnDetailCallback(object : JadwalAdapter.OnItemClickCallback {
                 override fun onItemClicked(data: DataJadwal) {
                     val intent = Intent(activity!!.applicationContext, ActivityUjian::class.java)
-//                    intent.putExtra("nama_guru", data.nama_guru)
+                    intent.putExtra("id_mapel", data.id_mapel)
                     startActivity(intent)
                 }
             })

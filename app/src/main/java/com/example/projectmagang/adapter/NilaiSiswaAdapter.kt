@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
-import com.example.projectmagang.modul.DataNilaiSiswa
+import com.example.projectmagang.model.DataNilaiSiswa
 import kotlinx.android.synthetic.main.cardsiswa_nilai.view.*
 
 class NilaiSiswaAdapter (val context : Context, var dataNilai : ArrayList<DataNilaiSiswa>):

@@ -1,4 +1,4 @@
-package com.example.projectmagang.modul
+package com.example.projectmagang.model
 
 import com.google.gson.annotations.SerializedName
 

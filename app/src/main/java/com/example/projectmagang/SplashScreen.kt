@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import com.example.projectmagang.api.UtilsAPI
 import com.example.projectmagang.guru.ActivityUtama
-import com.example.projectmagang.modul.ResponseLogin
+import com.example.projectmagang.model.ResponseLogin
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

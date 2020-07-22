@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
-import com.example.projectmagang.modul.DataJadwal
+import com.example.projectmagang.model.DataJadwal
 import kotlinx.android.synthetic.main.cardsiswa_jadwal.view.*
 import java.text.DateFormat
 import java.text.ParseException

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
-import com.example.projectmagang.modul.DataMapel
+import com.example.projectmagang.model.DataMapel
 import kotlinx.android.synthetic.main.cardguru_mapelnilai.view.*
 
 class MapelAdapter (val context : Context, var dataMapel: ArrayList<DataMapel>):

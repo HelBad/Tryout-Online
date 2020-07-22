@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.projectmagang.R
 import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.modul.CekMessage
+import com.example.projectmagang.model.CekMessage
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profil_guru.*
 //import org.jetbrains.anko.startActivityForResult

@@ -11,7 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.modul.ResponseLogin
+import com.example.projectmagang.model.ResponseLogin
 import com.example.projectmagang.guru.ActivityUtama
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call

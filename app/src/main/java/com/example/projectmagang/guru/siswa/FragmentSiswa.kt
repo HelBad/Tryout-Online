@@ -8,13 +8,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
 import com.example.projectmagang.adapter.SiswaAdapter
 import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.modul.*
+import com.example.projectmagang.model.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

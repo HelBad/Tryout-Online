@@ -13,7 +13,7 @@ import androidx.appcompat.widget.Toolbar
 import com.example.projectmagang.ActivityLogin
 import com.example.projectmagang.R
 import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.modul.ProfilSiswa
+import com.example.projectmagang.model.ProfilSiswa
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
@@ -138,7 +138,7 @@ class FragmentAkun : Fragment() {
                     telpAkunS.text = "+62 "+dataProfil.telp.toString()
 //                    kelasAkunS.text = dataProfil.nama_kelas
 //                    jurusanAkunS.text = dataProfil.nama_jurusan
-                    dataFoto = "http://192.168.43.176/tryoutonline/storage/foto/siswa/" + dataProfil.foto
+                    dataFoto = "http://192.168.1.16/tryoutonline/storage/foto/siswa/" + dataProfil.foto
                     Picasso.get().load(dataFoto).into(gambarAkunS)
                 }
             }

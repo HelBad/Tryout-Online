@@ -1,8 +1,8 @@
 package com.example.projectmagang.api
 
-import com.example.projectmagang.modul.ResponseDataMapel
-import com.example.projectmagang.modul.ResponseDataNilaiGuru
-import com.example.projectmagang.modul.*
+import com.example.projectmagang.model.ResponseDataMapel
+import com.example.projectmagang.model.ResponseDataNilaiGuru
+import com.example.projectmagang.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -57,4 +57,9 @@ interface BaseApiService {
     @FormUrlEncoded
     @POST("load_jadwal")
     fun listJadwal(@Field("id") id: String) :Call<ResponseDataJadwal>
+
+    @FormUrlEncoded
+    @POST("load_soal")
+    fun soalSiswa(@Field("id") id: String,
+                  @Field("id_mapel") id_mapel: String) :Call<ResponseDataSoalSiswa>
 }

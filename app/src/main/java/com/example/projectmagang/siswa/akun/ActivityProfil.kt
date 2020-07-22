@@ -9,11 +9,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.example.projectmagang.R
-import com.example.projectmagang.api.BaseApiService
 import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.modul.CekMessage
+import com.example.projectmagang.model.CekMessage
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_profil_guru.*
 import kotlinx.android.synthetic.main.activity_profil_siswa.*
 import retrofit2.Call
 import retrofit2.Callback

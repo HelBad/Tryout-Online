@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
-import com.example.projectmagang.modul.DataSiswa
+import com.example.projectmagang.model.DataSiswa
 import kotlinx.android.synthetic.main.cardguru_siswa.view.*
 
 //class ListSiswaAdapter(siswaList: List<Siswa>, activity: Activity) :
