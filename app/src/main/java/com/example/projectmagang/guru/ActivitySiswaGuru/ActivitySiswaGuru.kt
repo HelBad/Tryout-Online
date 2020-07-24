@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projectmagang.R
@@ -49,6 +50,7 @@ class ActivitySiswaGuru : AppCompatActivity() {
             .enqueue(object : Callback<ResponseListDataSiswa>{
                 override fun onFailure(call: Call<ResponseListDataSiswa>, t: Throwable) {
                     t.printStackTrace()
+                    loading.visibility = View.GONE
                 }
 
                 override fun onResponse(
@@ -56,9 +58,12 @@ class ActivitySiswaGuru : AppCompatActivity() {
                     response: Response<ResponseListDataSiswa>
                 ) {
                     if(response.isSuccessful){
+                        loading.visibility = View.GONE
                         val data = response.body()
                         if(data!!.response){
                             siswaGuruAdapter.setData(data.siswa)
+                        }else{
+                            kosongSiswa.visibility = View.VISIBLE
                         }
                     }
                 }
@@ -82,7 +87,6 @@ class ActivitySiswaGuru : AppCompatActivity() {
         val kelas = view.findViewById<TextView>(R.id.kelasSiswa)
 
         Picasso.get().load(Variabel().URL_FOTO_SISWA+dataSiswa.foto).into(foto)
-        Log.v("ini test", Variabel().URL_FOTO_SISWA+dataSiswa.foto)
         nama.text = dataSiswa.nama
         nisn.text = dataSiswa.nisn
         jenkel.text = dataSiswa.jenis_kelamin

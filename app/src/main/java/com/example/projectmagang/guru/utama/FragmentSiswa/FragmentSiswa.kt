@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.RelativeLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
@@ -20,6 +22,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class FragmentSiswa : Fragment() {
+    lateinit var loading : ProgressBar
+    lateinit var kosongMapel : RelativeLayout
     lateinit var rvMapel : RecyclerView
     lateinit var siswaMapelAdapter: SiswaMapelAdapter
     lateinit var SP : SharedPreferences
@@ -30,6 +34,8 @@ class FragmentSiswa : Fragment() {
         val view = inflater.inflate(R.layout.fragment_siswa_guru, container, false)
         SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
         rvMapel = view.findViewById(R.id.recyclerSiswa)
+        loading = view.findViewById(R.id.loading)
+        kosongMapel = view.findViewById(R.id.kosongMapel)
         siswaMapelAdapter = SiswaMapelAdapter(activity!!.applicationContext, arrayListOf())
 
         getMapel(SP.getString("iduser","").toString())
@@ -58,6 +64,7 @@ class FragmentSiswa : Fragment() {
             .enqueue(object : Callback<ResponseListDataMapel> {
                 override fun onFailure(call: Call<ResponseListDataMapel>, t: Throwable) {
                     t.printStackTrace()
+                    loading.visibility = View.GONE
                 }
 
                 override fun onResponse(
@@ -65,9 +72,12 @@ class FragmentSiswa : Fragment() {
                     responseList: Response<ResponseListDataMapel>
                 ) {
                     if(responseList.isSuccessful){
+                        loading.visibility = View.GONE
                         val data = responseList.body()
                         if(data!!.response){
                             siswaMapelAdapter.setData(data.mapel)
+                        }else{
+                            kosongMapel.visibility = View.VISIBLE
                         }
                     }
                 }

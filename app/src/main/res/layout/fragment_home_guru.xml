@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".guru.utama.FragmentHome.FragmentHome">
@@ -76,7 +77,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/box_biru"
+                android:background="@drawable/box_hijau"
                 android:padding="8dp">
                 <TextView
                     android:id="@+id/labelJumMapel"
@@ -108,41 +109,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/box_biru"
-                android:padding="8dp">
-                <TextView
-                    android:id="@+id/labelJumSiswa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="JUMLAH SISWA"
-                    android:gravity="center"
-                    android:textColor="@color/putih"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
-                <TextView
-                    android:layout_below="@+id/labelJumSiswa"
-                    android:id="@+id/jumSiswa"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textColor="@color/putih"
-                    android:textStyle="bold"
-                    android:textSize="40sp"
-                    />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/box_biru"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/box_merah"
                 android:padding="8dp">
                 <TextView
                     android:id="@+id/labelJumGuru"
@@ -164,6 +135,37 @@
                     android:textSize="40sp"
                     />
             </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/box_kuning"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/labelJumSiswa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="JUMLAH SISWA"
+                    android:gravity="center"
+                    android:textColor="@color/putih"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_below="@+id/labelJumSiswa"
+                    android:id="@+id/jumSiswa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/putih"
+                    android:textStyle="bold"
+                    android:textSize="40sp"
+                    />
+            </RelativeLayout>
+
         </LinearLayout>
     </LinearLayout>
     
@@ -172,16 +174,16 @@
         android:layout_marginTop="15dp"
         android:layout_below="@+id/ketDashboard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:orientation="horizontal">
         <RelativeLayout
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:focusable="true"
             android:clickable="true"
             android:foreground="?attr/selectableItemBackground"
             android:id="@+id/btn_ajukanMapel"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/putih_abu">
             <ImageView
@@ -189,26 +191,25 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_tryout"
-                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
                 />
             <TextView
-                android:layout_toRightOf="@id/iconAjukan"
+                android:layout_below="@id/iconAjukan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:textColor="@color/hitam"
                 android:text="Ajukan Mapel"
-                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
                 />
         </RelativeLayout>
         <RelativeLayout
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:focusable="true"
             android:clickable="true"
             android:foreground="?attr/selectableItemBackground"
             android:id="@+id/btn_tambahSoal"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/putih_abu">
             <ImageView
@@ -216,16 +217,42 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_soal"
-                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
                 />
             <TextView
-                android:layout_toRightOf="@id/iconSoal"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/iconSoal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:textColor="@color/hitam"
-                android:text="Ajukan Mapel"
+                android:text="Data Soal"
                 android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:gravity="center"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:id="@+id/btn_mapelSaya"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/putih_abu">
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:id="@+id/iconMapel"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_round_assignment_ind_24"
+                />
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/iconMapel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/hitam"
+                android:text="Mapel Saya"
                 />
         </RelativeLayout>
     </LinearLayout>
@@ -239,9 +266,34 @@
         android:padding="10dp"
         android:textSize="18sp"
         android:background="@color/putih"
-        android:layout_below="@id/menu"
         />
-    
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_marginVertical="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    <RelativeLayout
+        android:layout_marginVertical="20dp"
+        android:visibility="visible"
+        android:gravity="center"
+        android:id="@+id/kosongJadwal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_jadwal_abu"/>
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/colorGray"
+            android:text="Belum ada jadwal"/>
+    </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvJadwal"
         android:layout_width="match_parent"
@@ -249,4 +301,4 @@
         android:layout_below="@id/titleJadwal"/>
 
 
-</RelativeLayout>
+</LinearLayout>

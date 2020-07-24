@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_utama_guru.*
 
 class ActivityUtama : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+
         when(item.itemId) {
             R.id.homeGuru -> {
                 replaceFragment(FragmentHome())

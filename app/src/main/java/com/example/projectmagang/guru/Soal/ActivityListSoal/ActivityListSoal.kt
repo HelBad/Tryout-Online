@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -80,6 +81,7 @@ class ActivityListSoal : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        kosongSoal.visibility =  View.GONE
         getSoal(intent.getIntExtra("idmapel",0))
     }
 
@@ -89,6 +91,7 @@ class ActivityListSoal : AppCompatActivity() {
                 override fun onFailure(call: Call<ResponseListDataSoal>, t: Throwable) {
                     t.printStackTrace()
                     showMessage("Server Error")
+                    loading.visibility = View.GONE
                 }
 
                 override fun onResponse(
@@ -96,8 +99,13 @@ class ActivityListSoal : AppCompatActivity() {
                     response: Response<ResponseListDataSoal>
                 ) {
                     if(response.isSuccessful){
+                        loading.visibility = View.GONE
                         val data = response.body()
-                        listSoalAdapter.setData(data!!.soal)
+                        if(data!!.response){
+                            listSoalAdapter.setData(data.soal)
+                        }else{
+                            kosongSoal.visibility = View.VISIBLE
+                        }
                     }
                 }
 
@@ -125,6 +133,9 @@ class ActivityListSoal : AppCompatActivity() {
                             val data = response.body()
                             showMessage(data!!.message)
                             listSoalAdapter.removeData(position)
+                            if(listSoalAdapter.itemCount == 0){
+                                kosongSoal.visibility = View.VISIBLE
+                            }
                         }
                     }
 
@@ -165,10 +176,6 @@ class ActivityListSoal : AppCompatActivity() {
         dialog.show()
 
     }
-
-
-
-
 
     fun showMessage(msg : String){
         Toast.makeText(applicationContext, msg , Toast.LENGTH_SHORT).show()

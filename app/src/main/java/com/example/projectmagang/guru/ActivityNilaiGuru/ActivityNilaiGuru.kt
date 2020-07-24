@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,7 @@ class ActivityNilaiGuru : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nilai_guru)
         SP = getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
+        toolbar.title = "Daftar Nilai ${intent.getStringExtra("mapel")} (${intent.getStringExtra("kelas")})"
 
         nilaiGuruAdapter = NilaiGuruAdapter(
             applicationContext, arrayListOf()
@@ -44,6 +46,7 @@ class ActivityNilaiGuru : AppCompatActivity() {
                 override fun onFailure(call: Call<ResponseListDataNilaiGuru>, t: Throwable) {
                     t.printStackTrace()
                     showMessage("gagal load data")
+                    loading.visibility = View.GONE
                 }
 
                 override fun onResponse(
@@ -51,8 +54,13 @@ class ActivityNilaiGuru : AppCompatActivity() {
                     response: Response<ResponseListDataNilaiGuru>
                 ) {
                     if(response.isSuccessful){
+                        loading.visibility = View.GONE
                         val data = response.body()
-                        nilaiGuruAdapter.setData(data!!.nilai)
+                        if(data!!.response){
+                            nilaiGuruAdapter.setData(data.nilai)
+                        }else{
+                            kosongNilai.visibility = View.VISIBLE
+                        }
                     }
                 }
 

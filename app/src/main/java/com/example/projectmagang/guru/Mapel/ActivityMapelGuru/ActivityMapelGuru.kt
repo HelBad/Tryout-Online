@@ -6,8 +6,10 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.ViewUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projectmagang.R
 import com.example.projectmagang.data.Mapel.DataMapel
@@ -56,6 +58,7 @@ class ActivityMapelGuru : AppCompatActivity() {
                 override fun onFailure(call: Call<ResponseListDataMapel>, t: Throwable) {
                     t.printStackTrace()
                     showMessage("Server error")
+                    loading.visibility = View.GONE
                 }
 
                 override fun onResponse(
@@ -63,8 +66,13 @@ class ActivityMapelGuru : AppCompatActivity() {
                     response: Response<ResponseListDataMapel>
                 ) {
                     if(response.isSuccessful){
+                        loading.visibility = View.GONE
                         val data = response.body()
-                        mapelGuruAdapter.setData(data!!.mapel)
+                        if(data!!.response){
+                            mapelGuruAdapter.setData(data!!.mapel)
+                        }else{
+                            kosongMapel.visibility = View.VISIBLE
+                        }
                     }
                 }
 

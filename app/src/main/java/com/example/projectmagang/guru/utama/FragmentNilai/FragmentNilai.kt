@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,12 +18,15 @@ import com.example.projectmagang.data.Mapel.DataMapel
 import com.example.projectmagang.data.Mapel.ResponseListDataMapel
 import com.example.projectmagang.guru.ActivityNilaiGuru.ActivityNilaiGuru
 import com.example.projectmagang.network.ApiService
+import kotlinx.android.synthetic.main.fragment_nilai_guru.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
 class FragmentNilai : Fragment() {
+    lateinit var loading : ProgressBar
+    lateinit var kosongMapel : RelativeLayout
     lateinit var rvMapel : RecyclerView
     lateinit var nilaiMapelAdapter: NilaiMapelAdapter
     lateinit var SP : SharedPreferences
@@ -31,6 +36,8 @@ class FragmentNilai : Fragment() {
     ): View? {
 
         val view= inflater.inflate(R.layout.fragment_nilai_guru, container, false)
+        loading = view.findViewById(R.id.loading)
+        kosongMapel = view.findViewById(R.id.kosongMapel)
         SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
         rvMapel = view.findViewById(R.id.recyclerNilai)
         nilaiMapelAdapter =
@@ -48,6 +55,8 @@ class FragmentNilai : Fragment() {
                 override fun onItemClicked(data: DataMapel) {
                     val intent = Intent(activity!!.applicationContext, ActivityNilaiGuru::class.java)
                     intent.putExtra("idmapel", data.id)
+                    intent.putExtra("kelas", data.nama_kelas)
+                    intent.putExtra("mapel", data.nama_mapel)
                     startActivity(intent)
                 }
             })
@@ -62,6 +71,7 @@ class FragmentNilai : Fragment() {
             .enqueue(object :Callback<ResponseListDataMapel>{
                 override fun onFailure(call: Call<ResponseListDataMapel>, t: Throwable) {
                     t.printStackTrace()
+                    loading.visibility = View.GONE
                 }
 
                 override fun onResponse(
@@ -69,9 +79,12 @@ class FragmentNilai : Fragment() {
                     responseList: Response<ResponseListDataMapel>
                 ) {
                     if(responseList.isSuccessful){
+                        loading.visibility = View.GONE
                         val data = responseList.body()
                         if(data!!.response){
                             nilaiMapelAdapter.setData(data.mapel)
+                        }else{
+                            kosongMapel.visibility = View.VISIBLE
                         }
                     }
                 }

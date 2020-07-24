@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projectmagang.R
@@ -55,6 +56,7 @@ class ActivityMapelSoal : AppCompatActivity() {
                 override fun onFailure(call: Call<ResponseListDataMapel>, t: Throwable) {
                     t.printStackTrace()
                     showMessage("Server Error")
+                    loading.visibility = View.GONE
                 }
 
                 override fun onResponse(
@@ -62,8 +64,14 @@ class ActivityMapelSoal : AppCompatActivity() {
                     response: Response<ResponseListDataMapel>
                 ) {
                     if(response.isSuccessful){
+                        loading.visibility = View.GONE
                         val data = response.body()
-                        mapelSoalAdapter.setData(data!!.mapel)
+                        if(data!!.response){
+                            mapelSoalAdapter.setData(data.mapel)
+                        }else{
+                            kosongMapel.visibility = View.VISIBLE
+                        }
+
                     }
                 }
 

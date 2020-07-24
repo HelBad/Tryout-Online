@@ -14,6 +14,7 @@ import com.example.projectmagang.data.Jadwal.ResponseListDataJadwal
 import com.example.projectmagang.data.KetDashboard
 import com.example.projectmagang.guru.ActivityAjukanMapel.ActivityAjukanMapel
 import com.example.projectmagang.guru.ActivityMapelSoal.ActivityMapelSoal
+import com.example.projectmagang.guru.Mapel.ActivityMapelGuru.ActivityMapelGuru
 import com.example.projectmagang.network.ApiService
 import kotlinx.android.synthetic.main.fragment_home_guru.*
 import retrofit2.Call
@@ -47,7 +48,9 @@ class FragmentHome : Fragment() {
             adapter = jadwalAdapter
         }
 
-
+        btn_mapelSaya.setOnClickListener {
+            startActivity(Intent(activity!!.applicationContext, ActivityMapelGuru::class.java))
+        }
         btn_ajukanMapel.setOnClickListener {
             startActivity(Intent(activity!!.applicationContext, ActivityAjukanMapel::class.java))
         }
@@ -85,6 +88,7 @@ class FragmentHome : Fragment() {
             .enqueue(object : Callback<ResponseListDataJadwal>{
                 override fun onFailure(call: Call<ResponseListDataJadwal>, t: Throwable) {
                     t.printStackTrace()
+                    loading.visibility = View.GONE
                 }
 
                 override fun onResponse(
@@ -92,9 +96,12 @@ class FragmentHome : Fragment() {
                     response: Response<ResponseListDataJadwal>
                 ) {
                     if(response.isSuccessful){
+                        loading.visibility = View.GONE
                         val data = response.body()
                         if(data!!.response) {
                             jadwalAdapter.setData(data.jadwal)
+                        }else{
+                            kosongJadwal.visibility = View.VISIBLE
                         }
 
 
