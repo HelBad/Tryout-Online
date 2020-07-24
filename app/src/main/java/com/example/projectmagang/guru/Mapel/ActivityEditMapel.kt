@@ -1,13 +1,13 @@
-package com.example.projectmagang.guru.Soal
+package com.example.projectmagang.guru.Mapel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.projectmagang.R
 
-class ActivityListSoal : AppCompatActivity() {
+class ActivityEditMapel : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_soal)
+        setContentView(R.layout.activity_edit_mapel)
 
     }
 }

@@ -12,7 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".guru.Soal.ActivityListSoal"></activity>
+        <activity android:name=".guru.ActivitySiswaGuru.ActivitySiswaGuru"></activity>
+        <activity android:name=".guru.Mapel.ActivityEditMapel" />
+        <activity android:name=".guru.Mapel.ActivityMapelGuru.ActivityMapelGuru" />
+        <activity
+            android:name=".guru.test"
+            android:label="@string/title_activity_test"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".guru.Soal.ActivityEditSoal" />
+        <activity android:name=".guru.Soal.ActivityListSoal.ActivityListSoal" />
         <activity android:name=".guru.ActivityMapelSoal.ActivityMapelSoal" />
         <activity android:name=".guru.ActivityAjukanMapel.ActivityAjukanMapel" />
         <activity android:name=".guru.ActivityNilaiGuru.ActivityNilaiGuru" />

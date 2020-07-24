@@ -1,9 +1,12 @@
 package com.example.projectmagang.network
 
 import com.example.projectmagang.data.*
+import com.example.projectmagang.data.Jadwal.ResponseListDataJadwal
 import com.example.projectmagang.data.Mapel.ResponseListDataMapel
 import com.example.projectmagang.data.Mapel.ResponseListDataMapelDiajukan
 import com.example.projectmagang.data.Nilai.ResponseListDataNilaiGuru
+import com.example.projectmagang.data.Siswa.ResponseListDataSiswa
+import com.example.projectmagang.data.Soal.ResponseListDataSoal
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.http.Field
@@ -81,5 +84,60 @@ interface ApiEndpoint{
         @Field("id_mapel") id_mapel: Int,
         @Field("id") id : String
     ) : Call<ResponseMessage>
+
+    @FormUrlEncoded
+    @POST("mapel_soal")
+    fun mapelSoal(
+        @Field("id_mapel") id_mapel : Int
+    ) : Call<ResponseListDataSoal>
+
+    @FormUrlEncoded
+    @POST("delete_soal")
+    fun deleteSoal(
+        @Field("id_soal") id_soal : Int
+    ) : Call<ResponseMessage>
+
+    @FormUrlEncoded
+    @POST("tambah_soal")
+    fun tambahSoal(
+        @Field("id_mapel") id_mapel : Int,
+        @Field("soal") soal : String,
+        @Field("kunci") kunci : String,
+        @Field("pila") pila : String,
+        @Field("pilb") pilb : String,
+        @Field("pilc") pilc : String,
+        @Field("pild") pild : String,
+        @Field("pile") pile : String
+
+    ) : Call<ResponseMessage>
+
+    @FormUrlEncoded
+    @POST("edit_soal")
+    fun editSoal(
+        @Field("id_soal") id_soal : Int,
+        @Field("soal") soal : String,
+        @Field("kunci") kunci : String,
+        @Field("pila") pila : String,
+        @Field("pilb") pilb : String,
+        @Field("pilc") pilc : String,
+        @Field("pild") pild : String,
+        @Field("pile") pile : String
+    ) : Call<ResponseMessage>
+
+
+    @FormUrlEncoded
+    @POST("siswa_guru")
+    fun siswaGuru(
+        @Field("id_mapel") id : Int
+    ) : Call<ResponseListDataSiswa>
+
+
+    @FormUrlEncoded
+    @POST("load_jadwal_guru")
+    fun loadJadwalGuru(
+        @Field("id") id : String
+    ) : Call<ResponseListDataJadwal>
+
+
 
 }

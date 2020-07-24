@@ -11,6 +11,12 @@ import kotlinx.android.synthetic.main.cardmapel_kelas.view.*
 
 class MapelSoalAdapter (val context : Context, var dataMapel : ArrayList<DataMapel>):
     RecyclerView.Adapter<MapelSoalAdapter.ViewHolder>(){
+    lateinit var onDetail : OnItemClickCallback
+
+    fun setOnDetailCallback(onItemClickCallback: OnItemClickCallback){
+        this.onDetail = onItemClickCallback
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)=
         ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.cardmapel_kelas, parent, false)
@@ -24,6 +30,7 @@ class MapelSoalAdapter (val context : Context, var dataMapel : ArrayList<DataMap
         }else{
             holder.bing(dataMapel[position], dataMapel[position-1].nama_kelas.toString())
         }
+        holder.view.Mapel.setOnClickListener { onDetail.onItemClicked(dataMapel[position]) }
     }
 
     class  ViewHolder(view : View): RecyclerView.ViewHolder(view) {
@@ -43,6 +50,10 @@ class MapelSoalAdapter (val context : Context, var dataMapel : ArrayList<DataMap
         dataMapel.clear()
         dataMapel.addAll(newDataMapel)
         notifyDataSetChanged()
+    }
+
+    interface OnItemClickCallback{
+        fun onItemClicked(data: DataMapel)
     }
 
 }

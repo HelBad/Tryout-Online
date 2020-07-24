@@ -1,14 +1,17 @@
 package com.example.projectmagang.guru.ActivityMapelSoal
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projectmagang.R
+import com.example.projectmagang.data.Mapel.DataMapel
 import com.example.projectmagang.data.Mapel.ResponseListDataMapel
 import com.example.projectmagang.guru.ActivityAjukanMapel.MapelTersediaAdapter
+import com.example.projectmagang.guru.Soal.ActivityListSoal.ActivityListSoal
 import com.example.projectmagang.network.ApiService
 import kotlinx.android.synthetic.main.activity_mapel_soal.*
 import retrofit2.Call
@@ -28,6 +31,17 @@ class ActivityMapelSoal : AppCompatActivity() {
         getMapelGuru(SP.getString("iduser","").toString())
         rvMapel.apply {
             layoutManager = LinearLayoutManager(applicationContext)
+
+            mapelSoalAdapter.setOnDetailCallback(object : MapelSoalAdapter.OnItemClickCallback{
+                override fun onItemClicked(data: DataMapel) {
+                    val intent = Intent(applicationContext,ActivityListSoal::class.java)
+                    intent.putExtra("idmapel",data.id)
+                    intent.putExtra("mapel", data.nama_mapel)
+                    intent.putExtra("kelas", data.nama_kelas)
+                    startActivity(intent)
+                }
+
+            })
 
             adapter = mapelSoalAdapter
         }

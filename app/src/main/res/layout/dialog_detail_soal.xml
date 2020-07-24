@@ -4,21 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".guru.Soal.ActivityAddSoal">
-    <androidx.appcompat.widget.Toolbar
-        app:title="Tambah Soal"
-        app:titleTextColor="@android:color/white"
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:minHeight="?attr/actionBarSize">
-    </androidx.appcompat.widget.Toolbar>
     <ScrollView
-        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +33,7 @@
                     android:textSize="16dp"
                     android:textStyle="bold"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/soalAdd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -53,7 +43,6 @@
                     android:layout_marginBottom="5dp"
                     android:hint="Tambahkan Pertanyaan"
                     android:textSize="16sp"
-                    android:background="@drawable/box_putih_abu"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="5dp"/>
             </LinearLayout>
@@ -98,7 +87,7 @@
                                 android:text="A"
                                 android:textSize="16sp"
                                 android:textStyle="bold"/>
-                            <EditText
+                            <TextView
                                 android:id="@+id/uraianA"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -109,7 +98,6 @@
                                 android:hint="Tambahkan Uraian Opsi A"
                                 android:text=""
                                 android:textSize="16sp"
-                                android:background="@drawable/box_putih_abu"
                                 android:paddingVertical="5dp"
                                 android:paddingHorizontal="8dp"
                                 />
@@ -130,7 +118,7 @@
                                 android:text="B"
                                 android:textSize="16sp"
                                 android:textStyle="bold"/>
-                            <EditText
+                            <TextView
                                 android:id="@+id/uraianB"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -141,7 +129,6 @@
                                 android:hint="Tambahkan Uraian Opsi B"
                                 android:text=""
                                 android:textSize="16sp"
-                                android:background="@drawable/box_putih_abu"
                                 android:paddingVertical="5dp"
                                 android:paddingHorizontal="8dp"
                                 />
@@ -162,7 +149,7 @@
                                 android:text="C"
                                 android:textSize="16sp"
                                 android:textStyle="bold"/>
-                            <EditText
+                            <TextView
                                 android:id="@+id/uraianC"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -173,7 +160,6 @@
                                 android:hint="Tambahkan Uraian Opsi C"
                                 android:text=""
                                 android:textSize="16sp"
-                                android:background="@drawable/box_putih_abu"
                                 android:paddingVertical="5dp"
                                 android:paddingHorizontal="8dp"
                                 />
@@ -193,7 +179,7 @@
                                 android:text="D"
                                 android:textSize="16sp"
                                 android:textStyle="bold"/>
-                            <EditText
+                            <TextView
                                 android:id="@+id/uraianD"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -204,7 +190,6 @@
                                 android:hint="Tambahkan Uraian Opsi D"
                                 android:text=""
                                 android:textSize="16sp"
-                                android:background="@drawable/box_putih_abu"
                                 android:paddingVertical="5dp"
                                 android:paddingHorizontal="8dp"
                                 />
@@ -225,7 +210,7 @@
                                 android:text="E"
                                 android:textSize="16sp"
                                 android:textStyle="bold"/>
-                            <EditText
+                            <TextView
                                 android:id="@+id/uraianE"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -236,7 +221,6 @@
                                 android:hint="Tambahkan Uraian Opsi E"
                                 android:text=""
                                 android:textSize="16sp"
-                                android:background="@drawable/box_putih_abu"
                                 android:paddingVertical="5dp"
                                 android:paddingHorizontal="8dp"
                                 />
@@ -252,80 +236,26 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:layout_gravity="center_vertical"
-                android:orientation="vertical">
+                android:orientation="horizontal">
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="5dp"
-                    android:text="Kunci Jawaban"
+                    android:text="Kunci Jawaban : "
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
                     android:textStyle="bold"/>
 
-                <RadioGroup
-                    android:id="@+id/radioKunci"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/box_putih_abu"
-                    android:orientation="horizontal">
-                    <RadioButton
-                        android:id="@+id/kunciA"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="A"
-                        android:textColor="@color/hitam"
-                        android:textSize="16sp"
-                        />
-                    <RadioButton
-                        android:id="@+id/kunciB"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="B"
-                        android:textColor="@color/hitam"
-                        android:textSize="16sp"
-                        />
-                    <RadioButton
-                        android:id="@+id/kunciC"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="C"
-                        android:textColor="@color/hitam"
-                        android:textSize="16sp"
-                        />
-                    <RadioButton
-                        android:id="@+id/kunciD"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="D"
-                        android:textColor="@color/hitam"
-                        android:textSize="16sp"
-                        />
-                    <RadioButton
-                        android:id="@+id/kunciE"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="E"
-                        android:textColor="@color/hitam"
-                        android:textSize="16sp"
-                        />
-                </RadioGroup>
-                <Button
-                    android:id="@+id/tambahSoal"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center_horizontal"
+                <TextView
+                    android:id="@+id/kunci"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
-                    android:paddingHorizontal="40dp"
-                    android:layout_height="wrap_content"
-                    android:text="Tambah"
-                    android:textColor="@color/putih"
-                    android:background="@color/colorPrimary"
-                    />
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/hitam"
+                    android:text="A"/>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

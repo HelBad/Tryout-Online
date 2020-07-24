@@ -1,4 +1,4 @@
-package com.example.projectmagang.guru.utama.FragmentNilai
+package com.example.projectmagang.guru.Mapel.ActivityMapelGuru
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,12 +9,17 @@ import com.example.projectmagang.R
 import com.example.projectmagang.data.Mapel.DataMapel
 import kotlinx.android.synthetic.main.cardmapel_kelas.view.*
 
-class NilaiMapelAdapter (val context : Context, var dataMapel: ArrayList<DataMapel>):
-        RecyclerView.Adapter<NilaiMapelAdapter.ViewHolder>(){
+class MapelGuruAdapter (val context : Context, var dataMapel : ArrayList<DataMapel>):
+    RecyclerView.Adapter<MapelGuruAdapter.ViewHolder>(){
     lateinit var onDetail : OnItemClickCallback
+    lateinit var onEdit : OnItemClickCallback
 
     fun setOnDetailCallback(onItemClickCallback: OnItemClickCallback){
         this.onDetail = onItemClickCallback
+    }
+
+    fun setOnEditCallback(onItemClickCallback: OnItemClickCallback){
+        this.onEdit = onItemClickCallback
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)=
@@ -24,28 +29,33 @@ class NilaiMapelAdapter (val context : Context, var dataMapel: ArrayList<DataMap
 
     override fun getItemCount() = dataMapel.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MapelGuruAdapter.ViewHolder, position: Int) {
         if(position == 0){
             holder.bing(dataMapel[position], "")
         }else{
             holder.bing(dataMapel[position], dataMapel[position-1].nama_kelas.toString())
         }
+        holder.view.btn_edit_mapel.setOnClickListener { onEdit.onItemClicked(dataMapel[position]) }
         holder.view.Mapel.setOnClickListener { onDetail.onItemClicked(dataMapel[position]) }
+
     }
 
     class ViewHolder(view : View): RecyclerView.ViewHolder(view){
         val view = view
-        fun bing(dataMapel: DataMapel, kelas : String){
+
+        fun bing(dataMapel : DataMapel, kelas : String){
+            view.image.visibility = View.GONE
+            view.btn_edit_mapel.visibility = View.GONE //
             view.namaMapel.text = dataMapel.nama_mapel
             view.namaKelas.text = dataMapel.nama_kelas
             if(dataMapel.nama_kelas != kelas){
                 view.headKelas.visibility = View.VISIBLE
-                view.headKelas.text = "kelas ${dataMapel.nama_kelas}"
+                view.headKelas.text = "Kelas ${dataMapel.nama_kelas}"
             }
         }
     }
 
-    fun setData(newDataMapel: List<DataMapel>){
+    fun setData(newDataMapel : List<DataMapel>){
         dataMapel.clear()
         dataMapel.addAll(newDataMapel)
         notifyDataSetChanged()

@@ -1,4 +1,4 @@
-package com.example.projectmagang.guru.utama.FragmentNilai
+package com.example.projectmagang.guru.utama.FragmentSiswa
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,22 +9,22 @@ import com.example.projectmagang.R
 import com.example.projectmagang.data.Mapel.DataMapel
 import kotlinx.android.synthetic.main.cardmapel_kelas.view.*
 
-class NilaiMapelAdapter (val context : Context, var dataMapel: ArrayList<DataMapel>):
-        RecyclerView.Adapter<NilaiMapelAdapter.ViewHolder>(){
+class SiswaMapelAdapter (val context : Context, var dataMapel: ArrayList<DataMapel>):
+    RecyclerView.Adapter<SiswaMapelAdapter.ViewHolder>(){
     lateinit var onDetail : OnItemClickCallback
 
     fun setOnDetailCallback(onItemClickCallback: OnItemClickCallback){
         this.onDetail = onItemClickCallback
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)=
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.cardmapel_kelas, parent, false)
         )
 
     override fun getItemCount() = dataMapel.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SiswaMapelAdapter.ViewHolder, position: Int) {
         if(position == 0){
             holder.bing(dataMapel[position], "")
         }else{
@@ -54,6 +54,4 @@ class NilaiMapelAdapter (val context : Context, var dataMapel: ArrayList<DataMap
     interface OnItemClickCallback{
         fun onItemClicked(data: DataMapel)
     }
-
-
 }

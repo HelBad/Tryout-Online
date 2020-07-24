@@ -11,9 +11,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import com.example.projectmagang.ActivityLogin
 import com.example.projectmagang.R
 import com.example.projectmagang.data.ProfilGuru
+import com.example.projectmagang.guru.Mapel.ActivityMapelGuru.ActivityMapelGuru
 import com.example.projectmagang.guru.ActivityProfil
 import com.example.projectmagang.network.ApiService
 import com.squareup.picasso.Picasso
@@ -35,6 +37,7 @@ class FragmentAkun : Fragment() {
     lateinit var btn_logout : Button
     lateinit var editAkun : TextView
     lateinit var data : ProfilGuru
+    lateinit var mapelSaya : CardView
 
 
     override fun onCreateView(
@@ -54,9 +57,13 @@ class FragmentAkun : Fragment() {
         gambarAkun = view.findViewById(R.id.gambarAkun)
         btn_logout = view.findViewById(R.id.btn_logout)
         editAkun = view.findViewById(R.id.editAkun)
+        mapelSaya = view.findViewById(R.id.akunMapel)
 
         btn_logout.setOnClickListener {
             doLogout()
+        }
+        mapelSaya.setOnClickListener {
+            startActivity(Intent(activity!!.applicationContext, ActivityMapelGuru::class.java))
         }
 
         editAkun.setOnClickListener {
