@@ -7,12 +7,9 @@ import com.example.projectmagang.data.Mapel.ResponseListDataMapelDiajukan
 import com.example.projectmagang.data.Nilai.ResponseListDataNilaiGuru
 import com.example.projectmagang.data.Siswa.ResponseListDataSiswa
 import com.example.projectmagang.data.Soal.ResponseListDataSoal
+import okhttp3.MultipartBody
 import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiEndpoint{
 
@@ -41,13 +38,17 @@ interface ApiEndpoint{
         @Field("id") id : String
     ) : Call<CekLevel>
 
-    @FormUrlEncoded
-    @POST("edit_profil")
-    fun editProfil(
-        @Field("id") id : String,
-        @Field("nama") nama : String,
-        @Field("alamat") alamat : String,
-        @Field("telp") telp : Long
+    @Multipart
+    @POST("edit_profil_guru")
+    fun editProfilGuru(
+        @Query("id") id: String,
+        @Query("nama") nama: String,
+        @Query("alamat") alamat: String,
+        @Query("telp") telp: Long,
+        @Query("tempat_lahir") tempat_lahir: String,
+        @Query("tanggal_lahir") tanggal_lahir: String,
+        @Query("jenis_kelamin") jenis_kelamin : String,
+        @Part image: MultipartBody.Part?
 //        @Field("jenis_kelamin") jenis_kelamin : String,
 //        @Field("tempat_lahir") tempat_lahir : String,
 //        @Field("tanggal_lahir") tanggal_lahir : Date

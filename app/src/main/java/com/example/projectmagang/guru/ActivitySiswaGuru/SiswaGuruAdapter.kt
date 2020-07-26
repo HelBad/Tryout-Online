@@ -6,14 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
-import com.example.projectmagang.Variabel.Variabel
-import com.example.projectmagang.data.Mapel.DataMapel
-import com.example.projectmagang.data.Nilai.DataNilai
+import com.example.projectmagang.Util.Variabel
 import com.example.projectmagang.data.Siswa.DataSiswa
-import com.example.projectmagang.guru.ActivityMapelSoal.MapelSoalAdapter
-import com.example.projectmagang.guru.ActivityNilaiGuru.NilaiGuruAdapter
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.cardguru_nilai.view.*
 import kotlinx.android.synthetic.main.cardguru_siswa.view.*
 
 class SiswaGuruAdapter (val context : Context, var dataSiswa : ArrayList<DataSiswa>):

@@ -1,6 +1,6 @@
 package com.example.projectmagang.network
 
-import com.example.projectmagang.Variabel.Variabel
+import com.example.projectmagang.Util.Variabel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

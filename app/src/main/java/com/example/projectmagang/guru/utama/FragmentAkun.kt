@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.example.projectmagang.ActivityLogin
 import com.example.projectmagang.R
-import com.example.projectmagang.Variabel.Variabel
+import com.example.projectmagang.Util.Variabel
 import com.example.projectmagang.data.ProfilGuru
 import com.example.projectmagang.guru.Mapel.ActivityMapelGuru.ActivityMapelGuru
 import com.example.projectmagang.guru.ActivityProfil
@@ -77,16 +76,19 @@ class FragmentAkun : Fragment() {
             intent.putExtra("jenkel", data.jenkel)
             intent.putExtra("username", data.username)
             intent.putExtra("telp", data.telp)
+            intent.putExtra("foto", data.foto)
+            intent.putExtra("tempatLahir", data.tempat_lahir)
+            intent.putExtra("tanggalLahir", data.tanggal_lahir)
             startActivity(intent)
         }
         getContent(SP.getString("iduser","").toString())
         return view
     }
-
-    override fun onPause() {
-        super.onPause()
+    override fun onResume() {
+        super.onResume()
         getContent(SP.getString("iduser","").toString())
     }
+
 
     fun doLogout(){
         val editor = SP.edit()
@@ -96,10 +98,7 @@ class FragmentAkun : Fragment() {
         activity!!.finish()
     }
 
-    override fun onResume() {
-        super.onResume()
-        getContent(SP.getString("iduser","").toString())
-    }
+
 
 
     fun dateFormat (date : String): String {
@@ -143,7 +142,7 @@ class FragmentAkun : Fragment() {
                         textAlamat.text = dataProfil.alamat
                         textTelp.text = "+62 "+dataProfil.telp.toString()
 
-                        Picasso.get().load("http://192.168.1.13/tryoutonline/storage/foto/guru/"+dataProfil.foto).into(gambarAkun)
+                        Picasso.get().load(Variabel().URL_FOTO_GURU+dataProfil.foto).into(gambarAkun)
                     }
                 }
 
