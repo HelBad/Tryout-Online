@@ -7,39 +7,35 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
 import com.example.projectmagang.model.DataJadwal
-import kotlinx.android.synthetic.main.cardsiswa_jadwal.view.*
-import java.text.DateFormat
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
+import kotlinx.android.synthetic.main.cardguru_jadwal.view.*
 
-class JadwalAdapter (val context : Context, var dataJadwal: ArrayList<DataJadwal>):
+class JadwalAdapter (val context : Context, var dataJadwal : ArrayList<DataJadwal>):
     RecyclerView.Adapter<JadwalAdapter.ViewHolder>() {
-    lateinit var onDetail : OnItemClickCallback
 
-    fun setOnDetailCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onDetail = onItemClickCallback
-    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.cardsiswa_jadwal, parent, false)
-        )
+        ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.cardguru_jadwal, parent, false))
     override fun getItemCount() = dataJadwal.size
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bing(dataJadwal[position])
-        holder.view.setOnClickListener { onDetail.onItemClicked(dataJadwal[position]) }
+        if(position == 0) {
+            holder.bing(dataJadwal[position],"")
+        }
+        else { holder.bing(dataJadwal[position],dataJadwal[position-1].nama_kelas) }
     }
 
-    class ViewHolder(view : View): RecyclerView.ViewHolder(view) {
+    class ViewHolder(view : View): RecyclerView.ViewHolder(view){
         val view = view
-        fun bing(dataJadwal: DataJadwal){
-            view.mapelJadwalS.text = dataJadwal.mapel
-            view.kelasJadwalS.text = dataJadwal.kelas
-            view.tanggalJadwalS.text = dateFormat(dataJadwal.tanggal.toString())
-            view.jamJadwalS.text = timeFormat(dataJadwal.waktu.toString())
+        fun bing(dataJadwal : DataJadwal, kelas : String){
+            view.namaMapel.text = dataJadwal.nama_mapel
+            view.namaKelas.text = dataJadwal.nama_kelas
+            view.tanggal.text = dateFormat(dataJadwal.tanggal)
+            view.jam.text = "${dataJadwal.waktu.subSequence(0,5)} WIB"
+            if(dataJadwal.nama_kelas != kelas) {
+                view.headTanggal.visibility = View.VISIBLE
+                view.headTanggal.text = dateFormat(dataJadwal.tanggal)
+            }
         }
-        fun dateFormat (date : String): String {
+
+        private fun dateFormat (date : String): String {
             val tahun = date.subSequence(0,4).toString()
             val bulan = date.subSequence(5,7).toString()
             val hari = date.subSequence(8,10).toString()
@@ -59,26 +55,11 @@ class JadwalAdapter (val context : Context, var dataJadwal: ArrayList<DataJadwal
                 else -> ""
             }
         }
-        fun timeFormat(time: String): String {
-            val df: DateFormat = SimpleDateFormat("HH:mm:ss")
-            val outputformat: DateFormat = SimpleDateFormat("hh:mm aa")
-            try {
-                val date: Date = df.parse(time)
-                val output: String = outputformat.format(date)
-                return output
-            } catch (pe: ParseException) {
-                pe.printStackTrace()
-                return ""
-            }
-        }
     }
 
-    fun setData(newDataJadwal: List<DataJadwal>) {
+    fun setData(newDataJadwal : List<DataJadwal>){
         dataJadwal.clear()
         dataJadwal.addAll(newDataJadwal)
         notifyDataSetChanged()
-    }
-    interface OnItemClickCallback {
-        fun onItemClicked(data: DataJadwal)
     }
 }

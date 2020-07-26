@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="A. Tempat Data"
-                    android:buttonTint="@color/colorAccent"
+                    android:buttonTint="@color/colorPrimary"
                     android:textColor="@color/colorGray"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="B. Basis Data"
-                    android:buttonTint="@color/colorAccent"
+                    android:buttonTint="@color/colorPrimary"
                     android:textColor="@color/colorGray"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="C. Lokal Data"
-                    android:buttonTint="@color/colorAccent"
+                    android:buttonTint="@color/colorPrimary"
                     android:textColor="@color/colorGray"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="D. Penyimpanan Data"
-                    android:buttonTint="@color/colorAccent"
+                    android:buttonTint="@color/colorPrimary"
                     android:textColor="@color/colorGray"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="E. Kumpulan Data"
-                    android:buttonTint="@color/colorAccent"
+                    android:buttonTint="@color/colorPrimary"
                     android:textColor="@color/colorGray"
                     android:textSize="15sp"
                     android:textStyle="bold" />

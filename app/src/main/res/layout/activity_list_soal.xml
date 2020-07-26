@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -7,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".guru.home.ActivityNilaiGuru">
     <androidx.appcompat.widget.Toolbar
-        app:title="Daftar Nilai"
+        app:title="Data Soal"
         app:titleTextColor="@android:color/white"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -17,16 +16,18 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ProgressBar
+        android:layout_below="@+id/toolbar"
         android:id="@+id/loading"
         android:layout_marginVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
 
     <RelativeLayout
+        android:layout_below="@+id/toolbar"
         android:layout_marginVertical="20dp"
         android:visibility="gone"
         android:gravity="center"
-        android:id="@+id/kosongNilai"
+        android:id="@+id/kosongSoal"
         android:layout_width="match_parent"
         android:layout_height="100dp">
         <ImageView
@@ -43,11 +44,22 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textColor="@color/colorGray"
-            android:text="Belum ada nilai pada mapel ini"/>
+            android:text="Belum ada soal pada mapel ini"/>
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNilai"
+        android:layout_below="@id/toolbar"
+        android:id="@+id/rvSoal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_tambahSoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        app:srcCompat="@drawable/ic_tambah" />
+</RelativeLayout>

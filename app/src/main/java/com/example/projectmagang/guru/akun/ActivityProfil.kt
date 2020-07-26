@@ -88,7 +88,7 @@ class ActivityProfil : AppCompatActivity() {
                     t.printStackTrace()
                 }
                 override fun onResponse(call: Call<CekMessage>, response: Response<CekMessage>) {
-                    if(response.isSuccessful){
+                    if(response.isSuccessful) {
                         val data = response.body()
                         Toast.makeText(applicationContext, data!!.message, Toast.LENGTH_SHORT).show()
                     }
