@@ -122,12 +122,9 @@ interface BaseApiService {
     fun getNilai(@Field("id") id : String) : Call<DataSoalSiswa>
 
     @FormUrlEncoded
-    @POST("load_jawaban")
-    fun getJawaban(@Field("id") id : String,
-                   @Field("id_siswa") id_siswa : String,
-                   @Field("id_mapel") id_mapel : String,
-                   @Field("id_soal") id_soal : String,
-                   @Field("jawaban") jawaban : String) : Call<ResponseDataJawabanSiswa>
-
+    @POST("siswa_jawab")
+    fun siswaJawab(@Field("id") id: String,
+                   @Field("id_mapel") id_mapel: Int,
+                   @Field("jawab[]") jawab: ArrayList<String>) :Call<ResponseMessage>
 
 }

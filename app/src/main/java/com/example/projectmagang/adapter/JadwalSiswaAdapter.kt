@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
 import com.example.projectmagang.model.DataJadwalSiswa
+import kotlinx.android.synthetic.main.cardsiswa_jadwal.view.*
 import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -45,23 +46,37 @@ class JadwalSiswaAdapter (val context : Context, var dataJadwal: ArrayList<DataJ
             val diffDate = ChronoUnit.DAYS.between(localDate, dbDate)
             val localTime = LocalTime.parse(date.toString("HH:mm:ss"), DateTimeFormatter.ofPattern("HH:mm:ss")).toSecondOfDay()
             val dbTime = LocalTime.parse(dataJadwal.waktu, DateTimeFormatter.ofPattern("HH:mm:ss")).toSecondOfDay()
-            val diffTime = ((dbTime + 7200) - localTime)
 
-//            if (diffDate >= 0 && diffTime > 0) {
-//                view.mapelJadwalS.text = dataJadwal.mapel
-//                view.kelasJadwalS.text = dataJadwal.kelas
-//                view.tanggalJadwalS.text = dateFormat(dataJadwal.tanggal.toString())
-//                view.jamJadwalS.text = timeFormat(dataJadwal.waktu.toString())
-//            } else if (localTime == dbTime && localDate.toString() == dbTime.toString()){
-//                view.mapelJadwalS.text = dataJadwal.mapel
-//                view.kelasJadwalS.text = dataJadwal.kelas
-//                view.tanggalJadwalS.text = dateFormat(dataJadwal.tanggal.toString())
-//                view.jamJadwalS.text = timeFormat(dataJadwal.waktu.toString())
-//                view.cardJadwalS.isClickable = false
-//                view.cardJadwalS.isEnabled = false
-//            } else {
-//                view.cardJadwalS.visibility = View.GONE
-//            }
+            if (diffDate.toInt() > 0) {
+                view.mapelJadwalS.text = dataJadwal.mapel
+                view.kelasJadwalS.text = dataJadwal.kelas
+                view.tanggalJadwalS.text = dateFormat(dataJadwal.tanggal.toString())
+                view.jamJadwalS.text = timeFormat(dataJadwal.waktu.toString())
+                view.cardJadwalS.isClickable = false
+                view.cardJadwalS.isEnabled = false
+            }
+            else if (diffDate.toInt() == 0) {
+                if (localTime >= dbTime && localTime < (dbTime + 7200)) {
+                    view.mapelJadwalS.text = dataJadwal.mapel
+                    view.kelasJadwalS.text = dataJadwal.kelas
+                    view.tanggalJadwalS.text = dateFormat(dataJadwal.tanggal.toString())
+                    view.jamJadwalS.text = timeFormat(dataJadwal.waktu.toString())
+                }
+                else if (localTime < dbTime) {
+                    view.mapelJadwalS.text = dataJadwal.mapel
+                    view.kelasJadwalS.text = dataJadwal.kelas
+                    view.tanggalJadwalS.text = dateFormat(dataJadwal.tanggal.toString())
+                    view.jamJadwalS.text = timeFormat(dataJadwal.waktu.toString())
+                    view.cardJadwalS.isClickable = false
+                    view.cardJadwalS.isEnabled = false
+                }
+                else {
+                    view.cardJadwalS.visibility = View.GONE
+                }
+            }
+            else {
+                view.cardJadwalS.visibility = View.GONE
+            }
         }
         fun dateFormat (date : String): String {
             val tahun = date.subSequence(0,4).toString()

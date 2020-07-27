@@ -49,8 +49,7 @@
         android:id="@+id/recyclerSoalS"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/petunjukSoalS"
-        android:layout_above="@id/finishSoalS"/>
+        android:layout_below="@id/petunjukSoalS"/>
 
     <androidx.cardview.widget.CardView
         app:cardBackgroundColor="@color/colorAccent"

@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".guru.ActivityNilaiGuru.ActivityNilaiGuru">
+    tools:context=".guru.home.ActivityNilaiGuru">
     <androidx.appcompat.widget.Toolbar
         app:title="Ajukan Mapel"
         app:titleTextColor="@android:color/white"
@@ -28,10 +28,10 @@
             android:layout_height="wrap_content"
             android:text="Mapel Dalam Pengajuan"
             android:textStyle="bold"
-            android:textColor="@color/hitam"
+            android:textColor="@android:color/black"
             android:padding="10dp"
             android:textSize="18sp"
-            android:background="@color/putih"
+            android:background="@android:color/white"
             android:layout_below="@id/menu"
             />
 
@@ -51,10 +51,10 @@
             android:layout_height="wrap_content"
             android:text="Mapel Tersedia"
             android:textStyle="bold"
-            android:textColor="@color/hitam"
+            android:textColor="@android:color/black"
             android:padding="10dp"
             android:textSize="18sp"
-            android:background="@color/putih"
+            android:background="@android:color/white"
             android:layout_below="@id/menu"
             />
         <ProgressBar

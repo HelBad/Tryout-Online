@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.example.projectmagang.R
 import com.example.projectmagang.adapter.SoalSiswaAdapter
 import com.example.projectmagang.api.UtilsAPI
 import com.example.projectmagang.model.*
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profil_guru.*
 import kotlinx.android.synthetic.main.activity_ujian_siswa.*
@@ -141,19 +143,69 @@ class ActivityUjian : AppCompatActivity() {
             }).create().show()
     }
 
-//    fun getJawaban(id: String, id_siswa: String, id_mapel: String, id_soal: String, jawaban: String) {
-//        UtilsAPI().apiService.getJawaban(id, id_siswa, id_mapel, id_soal, jawaban).enqueue(object : Callback<ResponseDataJawabanSiswa> {
-//            override fun onFailure(call: Call<ResponseDataJawabanSiswa>, t: Throwable) {
+//    var jawab : ArrayList<String> = arrayListOf()
+//    fun test() {
+//        SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
+//
+//        var pil: String? = null
+//        if (pilihanA.isChecked) { pil = "A" }
+//        else if (pilihanB.isChecked) { pil = "B" }
+//        else if (pilihanC.isChecked) { pil = "C" }
+//        else if (pilihanD.isChecked) { pil = "D" }
+//        else if (pilihanE.isChecked) { pil = "E" }
+//
+//        jawab.add("4,$pil")
+//
+//        val test = Gson().toJson(jawab)
+//
+//
+//        UtilsAPI.endpoint.siswaJawab(SP.getString("id_user","").toString(),19,jawab)
+//            .enqueue(object : Callback<ResponseMessage>{
+//                override fun onFailure(call: Call<ResponseMessage>, t: Throwable) {
+//                    t.printStackTrace()
+//                }
+//
+//                override fun onResponse(
+//                    call: Call<ResponseMessage>,
+//                    response: Response<ResponseMessage>
+//                ) {
+//                    if(response.isSuccessful){
+//                        val data = response.body()
+//                        Toast.makeText(activity!!.applicationContext,data!!.message,Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//
+//            })
+//    }
+//
+//    fun tes() {
+//        SP = applicationContext.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
+//
+//        var jawab: String? = null
+//        if (pilihanA.isChecked) { jawab = "A" }
+//        else if (pilihanB.isChecked) { jawab = "B" }
+//        else if (pilihanC.isChecked) { jawab = "C" }
+//        else if (pilihanD.isChecked) { jawab = "D" }
+//        else if (pilihanE.isChecked) { jawab = "E" }
+//
+//        btnSaveProfil.setOnClickListener {
+//            addJawab(SP.getString("id_user","")!!.toString(), soalSiswa.text.toString(), jawab.toString())
+//        }
+//    }
+//
+//    fun addJawab(id_siswa: String, id_soal: String, jawab: String) {
+//        UtilsAPI().apiService.addJawab(id_siswa, id_soal, jawab).enqueue(object : Callback<ResponseSiswaJawab> {
+//            override fun onFailure(call: Call<ResponseSiswaJawab>, t: Throwable) {
 //                t.printStackTrace()
 //            }
-//            override fun onResponse(call: Call<ResponseDataJawabanSiswa>, response: Response<ResponseDataJawabanSiswa>) {
+//            override fun onResponse(call: Call<ResponseSiswaJawab>, response: Response<ResponseSiswaJawab>) {
 //                if(response.isSuccessful) {
-//                    val data = response.body()
+//                    response.body()
 //                    Toast.makeText(applicationContext, "Data sedang diproses", Toast.LENGTH_SHORT).show()
 //                }
 //            }
 //        })
 //    }
-
+//
 
 }

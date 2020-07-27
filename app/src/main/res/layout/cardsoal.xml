@@ -43,8 +43,8 @@
             android:layout_centerVertical="true"
             android:src="@drawable/ic_edit"
             android:layout_marginRight="60dp"
-            android:background="@drawable/box_putih_abu"
-            />
+            android:background="@drawable/box_putih_abu" />
+
         <ImageView
             android:id="@+id/btn_delete_soal"
             android:layout_width="30dp"
@@ -53,12 +53,6 @@
             android:layout_centerVertical="true"
             android:src="@drawable/ic_delete"
             android:layout_marginRight="15dp"
-            android:background="@drawable/box_putih_abu"
-            />
-
-
-
-
-
+            android:background="@drawable/box_putih_abu" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

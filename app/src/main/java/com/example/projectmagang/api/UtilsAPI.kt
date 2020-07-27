@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class UtilsAPI {
-    val BASE_ROOT_URL = "http://192.168.43.176/tryoutonline/public/api/"
+    val BASE_ROOT_URL = "http://192.168.1.8/tryoutonline/public/api/"
     private var retrofit: Retrofit? = null
     val apiService:BaseApiService
     get() {
