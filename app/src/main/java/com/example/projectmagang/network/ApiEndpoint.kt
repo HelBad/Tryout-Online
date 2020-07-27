@@ -2,11 +2,13 @@ package com.example.projectmagang.network
 
 import com.example.projectmagang.data.*
 import com.example.projectmagang.data.Jadwal.ResponseListDataJadwal
+import com.example.projectmagang.data.Jadwal.ResponseListDataJadwalSiswa
 import com.example.projectmagang.data.Mapel.ResponseListDataMapel
 import com.example.projectmagang.data.Mapel.ResponseListDataMapelDiajukan
 import com.example.projectmagang.data.Nilai.ResponseListDataNilai
 import com.example.projectmagang.data.Siswa.ResponseListDataSiswa
 import com.example.projectmagang.data.Soal.ResponseListDataSoal
+import com.example.projectmagang.data.Soal.ResponseListDataSoalSiswa
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -163,5 +165,17 @@ interface ApiEndpoint{
         @Field("jawab[]") jawab: ArrayList<String>
     ) :Call<ResponseMessage>
 
+    @FormUrlEncoded
+    @POST("load_jadwal")
+    fun listJadwal(
+        @Field("id") id: String
+    ) :Call<ResponseListDataJadwalSiswa>
+
+    @FormUrlEncoded
+    @POST("load_soal")
+    fun soalSiswa(
+        @Field("id") id: String,
+        @Field("id_mapel") id_mapel: Int
+    ) :Call<ResponseListDataSoalSiswa>
 
 }

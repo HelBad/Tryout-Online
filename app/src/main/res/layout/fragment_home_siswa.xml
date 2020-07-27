@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".siswa.utama.FragmentHome">
-
+    android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar
-        app:title="Siswa"
+        app:title="Dashboard"
         app:titleTextColor="@android:color/white"
         android:id="@+id/toolbarHomeS"
         android:layout_width="match_parent"
@@ -17,4 +16,8 @@
         android:minHeight="?attr/actionBarSize">
     </androidx.appcompat.widget.Toolbar>
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHomeS"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

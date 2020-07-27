@@ -31,6 +31,7 @@ class ActivitySiswaGuru : AppCompatActivity() {
 
         rvSiswa.apply {
             layoutManager = LinearLayoutManager(applicationContext)
+
             siswaGuruAdapter.setOnDetailCallback(object : SiswaGuruAdapter.OnItemClickCallback{
                 override fun onItemClicked(data: DataSiswa) {
                     detailSiswa(data)

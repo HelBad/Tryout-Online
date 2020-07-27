@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.projectmagang.R
+import com.example.projectmagang.siswa.utama.FragmentHome.FragmentHome
 import com.example.projectmagang.siswa.utama.FragmentNilai.FragmentNilai
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_utama_siswa.*

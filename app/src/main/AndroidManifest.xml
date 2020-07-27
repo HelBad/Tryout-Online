@@ -29,7 +29,7 @@
         <activity android:name=".guru.ActivityNilaiGuru.ActivityNilaiGuru" />
         <activity android:name=".ActivityLogin" />
         <activity android:name=".guru.Soal.ActivityAddSoal" />
-        <activity android:name=".guru.ActivitySoal" />
+        <activity android:name=".siswa.ActivityUjian.ActivityUjian" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
