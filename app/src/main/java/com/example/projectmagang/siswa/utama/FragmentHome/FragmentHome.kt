@@ -40,17 +40,22 @@ class FragmentHome : Fragment() {
 
         recyclerHomeS.apply {
             layoutManager = LinearLayoutManager(activity!!.applicationContext)
-            jadwalAdapter.setOnDetailCallback(object : JadwalSiswaAdapter.OnItemClickCallback {
-                override fun onItemClicked(data: DataJadwalSiswa) {
+            jadwalAdapter.setOnMengerjakanCallback(object : JadwalSiswaAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: DataJadwalSiswa, durasi : Int) {
                     val intent = Intent(activity!!.applicationContext, ActivityUjian::class.java)
                     intent.putExtra("id_mapel", data.id_mapel)
-                    intent.putExtra("waktu", data.waktu)
+                    intent.putExtra("durasi", durasi)
                     startActivity(intent)
                 }
             })
             adapter = jadwalAdapter
         }
         return rootView
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getJadwal(SP.getString("iduser","").toString())
     }
 
     fun getJadwal(id : String){

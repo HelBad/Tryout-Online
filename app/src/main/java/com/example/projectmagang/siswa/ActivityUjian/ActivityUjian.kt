@@ -95,19 +95,11 @@ class ActivityUjian : AppCompatActivity() {
             onBackPressed()
         }
 
-        val date = getCurrentDateTime()
-        val localTime = LocalTime.parse(date.toString("HH:mm:ss"), DateTimeFormatter.ofPattern("HH:mm:ss")).toSecondOfDay()
-        val dbTime = LocalTime.parse(intent.getStringExtra("waktu"), DateTimeFormatter.ofPattern("HH:mm:ss")).toSecondOfDay()
-
-        val differentTime = ((dbTime + 7200) - localTime) / 60
         val minute:Long = 1000 * 60
-        val millisInFuture:Long = (minute * differentTime)
+        val millisInFuture:Long = (minute * intent.getIntExtra("durasi",0))
         val countDownInterval:Long = 1000
         timer(millisInFuture, countDownInterval).start()
 
-//        SP = applicationContext.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
-//        getJawaban(SP.getString("id_user","")!!.toString(), namaProfil.text.toString(),
-//            genderProfil.text.toString(), tempatlahirProfil.text.toString())
     }
 
     fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
@@ -148,7 +140,7 @@ class ActivityUjian : AppCompatActivity() {
                     .setCancelable(false)
                     .setPositiveButton("OK", object: DialogInterface.OnClickListener {
                         override fun onClick(dialog: DialogInterface, id:Int) {
-                            finish()
+                            submitJawaban()
                         }
                     }).create().show()
             }
@@ -174,7 +166,7 @@ class ActivityUjian : AppCompatActivity() {
             .setPositiveButton("YA", object: DialogInterface.OnClickListener {
                 override fun onClick(dialog: DialogInterface, id:Int) {
                     submitJawaban()
-                    finish()
+
                 }
             })
             .setNegativeButton("TIDAK", object: DialogInterface.OnClickListener {
@@ -198,24 +190,12 @@ class ActivityUjian : AppCompatActivity() {
                     if(response.isSuccessful){
                         val data = response.body()
                         Toast.makeText(applicationContext,data!!.message,Toast.LENGTH_SHORT).show()
+                        finish()
                     }
                 }
 
             })
     }
-//    fun getJawaban(id: String, id_siswa: String, id_mapel: String, id_soal: String, jawaban: String) {
-//        UtilsAPI().apiService.getJawaban(id, id_siswa, id_mapel, id_soal, jawaban).enqueue(object : Callback<ResponseDataJawabanSiswa> {
-//            override fun onFailure(call: Call<ResponseDataJawabanSiswa>, t: Throwable) {
-//                t.printStackTrace()
-//            }
-//            override fun onResponse(call: Call<ResponseDataJawabanSiswa>, response: Response<ResponseDataJawabanSiswa>) {
-//                if(response.isSuccessful) {
-//                    val data = response.body()
-//                    Toast.makeText(applicationContext, "Data sedang diproses", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        })
-//    }
 
 
 }

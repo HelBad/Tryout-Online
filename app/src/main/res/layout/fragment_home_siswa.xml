@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <androidx.appcompat.widget.Toolbar
         app:title="Dashboard"
         app:titleTextColor="@android:color/white"
@@ -15,6 +16,17 @@
         android:background="@color/colorPrimaryDark"
         android:minHeight="?attr/actionBarSize">
     </androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:id="@+id/headTanggal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jadwal"
+        android:background="@color/putih_abu"
+        android:textColor="@color/hitam"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:padding="10dp"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerHomeS"

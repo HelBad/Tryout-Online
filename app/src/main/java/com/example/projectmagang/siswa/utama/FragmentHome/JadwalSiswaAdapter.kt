@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
 import com.example.projectmagang.data.Jadwal.DataJadwalSiswa
+import kotlinx.android.synthetic.main.cardsiswa_jadwal.view.*
 import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -20,10 +21,10 @@ import kotlin.collections.ArrayList
 
 class JadwalSiswaAdapter (val context : Context, var dataJadwal: ArrayList<DataJadwalSiswa>):
     RecyclerView.Adapter<JadwalSiswaAdapter.ViewHolder>() {
-    lateinit var onDetail : OnItemClickCallback
+    lateinit var onMengerjakan : OnItemClickCallback
 
-    fun setOnDetailCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onDetail = onItemClickCallback
+    fun setOnMengerjakanCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onMengerjakan = onItemClickCallback
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
@@ -32,37 +33,90 @@ class JadwalSiswaAdapter (val context : Context, var dataJadwal: ArrayList<DataJ
     override fun getItemCount() = dataJadwal.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bing(dataJadwal[position])
-        holder.view.setOnClickListener { onDetail.onItemClicked(dataJadwal[position]) }
+        if(position == 0){
+            holder.bing(dataJadwal[position], "")
+
+        }else{
+            holder.bing(dataJadwal[position], dataJadwal[position-1].tanggal)
+        }
+        holder.view.btn_mengerjakan.setOnClickListener { onMengerjakan.onItemClicked(dataJadwal[position], holder.durasi) }
     }
 
     class ViewHolder(view : View): RecyclerView.ViewHolder(view) {
         val view = view
+        var durasi : Int = 0
         @SuppressLint("NewApi")
-        fun bing(dataJadwal: DataJadwalSiswa) {
+
+        fun bing(
+            dataJadwal: DataJadwalSiswa, tanggal: String?) {
+
             val date = getCurrentDateTime()
             val localDate = LocalDate.parse(date.toString("yyyy-MM-dd"), DateTimeFormatter.ofPattern("yyyy-MM-dd"))
             val dbDate = LocalDate.parse(dataJadwal.tanggal, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
             val diffDate = ChronoUnit.DAYS.between(localDate, dbDate)
             val localTime = LocalTime.parse(date.toString("HH:mm:ss"), DateTimeFormatter.ofPattern("HH:mm:ss")).toSecondOfDay()
             val dbTime = LocalTime.parse(dataJadwal.waktu, DateTimeFormatter.ofPattern("HH:mm:ss")).toSecondOfDay()
-            val diffTime = ((dbTime + 7200) - localTime)
+            val diffTime = (dbTime - localTime)
+            val batasWaktu = dbTime+(dataJadwal.durasi!!.toInt()*60)
+            val diffTimeBatas = batasWaktu-localTime
 
-//            if (diffDate >= 0 && diffTime > 0) {
-//                view.mapelJadwalS.text = dataJadwal.mapel
-//                view.kelasJadwalS.text = dataJadwal.kelas
-//                view.tanggalJadwalS.text = dateFormat(dataJadwal.tanggal.toString())
-//                view.jamJadwalS.text = timeFormat(dataJadwal.waktu.toString())
-//            } else if (localTime == dbTime && localDate.toString() == dbTime.toString()){
-//                view.mapelJadwalS.text = dataJadwal.mapel
-//                view.kelasJadwalS.text = dataJadwal.kelas
-//                view.tanggalJadwalS.text = dateFormat(dataJadwal.tanggal.toString())
-//                view.jamJadwalS.text = timeFormat(dataJadwal.waktu.toString())
-//                view.cardJadwalS.isClickable = false
-//                view.cardJadwalS.isEnabled = false
-//            } else {
-//                view.cardJadwalS.visibility = View.GONE
-//            }
+            if(dataJadwal.tanggal != tanggal){
+                view.headTanggal.visibility = View.VISIBLE
+                view.headTanggal.text = dateFormat(dataJadwal.tanggal.toString())
+            }
+
+            if(diffDate == 0.toLong()){
+                view.mapelJadwalS.text = dataJadwal.mapel
+                view.kelasJadwalS.text = dataJadwal.kelas
+                view.jamJadwalS.text = dataJadwal.waktu!!.subSequence(0,5)
+                view.tanggalJadwalS.text = dateFormat(dataJadwal.tanggal.toString())
+                if(dataJadwal.nilai == null){ //belum mengerjakan
+                    if(diffTime <= 0){
+                        if(diffTimeBatas < 0){
+                            //status ujian berlalu
+                            view.sisaWaktu.visibility = View.GONE
+                            view.btn_mengerjakan.visibility = View.GONE
+                            view.status_akan_dimulai.visibility = View.GONE
+                            view.status_sudah.visibility = View.GONE
+                            view.status_berlalu.visibility = View.VISIBLE
+                        }else{
+                            //status ujian sedang berjalan
+                            view.status_akan_dimulai.visibility = View.GONE
+                            view.status_sudah.visibility = View.GONE
+                            view.status_berlalu.visibility = View.GONE
+                            view.btn_mengerjakan.visibility = View.VISIBLE
+                            view.sisaWaktu.visibility = View.VISIBLE
+                            view.sisaWaktu.text = "Sisa Waktu : ${detikToMenit(diffTimeBatas)} Menit"
+                            durasi = detikToMenit(diffTimeBatas)
+                        }
+                    }else{
+                        //status ujian akan dimulai
+                        view.sisaWaktu.visibility = View.GONE
+                        view.btn_mengerjakan.visibility = View.GONE
+                        view.status_sudah.visibility = View.GONE
+                        view.status_berlalu.visibility = View.GONE
+                        view.status_akan_dimulai.visibility = View.VISIBLE
+                    }
+                }else{// sudah mengerjakan
+                    view.sisaWaktu.visibility = View.GONE
+                    view.btn_mengerjakan.visibility = View.GONE
+                    view.status_akan_dimulai.visibility = View.GONE
+                    view.status_berlalu.visibility = View.GONE
+                    view.status_sudah.visibility = View.VISIBLE
+                }
+            }else if(diffDate > 0) {
+                //tampilkan biasa
+                view.mapelJadwalS.text = dataJadwal.mapel
+                view.kelasJadwalS.text = dataJadwal.kelas
+                view.jamJadwalS.text = dataJadwal.waktu!!.subSequence(0,5)
+                view.tanggalJadwalS.text = dateFormat(dataJadwal.tanggal.toString())
+            }else{
+                view.cardJadwalS.visibility = View.GONE
+            }
+
+        }
+        fun detikToMenit(detik : Int) : Int{
+            return detik/60
         }
         fun dateFormat (date : String): String {
             val tahun = date.subSequence(0,4).toString()
@@ -112,6 +166,6 @@ class JadwalSiswaAdapter (val context : Context, var dataJadwal: ArrayList<DataJ
         notifyDataSetChanged()
     }
     interface OnItemClickCallback {
-        fun onItemClicked(data: DataJadwalSiswa)
+        fun onItemClicked(data: DataJadwalSiswa, durasi : Int)
     }
 }

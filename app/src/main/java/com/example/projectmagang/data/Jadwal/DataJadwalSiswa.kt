@@ -8,5 +8,7 @@ data class DataJadwalSiswa(
     @SerializedName("mapel") val mapel : String?,
     @SerializedName("kelas") val kelas : String?,
     @SerializedName("tanggal") val tanggal : String?,
-    @SerializedName("waktu") val waktu : String?
+    @SerializedName("waktu") val waktu : String?,
+    @SerializedName("durasi") val durasi : Int?,
+    @SerializedName("nilai") val nilai : Float?
 )
