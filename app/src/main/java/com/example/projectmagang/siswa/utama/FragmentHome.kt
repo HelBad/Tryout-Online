@@ -11,16 +11,16 @@ import android.widget.Toast
 import com.example.projectmagang.R
 import com.example.projectmagang.data.ResponseMessage
 import com.example.projectmagang.network.ApiService
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.ArrayList
 
 
 class FragmentHome : Fragment() {
 
     lateinit var SP : SharedPreferences
-    lateinit var jawab : ArrayList<String>
+    var jawab : ArrayList<String> = arrayListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,8 +33,11 @@ class FragmentHome : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home_siswa, container, false)
         SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
 
-        jawab.add(0,"4,B")
-        jawab.add(2,"5,C")
+        jawab.add(0,"4,E")
+        jawab.add(1,"5,B")
+
+        val test = Gson().toJson(jawab)
+
 
         ApiService.endpoint.siswaJawab(SP.getString("iduser","").toString(),19,jawab)
             .enqueue(object : Callback<ResponseMessage>{

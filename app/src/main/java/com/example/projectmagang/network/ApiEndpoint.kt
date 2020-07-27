@@ -10,7 +10,6 @@ import com.example.projectmagang.data.Soal.ResponseListDataSoal
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
-import java.util.ArrayList
 
 interface ApiEndpoint{
 
@@ -161,7 +160,7 @@ interface ApiEndpoint{
     fun siswaJawab(
         @Field("id") id: String,
         @Field("id_mapel") id_mapel: Int,
-        @Field("jawab") jawab :ArrayList<String>
+        @Field("jawab[]") jawab: ArrayList<String>
     ) :Call<ResponseMessage>
 
 
