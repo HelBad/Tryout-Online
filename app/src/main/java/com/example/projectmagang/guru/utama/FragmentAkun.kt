@@ -4,10 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -35,7 +33,6 @@ class FragmentAkun : Fragment() {
     lateinit var textAlamat : TextView
     lateinit var textTelp : TextView
     lateinit var gambarAkun : ImageView
-    lateinit var btn_logout : Button
     lateinit var editAkun : TextView
     lateinit var data : ProfilGuru
     lateinit var mapelSaya : CardView
@@ -56,13 +53,10 @@ class FragmentAkun : Fragment() {
         textAlamat = view.findViewById(R.id.alamatAkun)
         textTelp = view.findViewById(R.id.telpAkun)
         gambarAkun = view.findViewById(R.id.gambarAkun)
-        btn_logout = view.findViewById(R.id.btn_logout)
         editAkun = view.findViewById(R.id.editAkun)
         mapelSaya = view.findViewById(R.id.akunMapel)
 
-        btn_logout.setOnClickListener {
-            doLogout()
-        }
+
         mapelSaya.setOnClickListener {
             startActivity(Intent(activity!!.applicationContext, ActivityMapelGuru::class.java))
         }
@@ -97,9 +91,6 @@ class FragmentAkun : Fragment() {
         startActivity(Intent(activity!!.applicationContext, ActivityLogin::class.java))
         activity!!.finish()
     }
-
-
-
 
     fun dateFormat (date : String): String {
         val tahun = date.subSequence(0,4).toString()
@@ -147,5 +138,21 @@ class FragmentAkun : Fragment() {
                 }
 
             })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        val inflater: MenuInflater = activity!!.menuInflater
+        inflater.inflate(R.menu.option_menu_logout, menu)
+        return
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menuLogout -> {
+                doLogout()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

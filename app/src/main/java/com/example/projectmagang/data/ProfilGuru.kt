@@ -7,7 +7,6 @@ import java.util.*
 
 data class ProfilGuru(
 
-
     @SerializedName("id") val id:String,
     @SerializedName("nama") val nama:String,
     @SerializedName("jenkel") val jenkel:String,

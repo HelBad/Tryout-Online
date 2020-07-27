@@ -8,7 +8,7 @@
     tools:context=".siswa.utama.FragmentAkun">
 
     <androidx.appcompat.widget.Toolbar
-        app:title="Siswa"
+        app:title="Akun Siswa"
         app:titleTextColor="@android:color/white"
         android:id="@+id/toolbarAkunS"
         android:layout_width="match_parent"
@@ -458,15 +458,7 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-            <Button
-                android:id="@+id/btn_logoutS"
-                android:layout_below="@+id/akunTelpS"
-                android:text="Keluar"
-                android:textColor="@color/putih"
-                android:background="@color/colorAccent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

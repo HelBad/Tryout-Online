@@ -4,17 +4,18 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.example.projectmagang.ActivityLogin
 import com.example.projectmagang.R
+import com.example.projectmagang.Util.Variabel
 import com.example.projectmagang.data.ProfilSiswa
 import com.example.projectmagang.network.ApiService
+import com.example.projectmagang.siswa.ActivityProfil
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,49 +24,82 @@ import retrofit2.Response
 
 class FragmentAkun : Fragment() {
     lateinit var SP : SharedPreferences
-    lateinit var textNama : TextView
-    lateinit var textNISN : TextView
-    lateinit var textUsername : TextView
-    lateinit var textEmail : TextView
-    lateinit var textTTL : TextView
-    lateinit var textJenKel : TextView
-    lateinit var textAlamat : TextView
-    lateinit var textTelp : TextView
-    lateinit var gambarAkun : ImageView
-    lateinit var btn_logout : Button
+    lateinit var namaAkunS : TextView
+    lateinit var nisnAkunS : TextView
+    lateinit var usernameAkunS : TextView
+    lateinit var emailAkunS : TextView
+    lateinit var ttlAkunS : TextView
+    lateinit var tgllahirAkunS : TextView
+    lateinit var genderAkunS : TextView
+    lateinit var alamatAkunS : TextView
+    lateinit var telpAkunS : TextView
+    lateinit var kelasAkunS : TextView
+    lateinit var jurusanAkunS : TextView
+    lateinit var gambarAkunS : ImageView
+    lateinit var editAkunS : TextView
     lateinit var data : ProfilSiswa
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_akun_siswa, container, false)
-        SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
-        textNama = view.findViewById(R.id.namaAkunS)
-        textNISN = view.findViewById(R.id.nisnAkunS)
-        textUsername = view.findViewById(R.id.usernameAkunS)
-        textEmail = view.findViewById(R.id.emailAkunS)
-        textTTL = view.findViewById(R.id.ttlAkunS)
-        textJenKel = view.findViewById(R.id.genderAkunS)
-        textAlamat = view.findViewById(R.id.alamatAkunS)
-        textTelp = view.findViewById(R.id.telpAkunS)
-        gambarAkun = view.findViewById(R.id.gambarAkunS)
-        btn_logout = view.findViewById(R.id.btn_logoutS)
 
-        btn_logout.setOnClickListener {
-            doLogout()
+        setHasOptionsMenu(true)
+        return inflater.inflate(R.layout.fragment_akun_siswa, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        val actionBar = activity!!.findViewById(R.id.toolbarAkunS) as Toolbar
+        (activity as AppCompatActivity).setSupportActionBar(actionBar)
+
+        SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
+        namaAkunS = view!!.findViewById(R.id.namaAkunS)
+        nisnAkunS = view!!.findViewById(R.id.nisnAkunS)
+        usernameAkunS = view!!.findViewById(R.id.usernameAkunS)
+        emailAkunS = view!!.findViewById(R.id.emailAkunS)
+        ttlAkunS = view!!.findViewById(R.id.ttlAkunS)
+        genderAkunS = view!!.findViewById(R.id.genderAkunS)
+        alamatAkunS = view!!.findViewById(R.id.alamatAkunS)
+        telpAkunS = view!!.findViewById(R.id.telpAkunS)
+        kelasAkunS = view!!.findViewById(R.id.kelasAkunS)
+        jurusanAkunS = view!!.findViewById(R.id.jurusanAkunS)
+        gambarAkunS = view!!.findViewById(R.id.gambarAkunS)
+        editAkunS = view!!.findViewById(R.id.editAkunS)
+
+        editAkunS.setOnClickListener {
+            val intent = Intent(activity!!.applicationContext, ActivityProfil::class.java)
+            intent.putExtra("nisn", data.nisn)
+            intent.putExtra("nama", data.nama)
+            intent.putExtra("username", data.username)
+            intent.putExtra("email", data.email)
+            intent.putExtra("tempatLahir", data.tempat_lahir)
+            intent.putExtra("tanggalLahir", data.tanggal_lahir)
+            intent.putExtra("jenkel", data.jenkel)
+            intent.putExtra("alamat", data.alamat)
+            intent.putExtra("telp", data.telp)
+//            intent.putExtra("kelas", kelasAkunS.text.toString())
+//            intent.putExtra("jurusan", jurusanAkunS.text.toString())
+            intent.putExtra("foto", data.foto)
+            startActivity(intent)
         }
         getContent(SP.getString("iduser","").toString())
-        return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getContent(SP.getString("iduser", "").toString())
     }
 
     fun doLogout(){
         val editor = SP.edit()
-        editor.putString("iduser","")
+        editor.putString("id_user","")
         editor.apply()
         startActivity(Intent(activity!!.applicationContext, ActivityLogin::class.java))
         activity!!.finish()
     }
+
     fun dateFormat (date : String): String {
         val tahun = date.subSequence(0,4).toString()
         val bulan = date.subSequence(5,7).toString()
@@ -88,30 +122,44 @@ class FragmentAkun : Fragment() {
     }
 
     private fun getContent(id : String){
-        ApiService.endpoint.profilSiswa(id)
-            .enqueue(object : Callback<ProfilSiswa> {
-                override fun onFailure(call: Call<ProfilSiswa>, t: Throwable) {
-                    t.printStackTrace()
+        ApiService.endpoint.profilSiswa(id).enqueue(object : Callback<ProfilSiswa> {
+            override fun onFailure(call: Call<ProfilSiswa>, t: Throwable) {
+                t.printStackTrace()
+            }
+            override fun onResponse(call: Call<ProfilSiswa>, response: Response<ProfilSiswa>) {
+                if(response.isSuccessful) {
+                    val dataProfil  = response.body()
+                    data = dataProfil!!
+                    namaAkunS.text = dataProfil.nama
+                    nisnAkunS.text = dataProfil.nisn
+                    usernameAkunS.text = dataProfil.username
+                    emailAkunS.text = dataProfil.email
+                    ttlAkunS.text = "${dataProfil.tempat_lahir}, ${dateFormat(dataProfil.tanggal_lahir)}"
+                    genderAkunS.text = dataProfil.jenkel
+                    alamatAkunS.text = dataProfil.alamat
+                    telpAkunS.text = "+62 ${dataProfil.telp}"
+                    kelasAkunS.text = dataProfil.kelas
+                    jurusanAkunS.text = dataProfil.jurusan
+                    Picasso.get().load(Variabel().URL_FOTO_SISWA+dataProfil.foto).into(gambarAkunS)
                 }
+            }
+        })
+    }
 
-                override fun onResponse(call: Call<ProfilSiswa>, response: Response<ProfilSiswa>) {
-                    if(response.isSuccessful){
-                        val dataProfil : ProfilSiswa? = response.body()
-                        data = dataProfil!!
-                        textNama.text = dataProfil.nama
-                        textNISN.text = dataProfil.nisn
-                        textUsername.text = dataProfil.username
-                        textEmail.text = dataProfil.email
-                        textTTL.text = dataProfil.tempat_lahir+", "+dateFormat(dataProfil.tanggal_lahir.toString())
-                        textJenKel.text = dataProfil.jenkel
-                        textAlamat.text = dataProfil.alamat
-                        textTelp.text = "+62 "+dataProfil.telp.toString()
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        val inflater: MenuInflater = activity!!.menuInflater
+        inflater.inflate(R.menu.option_menu_logout, menu)
+        return
+    }
 
-                        Picasso.get().load("http://192.168.1.13/tryoutonline/storage/foto/siswa/"+dataProfil.foto).into(gambarAkun)
-                    }
-                }
-
-            })
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menuLogout -> {
+                doLogout()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

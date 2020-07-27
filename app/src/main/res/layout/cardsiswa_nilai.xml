@@ -27,10 +27,10 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/jadwalNilaiS"
+                android:id="@+id/guruNilaiS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="30 Juli 2020"
+                android:text="Nama Guru"
                 android:textStyle="bold"
                 android:textColor="@color/colorAccent" />
         </LinearLayout>

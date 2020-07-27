@@ -46,10 +46,7 @@ class ActivityProfil : AppCompatActivity() {
         val dataProfil = intent.extras
         SP = applicationContext.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
         var jenkel = arrayOf("Laki - Laki","Perempuan")
-
         genderProfil.adapter = ArrayAdapter<String>(applicationContext,R.layout.spinner_item, jenkel)
-
-
         //endinit
 
         getProfil(dataProfil)

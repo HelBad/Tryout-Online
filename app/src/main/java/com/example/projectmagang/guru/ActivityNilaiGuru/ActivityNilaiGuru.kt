@@ -3,14 +3,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
-import com.example.projectmagang.data.Nilai.DataNilai
-import com.example.projectmagang.data.Nilai.ResponseListDataNilaiGuru
+import com.example.projectmagang.data.Nilai.ResponseListDataNilai
 import com.example.projectmagang.network.ApiService
 import kotlinx.android.synthetic.main.activity_nilai_guru.*
 import retrofit2.Call
@@ -42,16 +40,16 @@ class ActivityNilaiGuru : AppCompatActivity() {
 
     fun getNilai(id : String, idmapel : Int){
         ApiService.endpoint.guruNilai(id, idmapel)
-            .enqueue(object : Callback<ResponseListDataNilaiGuru>{
-                override fun onFailure(call: Call<ResponseListDataNilaiGuru>, t: Throwable) {
+            .enqueue(object : Callback<ResponseListDataNilai>{
+                override fun onFailure(call: Call<ResponseListDataNilai>, t: Throwable) {
                     t.printStackTrace()
                     showMessage("gagal load data")
                     loading.visibility = View.GONE
                 }
 
                 override fun onResponse(
-                    call: Call<ResponseListDataNilaiGuru>,
-                    response: Response<ResponseListDataNilaiGuru>
+                    call: Call<ResponseListDataNilai>,
+                    response: Response<ResponseListDataNilai>
                 ) {
                     if(response.isSuccessful){
                         loading.visibility = View.GONE

@@ -4,12 +4,13 @@ import com.example.projectmagang.data.*
 import com.example.projectmagang.data.Jadwal.ResponseListDataJadwal
 import com.example.projectmagang.data.Mapel.ResponseListDataMapel
 import com.example.projectmagang.data.Mapel.ResponseListDataMapelDiajukan
-import com.example.projectmagang.data.Nilai.ResponseListDataNilaiGuru
+import com.example.projectmagang.data.Nilai.ResponseListDataNilai
 import com.example.projectmagang.data.Siswa.ResponseListDataSiswa
 import com.example.projectmagang.data.Soal.ResponseListDataSoal
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
+import java.util.ArrayList
 
 interface ApiEndpoint{
 
@@ -49,9 +50,19 @@ interface ApiEndpoint{
         @Query("tanggal_lahir") tanggal_lahir: String,
         @Query("jenis_kelamin") jenis_kelamin : String,
         @Part image: MultipartBody.Part?
-//        @Field("jenis_kelamin") jenis_kelamin : String,
-//        @Field("tempat_lahir") tempat_lahir : String,
-//        @Field("tanggal_lahir") tanggal_lahir : Date
+    ) : Call<ResponseMessage>
+
+    @Multipart
+    @POST("edit_profil_siswa")
+    fun editProfilSiswa(
+        @Query("id") id: String,
+        @Query("nama") nama: String,
+        @Query("alamat") alamat: String,
+        @Query("telp") telp: Long,
+        @Query("tempat_lahir") tempat_lahir: String,
+        @Query("tanggal_lahir") tanggal_lahir: String,
+        @Query("jenis_kelamin") jenis_kelamin : String,
+        @Part image: MultipartBody.Part?
     ) : Call<ResponseMessage>
 
     @FormUrlEncoded
@@ -65,7 +76,13 @@ interface ApiEndpoint{
     fun guruNilai(
         @Field("id") id: String,
         @Field("id_mapel") id_mapel: Int
-    ) :Call<ResponseListDataNilaiGuru>
+    ) :Call<ResponseListDataNilai>
+
+    @FormUrlEncoded
+    @POST("nilai_siswa")
+    fun siswaNilai(
+        @Field("id") id: String
+    ) :Call<ResponseListDataNilai>
 
     @GET("dashboard")
     fun dashboard(): Call<KetDashboard>
@@ -139,6 +156,13 @@ interface ApiEndpoint{
         @Field("id") id : String
     ) : Call<ResponseListDataJadwal>
 
+    @FormUrlEncoded
+    @POST("siswa_jawab")
+    fun siswaJawab(
+        @Field("id") id: String,
+        @Field("id_mapel") id_mapel: Int,
+        @Field("jawab") jawab :ArrayList<String>
+    ) :Call<ResponseMessage>
 
 
 }
