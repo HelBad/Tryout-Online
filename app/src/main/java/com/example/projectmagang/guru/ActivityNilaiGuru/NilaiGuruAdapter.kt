@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
 import com.example.projectmagang.data.Nilai.DataNilai
 import kotlinx.android.synthetic.main.cardguru_nilai.view.*
+import java.text.DecimalFormat
 
 class NilaiGuruAdapter (val context : Context, var dataNilai : ArrayList<DataNilai>):
     RecyclerView.Adapter<NilaiGuruAdapter.ViewHolder>(){
@@ -30,7 +31,7 @@ class NilaiGuruAdapter (val context : Context, var dataNilai : ArrayList<DataNil
             view.namaNilai.text = dataNilai.nama_siswa
             view.nisnNilai.text = dataNilai.nisn.toString()
             view.kelasNilai.text = dataNilai.nama_kelas
-            view.hasilNilai.text = dataNilai.nilai.toString()
+            view.hasilNilai.text = DecimalFormat("#.##").format(dataNilai.nilai).toString()
         }
     }
 

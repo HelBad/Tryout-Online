@@ -274,7 +274,7 @@
         android:layout_height="50dp"/>
     <RelativeLayout
         android:layout_marginVertical="20dp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:gravity="center"
         android:id="@+id/kosongJadwal"
         android:layout_width="match_parent"

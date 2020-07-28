@@ -44,7 +44,6 @@ class ActivityNilaiGuru : AppCompatActivity() {
                 override fun onFailure(call: Call<ResponseListDataNilai>, t: Throwable) {
                     t.printStackTrace()
                     showMessage("gagal load data")
-                    loading.visibility = View.GONE
                 }
 
                 override fun onResponse(

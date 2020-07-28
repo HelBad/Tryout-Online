@@ -1,5 +1,6 @@
 package com.example.projectmagang.guru.utama
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -9,6 +10,8 @@ import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import com.example.projectmagang.ActivityLogin
 import com.example.projectmagang.R
@@ -43,6 +46,10 @@ class FragmentAkun : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_akun_guru, container, false)
+        setHasOptionsMenu(true)
+        val actionBar = view.findViewById(R.id.toolbarAkun) as Toolbar
+        (activity as AppCompatActivity).setSupportActionBar(actionBar)
+
         SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
         textNama = view.findViewById(R.id.namaAkun)
         textNIP = view.findViewById(R.id.nipAkun)
@@ -85,11 +92,25 @@ class FragmentAkun : Fragment() {
 
 
     fun doLogout(){
-        val editor = SP.edit()
-        editor.putString("iduser","")
-        editor.apply()
-        startActivity(Intent(activity!!.applicationContext, ActivityLogin::class.java))
-        activity!!.finish()
+        val dialog = AlertDialog.Builder(activity)
+        dialog.setTitle("Konfirmasi Logout Akun")
+        dialog.setMessage("Apakah anda yakin ingin logout akun ?")
+
+        dialog.setPositiveButton("Iya"){dialog, which ->
+            val editor = SP.edit()
+            editor.putString("iduser","")
+            editor.apply()
+            startActivity(Intent(activity!!.applicationContext, ActivityLogin::class.java))
+            activity!!.finish()
+            dialog.dismiss()
+        }
+
+        dialog.setNegativeButton("Batal"){dialog, which ->
+            dialog.dismiss()
+        }
+
+        dialog.show()
+
     }
 
     fun dateFormat (date : String): String {

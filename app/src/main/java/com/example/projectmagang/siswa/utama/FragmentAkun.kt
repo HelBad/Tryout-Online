@@ -1,5 +1,6 @@
 package com.example.projectmagang.siswa.utama
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -14,9 +15,11 @@ import com.example.projectmagang.ActivityLogin
 import com.example.projectmagang.R
 import com.example.projectmagang.Util.Variabel
 import com.example.projectmagang.data.ProfilSiswa
+import com.example.projectmagang.data.ResponseMessage
 import com.example.projectmagang.network.ApiService
 import com.example.projectmagang.siswa.ActivityProfil
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_list_soal.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -93,11 +96,25 @@ class FragmentAkun : Fragment() {
     }
 
     fun doLogout(){
-        val editor = SP.edit()
-        editor.putString("id_user","")
-        editor.apply()
-        startActivity(Intent(activity!!.applicationContext, ActivityLogin::class.java))
-        activity!!.finish()
+        val dialog = AlertDialog.Builder(activity)
+        dialog.setTitle("Konfirmasi Logout Akun")
+        dialog.setMessage("Apakah anda yakin ingin logout akun ?")
+
+        dialog.setPositiveButton("Iya"){dialog, which ->
+            val editor = SP.edit()
+            editor.putString("iduser","")
+            editor.apply()
+            startActivity(Intent(activity!!.applicationContext, ActivityLogin::class.java))
+            activity!!.finish()
+            dialog.dismiss()
+        }
+
+        dialog.setNegativeButton("Batal"){dialog, which ->
+            dialog.dismiss()
+        }
+
+        dialog.show()
+
     }
 
     fun dateFormat (date : String): String {

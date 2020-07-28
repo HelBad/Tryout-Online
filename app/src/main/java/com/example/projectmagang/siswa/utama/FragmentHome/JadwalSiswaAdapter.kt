@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.roundToInt
 
 class JadwalSiswaAdapter (val context : Context, var dataJadwal: ArrayList<DataJadwalSiswa>):
     RecyclerView.Adapter<JadwalSiswaAdapter.ViewHolder>() {
@@ -86,8 +87,8 @@ class JadwalSiswaAdapter (val context : Context, var dataJadwal: ArrayList<DataJ
                             view.status_berlalu.visibility = View.GONE
                             view.btn_mengerjakan.visibility = View.VISIBLE
                             view.sisaWaktu.visibility = View.VISIBLE
-                            view.sisaWaktu.text = "Sisa Waktu : ${detikToMenit(diffTimeBatas)} Menit"
-                            durasi = detikToMenit(diffTimeBatas)
+                            view.sisaWaktu.text = "Sisa Waktu : ${detikToMenit(diffTimeBatas.toFloat())} Menit"
+                            durasi = detikToMenit(diffTimeBatas.toFloat())
                         }
                     }else{
                         //status ujian akan dimulai
@@ -115,8 +116,9 @@ class JadwalSiswaAdapter (val context : Context, var dataJadwal: ArrayList<DataJ
             }
 
         }
-        fun detikToMenit(detik : Int) : Int{
-            return detik/60
+        fun detikToMenit(detik : Float) : Int{
+            val float : Float = detik/60
+            return float.roundToInt()
         }
         fun dateFormat (date : String): String {
             val tahun = date.subSequence(0,4).toString()

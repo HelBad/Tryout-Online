@@ -57,12 +57,14 @@ class ActivityLogin : AppCompatActivity() {
                                 editor.putString("iduser", responseLogin.id)
                                 editor.apply()
                                 startActivity(Intent(applicationContext,ActivityUtama::class.java))
+                                finish()
                             }else if(responseLogin.level == "S"){
                                 showMessage(responseLogin.message)
                                 val editor = SP.edit()
                                 editor.putString("iduser", responseLogin.id)
                                 editor.apply()
                                 startActivity(Intent(applicationContext,com.example.projectmagang.siswa.utama.ActivityUtama::class.java))
+                                finish()
                             }else{
                                 showMessage("Pengguna Tidak Ditemukan")
                             }
