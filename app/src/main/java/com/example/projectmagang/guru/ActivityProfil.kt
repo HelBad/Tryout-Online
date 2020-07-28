@@ -85,7 +85,7 @@ class ActivityProfil : AppCompatActivity() {
             val month = dataProfil!!.getString("tanggalLahir")!!.subSequence(5,7).toString().toInt()-1
             val day = dataProfil!!.getString("tanggalLahir")!!.subSequence(8,10).toString().toInt()
             val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, tahun, bulan, hari ->
-                tanggalLahir = "$tahun-$bulan-$hari"
+                tanggalLahir = "$tahun-${bulan+1}-$hari"
                 tgllahirProfil.text = dateFormatFromInt(tahun,bulan,hari)
             },year,month,day)
             datePicker.show()

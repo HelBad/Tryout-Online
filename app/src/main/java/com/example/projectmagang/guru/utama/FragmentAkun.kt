@@ -149,7 +149,7 @@ class FragmentAkun : Fragment() {
                         textNIP.text = dataProfil.nip
                         textUsername.text = dataProfil.username
                         textEmail.text = dataProfil.email
-                        textTTL.text = dataProfil.tempat_lahir+", "+dateFormat(dataProfil.tanggal_lahir.toString())
+                        textTTL.text = dataProfil.tempat_lahir+", "+dateFormat(dataProfil.tanggal_lahir)
                         textJenKel.text = dataProfil.jenkel
                         textAlamat.text = dataProfil.alamat
                         textTelp.text = "+62 "+dataProfil.telp.toString()
