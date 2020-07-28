@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import com.example.projectmagang.data.CekLevel
 import com.example.projectmagang.network.ApiService
 import com.example.projectmagang.siswa.utama.ActivityUtama
@@ -18,7 +19,8 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
         SP = getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
-
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        
         val backgrond = object : Thread(){
             override fun run() {
                 try {
