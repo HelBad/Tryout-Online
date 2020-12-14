@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
-    <androidx.cardview.widget.CardView
-        app:cardElevation="3dp"
-        app:cardBackgroundColor="@android:color/white"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="5dp"
-        android:layout_marginHorizontal="10dp">
+    android:layout_marginVertical="5dp"
+    android:layout_marginHorizontal="10dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -120,11 +115,4 @@
             </RadioGroup>
         </LinearLayout>
     </LinearLayout>
-    </androidx.cardview.widget.CardView>
-    <TextView
-        android:id="@+id/jarak"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="85dp"
-        />
-</LinearLayout>
+</androidx.cardview.widget.CardView>

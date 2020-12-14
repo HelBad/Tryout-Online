@@ -10,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projectmagang.R
-import com.example.projectmagang.adapter.JadwalAdapter
-import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.model.KetDashboard
-import com.example.projectmagang.model.ResponseListDataJadwal
+import com.example.projectmagang.data.ResponseListDataJadwal
+import com.example.projectmagang.data.KetDashboard
+import com.example.projectmagang.guru.home.ajukanmapel.ActivityAjukanMapel
+import com.example.projectmagang.guru.home.datasoal.ActivityMapelSoal
+import com.example.projectmagang.guru.home.mapelsaya.ActivityMapelGuru
+import com.example.projectmagang.network.ApiService
 import kotlinx.android.synthetic.main.fragment_home_guru.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,43 +25,45 @@ class FragmentHome : Fragment() {
     lateinit var jadwalAdapter: JadwalAdapter
     lateinit var SP : SharedPreferences
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home_guru, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
-        jadwalAdapter = JadwalAdapter(activity!!.applicationContext, arrayListOf())
+
+        SP = requireActivity().getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
+        jadwalAdapter =
+            JadwalAdapter(
+                requireActivity().applicationContext,
+                arrayListOf()
+            )
         getContent()
-        getJadwal(SP.getString("id_user","").toString())
+        getJadwal(SP.getString("iduser","").toString())
+
         rvJadwal.apply {
-            layoutManager = LinearLayoutManager(activity!!.applicationContext)
+            layoutManager = LinearLayoutManager(requireActivity().applicationContext)
             adapter = jadwalAdapter
         }
-
         btn_mapelSaya.setOnClickListener {
-            startActivity(Intent(activity!!.applicationContext, ActivityMapelGuru::class.java))
+            startActivity(Intent(requireActivity().applicationContext, ActivityMapelGuru::class.java))
         }
         btn_ajukanMapel.setOnClickListener {
-            startActivity(Intent(activity!!.applicationContext, ActivityAjukanMapel::class.java))
+            startActivity(Intent(requireActivity().applicationContext, ActivityAjukanMapel::class.java))
         }
         btn_tambahSoal.setOnClickListener {
-            startActivity(Intent(activity!!.applicationContext, ActivityMapelSoal::class.java))
+            startActivity(Intent(requireActivity().applicationContext, ActivityMapelSoal::class.java))
         }
     }
 
     fun getContent() {
-        UtilsAPI().apiService.dashboard().enqueue(object : Callback<KetDashboard> {
+        ApiService.endpoint.dashboard().enqueue(object :Callback<KetDashboard> {
             override fun onFailure(call: Call<KetDashboard>, t: Throwable) {
                 t.printStackTrace()
             }
+
             override fun onResponse(call: Call<KetDashboard>, response: Response<KetDashboard>) {
-                if(response.isSuccessful) {
+                if(response.isSuccessful){
                     val data = response.body()
                     jumGuru.text = data!!.jumlah_guru.toString()
                     jumKelas.text = data.jumlah_kelas.toString()
@@ -70,20 +74,22 @@ class FragmentHome : Fragment() {
         })
     }
 
-    fun getJadwal(id : String){
-        UtilsAPI().apiService.loadJadwalGuru(id).enqueue(object : Callback<ResponseListDataJadwal> {
+    fun getJadwal(id: String){
+        ApiService.endpoint.loadJadwalGuru(id).enqueue(object : Callback<ResponseListDataJadwal> {
             override fun onFailure(call: Call<ResponseListDataJadwal>, t: Throwable) {
                 t.printStackTrace()
                 loading.visibility = View.GONE
             }
+
             override fun onResponse(call: Call<ResponseListDataJadwal>, response: Response<ResponseListDataJadwal>) {
                 if(response.isSuccessful) {
                     loading.visibility = View.GONE
                     val data = response.body()
                     if(data!!.response) {
                         jadwalAdapter.setData(data.jadwal)
+                    } else {
+                        kosongJadwal.visibility = View.VISIBLE
                     }
-                    else { kosongJadwal.visibility = View.VISIBLE }
                 }
             }
         })

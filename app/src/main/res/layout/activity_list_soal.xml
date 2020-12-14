@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".guru.home.ActivityNilaiGuru">
+    tools:context=".guru.nilai.ActivityNilaiGuru">
     <androidx.appcompat.widget.Toolbar
         app:title="Data Soal"
         app:titleTextColor="@android:color/white"
@@ -48,10 +49,12 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/loading"
+        android:layout_above="@id/btn_tambahSoal"
         android:id="@+id/rvSoal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/cardsoal"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_tambahSoal"
@@ -60,6 +63,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginVertical="15dp"
         app:srcCompat="@drawable/ic_tambah" />
 </RelativeLayout>

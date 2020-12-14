@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".siswa.home.FragmentHome">
     <androidx.appcompat.widget.Toolbar
-        app:title="Siswa"
+        app:title="Dashboard"
         app:titleTextColor="@android:color/white"
         android:id="@+id/toolbarHomeS"
         android:layout_width="match_parent"
@@ -17,8 +17,50 @@
         android:minHeight="?attr/actionBarSize">
     </androidx.appcompat.widget.Toolbar>
 
+    <TextView
+        android:id="@+id/headTanggal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jadwal"
+        android:background="@color/white_gray"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:padding="10dp" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_marginVertical="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <RelativeLayout
+        android:layout_marginVertical="20dp"
+        android:visibility="gone"
+        android:gravity="center"
+        android:id="@+id/kosongJadwalSiswa"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_jadwal_abu"/>
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/colorGray"
+            android:text="Belum ada jadwal"/>
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerHomeS"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/cardsiswa_jadwal"/>
 </LinearLayout>

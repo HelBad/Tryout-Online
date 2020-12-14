@@ -1,107 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    app:cardElevation="3dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/headTanggal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="20 Juni 2020"
-        android:visibility="gone"
-        android:background="@color/colorGrayWhite"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:padding="10dp" />
-
-    <androidx.cardview.widget.CardView
-        app:cardElevation="3dp"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
             <TextView
-                android:id="@+id/namaMapel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Mata Pelajaran"
+                android:layout_marginRight="5dp"
+                android:text="Kelas"
                 android:textColor="@android:color/black"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/namaKelas"
-                android:layout_below="@id/namaMapel"
-                android:layout_width="wrap_content"
+                android:id="@+id/kelasJadwal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="IPA II"
-                android:textStyle="bold"
-                android:layout_marginBottom="5dp"/>
-
-            <TextView
-                android:id="@+id/tanggal"
-                android:layout_below="@id/namaKelas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="20 Juni 2020"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"/>
-
-            <TextView
-                android:id="@+id/jam"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="16:00 WIB"
-                android:layout_marginEnd="15dp"
-                android:textSize="18sp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:textStyle="bold"
+                android:text="XII - IPA 5"
                 android:textColor="@android:color/black"
-                android:background="@drawable/box_putih_abu"
-                android:padding="10dp"/>
-        </RelativeLayout>
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-        <ImageView
-            android:visibility="gone"
-            android:id="@+id/btn_tambah_ajukanMapel"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_ajukanmapel"
-            android:layout_marginRight="15dp" />
-
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/status_ajukanMapel"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="Diajukan"
-            android:textColor="@android:color/white"
-            android:background="@drawable/box_kuning"
-            android:layout_marginRight="15dp"
-            android:padding="5dp" />
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tanggalJadwal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="30 Juli 2020"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent" />
 
-        <ImageView
-            android:visibility="gone"
-            android:id="@+id/btn_detail"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_edit"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/box_putih_abu" />
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+            <TextView
+                android:id="@+id/jamJadwal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12.00 PM"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

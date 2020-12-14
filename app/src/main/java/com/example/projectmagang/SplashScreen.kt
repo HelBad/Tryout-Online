@@ -6,31 +6,30 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
-import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.guru.ActivityUtama
-import com.example.projectmagang.model.ResponseLogin
+import com.example.projectmagang.data.CekLevel
+import com.example.projectmagang.network.ApiService
+import com.example.projectmagang.siswa.ActivityUtama
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SplashScreen : AppCompatActivity() {
     private lateinit var SP: SharedPreferences
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.splash_screen)
-
+        setContentView(R.layout.activity_splashscreen)
+        SP = getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
-        SP = getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
         val backgrond = object : Thread(){
             override fun run() {
                 try {
                     sleep(500)
                     //tambah loading
-                    getStatusLogin(SP.getString("id_user", "").toString())
+                    getStatusLogin(SP.getString("iduser", "").toString())
+                } catch (e: Exception){
+                    e.printStackTrace()
                 }
-                catch (e: Exception) { e.printStackTrace() }
             }
         }
         backgrond.start()
@@ -38,26 +37,27 @@ class SplashScreen : AppCompatActivity() {
 
     private fun getStatusLogin(id: String) {
         if (id != "") {
-            UtilsAPI().apiService.cekLevel(id).enqueue(object : Callback<ResponseLogin> {
-                    override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
-                        t.printStackTrace()
-                    }
-                    override fun onResponse(call: Call<ResponseLogin>, response: Response<ResponseLogin>) {
-                        if (response.isSuccessful) {
-                            val data = response.body()
-                            if (data!!.level == "G") {
-                                startActivity(Intent(applicationContext,
-                                    ActivityUtama::class.java))
-                                finish()
-                            }
-                            else if (data.level == "S") {
-                                startActivity(Intent(applicationContext, com.example.projectmagang.siswa.ActivityUtama::class.java))
-                                finish()
-                            }
+            ApiService.endpoint.cekLevel(id).enqueue(object : Callback<CekLevel> {
+                override fun onFailure(call: Call<CekLevel>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+                override fun onResponse(call: Call<CekLevel>, response: Response<CekLevel>) {
+                    if (response.isSuccessful) {
+                        val data = response.body()
+                        if (data!!.level == "G") {
+                            startActivity(Intent(applicationContext,
+                                com.example.projectmagang.guru.ActivityUtama::class.java))
+                            finish()
+                        } else if (data!!.level == "S") {
+                            startActivity(Intent(applicationContext, ActivityUtama::class.java))
+                            finish()
                         }
                     }
-                })
+                }
+            })
+        } else {
+            startActivity(Intent(applicationContext, ActivityLogin::class.java))
         }
-        else{ startActivity(Intent(applicationContext, ActivityLogin::class.java)) }
     }
 }

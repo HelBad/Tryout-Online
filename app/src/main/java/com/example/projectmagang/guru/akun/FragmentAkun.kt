@@ -1,19 +1,23 @@
 package com.example.projectmagang.guru.akun
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
+import androidx.fragment.app.Fragment
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
+import androidx.cardview.widget.CardView
 import com.example.projectmagang.ActivityLogin
 import com.example.projectmagang.R
-import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.model.ProfilGuru
+import com.example.projectmagang.network.Variabel
+import com.example.projectmagang.data.ProfilGuru
+import com.example.projectmagang.guru.home.mapelsaya.ActivityMapelGuru
+import com.example.projectmagang.network.ApiService
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,75 +25,81 @@ import retrofit2.Response
 
 class FragmentAkun : Fragment() {
     lateinit var SP : SharedPreferences
-    lateinit var namaAkun : TextView
-    lateinit var nipAkun : TextView
-    lateinit var usernameAkun : TextView
-    lateinit var emailAkun : TextView
-    lateinit var tempatlahirAkun : TextView
-    lateinit var tgllahirAkun : TextView
-    lateinit var genderAkun : TextView
-    lateinit var alamatAkun : TextView
-    lateinit var telpAkun : TextView
+    lateinit var textNama : TextView
+    lateinit var textNIP : TextView
+    lateinit var textUsername : TextView
+    lateinit var textEmail : TextView
+    lateinit var textTTL : TextView
+    lateinit var textJenKel : TextView
+    lateinit var textAlamat : TextView
+    lateinit var textTelp : TextView
     lateinit var gambarAkun : ImageView
     lateinit var editAkun : TextView
-    var dataFoto: String? = null
+    lateinit var data : ProfilGuru
+    lateinit var mapelSaya : CardView
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_akun_guru, container, false)
         setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.fragment_akun_guru, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        val actionBar = activity!!.findViewById(R.id.toolbarAkun) as Toolbar
+        val actionBar = view.findViewById(R.id.toolbarAkun) as Toolbar
         (activity as AppCompatActivity).setSupportActionBar(actionBar)
 
-        SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
-        namaAkun = view!!.findViewById(R.id.namaAkun)
-        nipAkun = view!!.findViewById(R.id.nipAkun)
-        usernameAkun = view!!.findViewById(R.id.usernameAkun)
-        emailAkun = view!!.findViewById(R.id.emailAkun)
-        tempatlahirAkun = view!!.findViewById(R.id.tempatlahirAkun)
-        tgllahirAkun = view!!.findViewById(R.id.tgllahirAkun)
-        genderAkun = view!!.findViewById(R.id.genderAkun)
-        alamatAkun = view!!.findViewById(R.id.alamatAkun)
-        telpAkun = view!!.findViewById(R.id.telpAkun)
-        gambarAkun = view!!.findViewById(R.id.gambarAkun)
-        editAkun = view!!.findViewById(R.id.editAkun)
+        SP = requireActivity().getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
+        textNama = view.findViewById(R.id.namaAkun)
+        textNIP = view.findViewById(R.id.nipAkun)
+        textUsername = view.findViewById(R.id.usernameAkun)
+        textEmail = view.findViewById(R.id.emailAkun)
+        textTTL = view.findViewById(R.id.ttlAkun)
+        textJenKel = view.findViewById(R.id.genderAkun)
+        textAlamat = view.findViewById(R.id.alamatAkun)
+        textTelp = view.findViewById(R.id.telpAkun)
+        gambarAkun = view.findViewById(R.id.gambarAkun)
+        editAkun = view.findViewById(R.id.editAkun)
+        mapelSaya = view.findViewById(R.id.akunMapel)
+
+        mapelSaya.setOnClickListener {
+            startActivity(Intent(requireActivity().applicationContext, ActivityMapelGuru::class.java))
+        }
 
         editAkun.setOnClickListener {
-            val intent = Intent(activity!!.applicationContext, ActivityProfil::class.java)
-            intent.putExtra("nip", nipAkun.text.toString())
-            intent.putExtra("nama", namaAkun.text.toString())
-            intent.putExtra("username", usernameAkun.text.toString())
-            intent.putExtra("email", emailAkun.text.toString())
-            intent.putExtra("tempatlahir", tempatlahirAkun.text.toString())
-            intent.putExtra("tgllahir", tgllahirAkun.text.toString())
-            intent.putExtra("gender", genderAkun.text.toString())
-            intent.putExtra("alamat", alamatAkun.text.toString())
-            intent.putExtra("telp", telpAkun.text.toString())
-            intent.putExtra("foto", dataFoto.toString())
+            val intent = Intent(requireActivity().applicationContext, ActivityProfil::class.java)
+            intent.putExtra("nama", data.nama)
+            intent.putExtra("nip", data.nip)
+            intent.putExtra("email", data.email)
+            intent.putExtra("alamat", data.alamat)
+            intent.putExtra("jenkel", data.jenkel)
+            intent.putExtra("username", data.username)
+            intent.putExtra("telp", data.telp)
+            intent.putExtra("foto", data.foto)
+            intent.putExtra("tempatLahir", data.tempat_lahir)
+            intent.putExtra("tanggalLahir", data.tanggal_lahir)
             startActivity(intent)
         }
-        getContent(SP.getString("id_user","").toString())
+        getContent(SP.getString("iduser","").toString())
+        return view
     }
 
-    override fun onPause() {
-        super.onPause()
-        getContent(SP.getString("id_user", "").toString())
+    override fun onResume() {
+        super.onResume()
+        getContent(SP.getString("iduser","").toString())
     }
 
     fun doLogout(){
-        val editor = SP.edit()
-        editor.putString("id_user","")
-        editor.apply()
-        startActivity(Intent(activity!!.applicationContext, ActivityLogin::class.java))
-        activity!!.finish()
+        val dialog = AlertDialog.Builder(activity)
+        dialog.setTitle("Konfirmasi Logout Akun")
+        dialog.setMessage("Apakah anda yakin ingin logout akun ?")
+        dialog.setPositiveButton("Iya"){dialog, which ->
+            val editor = SP.edit()
+            editor.putString("iduser","")
+            editor.apply()
+            startActivity(Intent(requireActivity().applicationContext, ActivityLogin::class.java))
+            requireActivity().finish()
+            dialog.dismiss()
+        }
+        dialog.setNegativeButton("Batal"){dialog, which ->
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 
     fun dateFormat (date : String): String {
@@ -113,39 +123,39 @@ class FragmentAkun : Fragment() {
         }
     }
 
-    private fun getContent(id : String){
-        UtilsAPI().apiService.profilGuru(id).enqueue(object : Callback<ProfilGuru> {
+    private fun getContent(id : String) {
+        ApiService.endpoint.profilGuru(id).enqueue(object : Callback<ProfilGuru> {
             override fun onFailure(call: Call<ProfilGuru>, t: Throwable) {
                 t.printStackTrace()
             }
+
             override fun onResponse(call: Call<ProfilGuru>, response: Response<ProfilGuru>) {
-                if(response.isSuccessful) {
+                if(response.isSuccessful){
                     val dataProfil : ProfilGuru? = response.body()
-                    namaAkun.text = dataProfil!!.nama
-                    nipAkun.text = dataProfil.nip
-                    usernameAkun.text = dataProfil.username
-                    emailAkun.text = dataProfil.email
-                    tempatlahirAkun.text = dataProfil.tempat_lahir
-                    tgllahirAkun.text = dateFormat(dataProfil.tanggal_lahir.toString())
-                    genderAkun.text = dataProfil.jenis_kelamin
-                    alamatAkun.text = dataProfil.alamat
-                    telpAkun.text = "+62 "+dataProfil.telp.toString()
-                    dataFoto = "http://192.168.1.16/tryoutonline/storage/foto/guru/" + dataProfil.foto
-                    Picasso.get().load(dataFoto).into(gambarAkun)
+                    data = dataProfil!!
+                    textNama.text = dataProfil.nama
+                    textNIP.text = dataProfil.nip
+                    textUsername.text = dataProfil.username
+                    textEmail.text = dataProfil.email
+                    textTTL.text = dataProfil.tempat_lahir+", "+dateFormat(dataProfil.tanggal_lahir)
+                    textJenKel.text = dataProfil.jenkel
+                    textAlamat.text = dataProfil.alamat
+                    textTelp.text = "+62 "+ dataProfil.telp
+                    Picasso.get().load(Variabel().URL_FOTO_GURU+dataProfil.foto).into(gambarAkun)
                 }
             }
         })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        val inflater: MenuInflater = activity!!.menuInflater
-        inflater.inflate(R.menu.option_menu, menu)
+        val inflater: MenuInflater = requireActivity().menuInflater
+        inflater.inflate(R.menu.option_menu_logout, menu)
         return
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.menuAbout -> {
+            R.id.menuLogout -> {
                 doLogout()
                 true
             }

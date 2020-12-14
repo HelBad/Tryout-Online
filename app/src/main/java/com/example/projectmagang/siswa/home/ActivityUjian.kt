@@ -7,36 +7,31 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.widget.RadioButton
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
-import com.example.projectmagang.adapter.SoalSiswaAdapter
-import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.model.*
-import com.google.gson.Gson
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_profil_guru.*
+import com.example.projectmagang.data.ResponseMessage
+import com.example.projectmagang.data.DataSoalSiswa
+import com.example.projectmagang.data.ResponseListDataSoalSiswa
+import com.example.projectmagang.network.ApiService
 import kotlinx.android.synthetic.main.activity_ujian_siswa.*
-import kotlinx.android.synthetic.main.cardsiswa_soal.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
-import java.time.temporal.ChronoUnit
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
 
 class ActivityUjian : AppCompatActivity() {
     lateinit var recyclerSoalS : RecyclerView
     lateinit var soalSiswaAdapter: SoalSiswaAdapter
     lateinit var SP : SharedPreferences
     lateinit var alertDialog: AlertDialog.Builder
+    val jawab : ArrayList<String> = arrayListOf()
 
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,31 +40,61 @@ class ActivityUjian : AppCompatActivity() {
 
         alertDialog = AlertDialog.Builder(this)
         SP = getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
-        getSoal(SP.getString("id_user","").toString(), intent.getStringExtra("id_mapel"))
         recyclerSoalS = findViewById(R.id.recyclerSoalS)
-        soalSiswaAdapter = SoalSiswaAdapter(applicationContext, arrayListOf())
+        soalSiswaAdapter =
+            SoalSiswaAdapter(
+                applicationContext,
+                arrayListOf()
+            )
+        getSoal(SP.getString("iduser","").toString(), intent.getIntExtra("id_mapel",0))
 
         recyclerSoalS.apply {
+            Log.v("ini test", soalSiswaAdapter.itemCount.toString())
             layoutManager = LinearLayoutManager(applicationContext)
+            soalSiswaAdapter.setOnPilihanACallback(object :
+                SoalSiswaAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: DataSoalSiswa, position: Int) {
+                    jawab[position] = "${data.id},A"
+                }
+            })
+
+            soalSiswaAdapter.setOnPilihanBCallback(object :
+                SoalSiswaAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: DataSoalSiswa, position: Int) {
+                    jawab[position] = "${data.id},B"
+                }
+            })
+
+            soalSiswaAdapter.setOnPilihanCCallback(object :
+                SoalSiswaAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: DataSoalSiswa, position: Int) {
+                    jawab[position] = "${data.id},C"
+                }
+            })
+
+            soalSiswaAdapter.setOnPilihanDCallback(object :
+                SoalSiswaAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: DataSoalSiswa, position: Int) {
+                    jawab[position] = "${data.id},D"
+                }
+            })
+
+            soalSiswaAdapter.setOnPilihanECallback(object :
+                SoalSiswaAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: DataSoalSiswa, position: Int) {
+                    jawab[position-1] = "${data.id},E"
+                }
+            })
             adapter = soalSiswaAdapter
         }
         finishSoalS.setOnClickListener {
             onBackPressed()
         }
 
-        val date = getCurrentDateTime()
-        val localTime = LocalTime.parse(date.toString("HH:mm:ss"), DateTimeFormatter.ofPattern("HH:mm:ss")).toSecondOfDay()
-        val dbTime = LocalTime.parse(intent.getStringExtra("waktu"), DateTimeFormatter.ofPattern("HH:mm:ss")).toSecondOfDay()
-
-        val differentTime = ((dbTime + 7200) - localTime) / 60
         val minute:Long = 1000 * 60
-        val millisInFuture:Long = (minute * differentTime)
+        val millisInFuture:Long = (minute * intent.getIntExtra("durasi",0))
         val countDownInterval:Long = 1000
         timer(millisInFuture, countDownInterval).start()
-
-//        SP = applicationContext.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
-//        getJawaban(SP.getString("id_user","")!!.toString(), namaProfil.text.toString(),
-//            genderProfil.text.toString(), tempatlahirProfil.text.toString())
     }
 
     fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
@@ -77,52 +102,51 @@ class ActivityUjian : AppCompatActivity() {
         return formatter.format(this)
     }
 
-    fun getCurrentDateTime(): Date {
-        return Calendar.getInstance().time
-    }
-
-    fun getSoal(id : String, id_mapel : String){
-        UtilsAPI().apiService.soalSiswa(id, id_mapel).enqueue(object : Callback<ResponseDataSoalSiswa> {
-            override fun onFailure(call: Call<ResponseDataSoalSiswa>, t: Throwable) {
+    fun getSoal(id: String, id_mapel: Int){
+        ApiService.endpoint.soalSiswa(id, id_mapel).enqueue(object : Callback<ResponseListDataSoalSiswa> {
+            override fun onFailure(call: Call<ResponseListDataSoalSiswa>, t: Throwable) {
                 t.printStackTrace()
             }
-            override fun onResponse(call: Call<ResponseDataSoalSiswa>, response: Response<ResponseDataSoalSiswa>) {
+
+            override fun onResponse(call: Call<ResponseListDataSoalSiswa>, response: Response<ResponseListDataSoalSiswa>) {
                 if(response.isSuccessful) {
                     val data = response.body()
-                    val dataSoalSiswa : List<DataSoalSiswa> = data!!.soal
-                    soalSiswaAdapter.setData(dataSoalSiswa)
+                    soalSiswaAdapter.setData(data!!.soal)
+                    for(i in 0 until data.soal.size){
+                        jawab.add(i,"")
+                    }
                 }
             }
         })
     }
 
-    private fun timer(millisInFuture:Long,countDownInterval:Long):CountDownTimer{
-        return object: CountDownTimer(millisInFuture,countDownInterval){
-            override fun onTick(millisUntilFinished: Long){
+    private fun timer(millisInFuture: Long, countDownInterval: Long): CountDownTimer {
+        return object: CountDownTimer(millisInFuture, countDownInterval) {
+            override fun onTick(millisUntilFinished: Long) {
                 val timeRemaining = timeString(millisUntilFinished)
                 timerCount.text = timeRemaining
             }
+
             override fun onFinish() {
                 alertDialog.setTitle("Ujian Berakhir")
                 alertDialog.setMessage("Ujian Selesai, tekan OK untuk kembali ke Home")
                     .setCancelable(false)
                     .setPositiveButton("OK", object: DialogInterface.OnClickListener {
                         override fun onClick(dialog: DialogInterface, id:Int) {
-                            finish()
+                            submitJawaban()
                         }
                     }).create().show()
             }
         }
     }
 
-    private fun timeString(millisUntilFinished:Long):String{
-        var millisUntilFinished:Long = millisUntilFinished
+    private fun timeString(millisUntilFinished: Long): String {
+        var millisUntilFinished: Long = millisUntilFinished
         val hours = TimeUnit.MILLISECONDS.toHours(millisUntilFinished)
         millisUntilFinished -= TimeUnit.HOURS.toMillis(hours)
         val minutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
         millisUntilFinished -= TimeUnit.MINUTES.toMillis(minutes)
         val seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
-
         return String.format(Locale.getDefault(), "%02d : %02d : %02d", hours, minutes,seconds)
     }
 
@@ -133,7 +157,7 @@ class ActivityUjian : AppCompatActivity() {
             .setCancelable(false)
             .setPositiveButton("YA", object: DialogInterface.OnClickListener {
                 override fun onClick(dialog: DialogInterface, id:Int) {
-                    finish()
+                    submitJawaban()
                 }
             })
             .setNegativeButton("TIDAK", object: DialogInterface.OnClickListener {
@@ -143,69 +167,20 @@ class ActivityUjian : AppCompatActivity() {
             }).create().show()
     }
 
-//    var jawab : ArrayList<String> = arrayListOf()
-//    fun test() {
-//        SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
-//
-//        var pil: String? = null
-//        if (pilihanA.isChecked) { pil = "A" }
-//        else if (pilihanB.isChecked) { pil = "B" }
-//        else if (pilihanC.isChecked) { pil = "C" }
-//        else if (pilihanD.isChecked) { pil = "D" }
-//        else if (pilihanE.isChecked) { pil = "E" }
-//
-//        jawab.add("4,$pil")
-//
-//        val test = Gson().toJson(jawab)
-//
-//
-//        UtilsAPI.endpoint.siswaJawab(SP.getString("id_user","").toString(),19,jawab)
-//            .enqueue(object : Callback<ResponseMessage>{
-//                override fun onFailure(call: Call<ResponseMessage>, t: Throwable) {
-//                    t.printStackTrace()
-//                }
-//
-//                override fun onResponse(
-//                    call: Call<ResponseMessage>,
-//                    response: Response<ResponseMessage>
-//                ) {
-//                    if(response.isSuccessful){
-//                        val data = response.body()
-//                        Toast.makeText(activity!!.applicationContext,data!!.message,Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//
-//            })
-//    }
-//
-//    fun tes() {
-//        SP = applicationContext.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
-//
-//        var jawab: String? = null
-//        if (pilihanA.isChecked) { jawab = "A" }
-//        else if (pilihanB.isChecked) { jawab = "B" }
-//        else if (pilihanC.isChecked) { jawab = "C" }
-//        else if (pilihanD.isChecked) { jawab = "D" }
-//        else if (pilihanE.isChecked) { jawab = "E" }
-//
-//        btnSaveProfil.setOnClickListener {
-//            addJawab(SP.getString("id_user","")!!.toString(), soalSiswa.text.toString(), jawab.toString())
-//        }
-//    }
-//
-//    fun addJawab(id_siswa: String, id_soal: String, jawab: String) {
-//        UtilsAPI().apiService.addJawab(id_siswa, id_soal, jawab).enqueue(object : Callback<ResponseSiswaJawab> {
-//            override fun onFailure(call: Call<ResponseSiswaJawab>, t: Throwable) {
-//                t.printStackTrace()
-//            }
-//            override fun onResponse(call: Call<ResponseSiswaJawab>, response: Response<ResponseSiswaJawab>) {
-//                if(response.isSuccessful) {
-//                    response.body()
-//                    Toast.makeText(applicationContext, "Data sedang diproses", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        })
-//    }
-//
+    fun submitJawaban(){
+        ApiService.endpoint.siswaJawab(SP.getString("iduser","").toString(), intent.getIntExtra("id_mapel",0),jawab)
+            .enqueue(object : Callback<ResponseMessage> {
+                override fun onFailure(call: Call<ResponseMessage>, t: Throwable) {
+                    t.printStackTrace()
+                }
 
+                override fun onResponse(call: Call<ResponseMessage>, response: Response<ResponseMessage>) {
+                    if(response.isSuccessful){
+                        val data = response.body()
+                        Toast.makeText(applicationContext,data!!.message,Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                }
+            })
+    }
 }

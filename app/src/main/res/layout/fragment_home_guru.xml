@@ -23,14 +23,12 @@
         android:layout_height="wrap_content"
         android:text="Dashboard"
         android:textStyle="bold"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorBlack"
         android:padding="10dp"
         android:textSize="18sp"
-        android:background="@color/colorGrayWhite"
-        android:layout_below="@id/toolbarHome" />
+        android:background="@color/white_gray" />
 
     <LinearLayout
-        android:layout_below="@+id/title"
         android:id="@+id/ketDashboard"
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -56,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:text="JUMLAH KELAS"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     android:textSize="16sp"/>
 
@@ -66,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     android:textSize="40sp" />
             </RelativeLayout>
@@ -87,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:text="JUMLAH MAPEL"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     android:textSize="16sp"/>
 
@@ -97,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     android:textSize="40sp" />
             </RelativeLayout>
@@ -124,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:text="JUMLAH GURU"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     android:textSize="16sp"/>
 
@@ -134,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     android:textSize="40sp" />
             </RelativeLayout>
@@ -155,7 +153,7 @@
                     android:layout_height="wrap_content"
                     android:text="JUMLAH SISWA"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     android:textSize="16sp"/>
 
@@ -165,13 +163,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     android:textSize="40sp" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
-
+    
     <LinearLayout
         android:id="@+id/menu"
         android:layout_marginTop="15dp"
@@ -188,7 +186,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/colorGrayWhite">
+            android:background="@color/white_gray">
             <ImageView
                 android:id="@+id/iconAjukan"
                 android:layout_width="30dp"
@@ -200,7 +198,7 @@
                 android:layout_below="@id/iconAjukan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorBlack"
                 android:text="Ajukan Mapel"
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>
@@ -214,7 +212,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/colorGrayWhite">
+            android:background="@color/white_gray">
             <ImageView
                 android:id="@+id/iconSoal"
                 android:layout_width="30dp"
@@ -227,7 +225,7 @@
                 android:layout_below="@id/iconSoal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorBlack"
                 android:text="Data Soal"
                 android:layout_centerVertical="true" />
         </RelativeLayout>
@@ -241,7 +239,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/colorGrayWhite">
+            android:background="@color/white_gray">
             <ImageView
                 android:layout_centerHorizontal="true"
                 android:id="@+id/iconMapel"
@@ -254,7 +252,7 @@
                 android:layout_below="@id/iconMapel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorBlack"
                 android:text="Mapel Saya" />
         </RelativeLayout>
     </LinearLayout>
@@ -265,10 +263,10 @@
         android:layout_height="wrap_content"
         android:text="Jadwal"
         android:textStyle="bold"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorBlack"
         android:padding="10dp"
         android:textSize="18sp"
-        android:background="@android:color/white" />
+        android:background="@color/colorWhite" />
 
     <ProgressBar
         android:id="@+id/loading"
@@ -278,7 +276,7 @@
 
     <RelativeLayout
         android:layout_marginVertical="20dp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:gravity="center"
         android:id="@+id/kosongJadwal"
         android:layout_width="match_parent"
@@ -304,5 +302,5 @@
         android:id="@+id/rvJadwal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/titleJadwal"/>
+        tools:listitem="@layout/cardjadwal_guru"/>
 </LinearLayout>

@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".guru.home.ActivityNilaiGuru">
+    tools:context=".guru.nilai.ActivityNilaiGuru">
     <androidx.appcompat.widget.Toolbar
         app:title="Daftar Nilai"
         app:titleTextColor="@android:color/white"
@@ -49,5 +49,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNilai"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/cardguru_nilai"/>
 </LinearLayout>

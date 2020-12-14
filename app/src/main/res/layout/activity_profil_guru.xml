@@ -40,7 +40,7 @@
                     android:layout_height="120dp"
                     android:layout_gravity="center_horizontal">
                     <ImageView
-                        android:id="@+id/gambarProfil"
+                        android:id="@+id/dataDesign"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
@@ -90,7 +90,7 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <EditText
+                        <TextView
                             android:id="@+id/nipProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -142,7 +142,10 @@
                             android:id="@+id/namaProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/white"
+                            android:background="@drawable/box_putih_abu"
+                            android:paddingVertical="5dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_marginEnd="15dp"
                             android:textColor="@color/colorGray"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
@@ -186,7 +189,7 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <EditText
+                        <TextView
                             android:id="@+id/usernameProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -234,60 +237,13 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <EditText
+                        <TextView
                             android:id="@+id/emailProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
-                            android:textSize="15sp"
-                            android:textStyle="bold"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/profilMapel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/profilEmail"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_margin="15dp"
-                        android:layout_gravity="center_vertical"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/icon_edukasi"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="10dp"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="2dp"
-                            android:text="Mata Pelajaran"
-                            android:textColor="@android:color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold"/>
-
-                        <EditText
-                            android:id="@+id/mapelProfil"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@android:color/white"
-                            android:textColor="@color/colorGray"
+                            android:text="email@gmail.com"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -299,7 +255,7 @@
                 android:id="@+id/profilTtl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profilMapel"
+                android:layout_below="@id/profilEmail"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -338,27 +294,34 @@
                                 android:id="@+id/tempatlahirProfil"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@android:color/white"
+                                android:background="@drawable/box_putih_abu"
                                 android:textColor="@color/colorGray"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="5dp"
+                                android:text="Surabaya"
                                 android:textSize="15sp"
-                                android:textStyle="bold"/>
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="5dp"
-                                android:text=","
+                                android:text=" , "
                                 android:textSize="15sp"
                                 android:textStyle="bold"/>
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/tgllahirProfil"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@android:color/white"
+                                android:paddingVertical="5dp"
+                                android:paddingHorizontal="10dp"
+                                android:background="@drawable/box_putih_abu"
                                 android:textColor="@color/colorGray"
+                                android:text="01 January 2000"
                                 android:textSize="15sp"
-                                android:textStyle="bold"/>
+                                android:textStyle="bold"
+                                android:layout_marginEnd="15dp"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -400,14 +363,11 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <EditText
+                        <Spinner
                             android:id="@+id/genderProfil"
+                            android:textAlignment="center"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@android:color/white"
-                            android:textColor="@color/colorGray"
-                            android:textSize="15sp"
-                            android:textStyle="bold"/>
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -452,9 +412,12 @@
                             android:id="@+id/alamatProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/white"
+                            android:background="@drawable/box_putih_abu"
                             android:textColor="@color/colorGray"
                             android:textSize="15sp"
+                            android:paddingVertical="5dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_marginEnd="15dp"
                             android:textStyle="bold"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -496,14 +459,33 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <EditText
-                            android:id="@+id/telpProfil"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/white"
-                            android:textColor="@color/colorGray"
-                            android:textSize="15sp"
-                            android:textStyle="bold"/>
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorGray"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:text="+62"/>
+
+                            <EditText
+                                android:layout_marginStart="10dp"
+                                android:id="@+id/telpProfil"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/box_putih_abu"
+                                android:inputType="number"
+                                android:digits="0123456789"
+                                android:textColor="@color/colorGray"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="5dp"
+                                android:layout_marginEnd="15dp"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

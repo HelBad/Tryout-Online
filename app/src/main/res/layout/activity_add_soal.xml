@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".guru.home.ActivityAddSoal">
+    tools:context=".guru.home.datasoal.ActivityAddSoal">
     <androidx.appcompat.widget.Toolbar
         app:title="Tambah Soal"
         app:titleTextColor="@android:color/white"
@@ -274,7 +274,7 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="A"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -283,7 +283,7 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="B"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -292,7 +292,7 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="C"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -301,7 +301,7 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="D"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -310,7 +310,7 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="E"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/colorBlack"
                         android:textSize="16sp" />
                 </RadioGroup>
 
@@ -322,7 +322,7 @@
                     android:paddingHorizontal="40dp"
                     android:layout_height="wrap_content"
                     android:text="Tambah"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorWhite"
                     android:background="@color/colorPrimary" />
             </LinearLayout>
         </LinearLayout>

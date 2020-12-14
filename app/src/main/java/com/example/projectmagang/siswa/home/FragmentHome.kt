@@ -8,58 +8,70 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectmagang.R
-import com.example.projectmagang.adapter.JadwalSiswaAdapter
-import com.example.projectmagang.api.UtilsAPI
-import com.example.projectmagang.model.DataJadwalSiswa
-import com.example.projectmagang.model.ResponseDataJadwalSiswa
+import com.example.projectmagang.data.DataJadwalSiswa
+import com.example.projectmagang.data.ResponseListDataJadwalSiswa
+import com.example.projectmagang.network.ApiService
+import kotlinx.android.synthetic.main.fragment_home_siswa.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class FragmentHome : Fragment() {
     lateinit var recyclerHomeS : RecyclerView
+    lateinit var loading : ProgressBar
     lateinit var jadwalAdapter: JadwalSiswaAdapter
     lateinit var SP : SharedPreferences
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_home_siswa, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_home_siswa, container, false)
 
-        SP = activity!!.getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
-        getJadwal(SP.getString("id_user","").toString())
-        recyclerHomeS = rootView.findViewById(R.id.recyclerHomeS)
-        jadwalAdapter = JadwalSiswaAdapter(activity!!.applicationContext, arrayListOf())
+        SP = requireActivity().getSharedPreferences("TryoutOnline", Context.MODE_PRIVATE)
+        getJadwal(SP.getString("iduser","").toString())
+        recyclerHomeS = view.findViewById(R.id.recyclerHomeS)
+        loading = view.findViewById(R.id.loading)
+        jadwalAdapter = JadwalSiswaAdapter(requireActivity().applicationContext, arrayListOf())
 
         recyclerHomeS.apply {
-            layoutManager = LinearLayoutManager(activity!!.applicationContext)
-            jadwalAdapter.setOnDetailCallback(object : JadwalSiswaAdapter.OnItemClickCallback {
-                override fun onItemClicked(data: DataJadwalSiswa) {
+            layoutManager = LinearLayoutManager(requireActivity().applicationContext)
+            jadwalAdapter.setOnMengerjakanCallback(object :
+                JadwalSiswaAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: DataJadwalSiswa, durasi : Int) {
                     val intent = Intent(activity!!.applicationContext, ActivityUjian::class.java)
                     intent.putExtra("id_mapel", data.id_mapel)
-                    intent.putExtra("waktu", data.waktu)
+                    intent.putExtra("durasi", durasi)
                     startActivity(intent)
                 }
             })
             adapter = jadwalAdapter
         }
-        return rootView
+        return view
     }
 
-    fun getJadwal(id : String){
-        UtilsAPI().apiService.listJadwal(id).enqueue(object : Callback<ResponseDataJadwalSiswa> {
-            override fun onFailure(call: Call<ResponseDataJadwalSiswa>, t: Throwable) {
+    override fun onResume() {
+        super.onResume()
+        getJadwal(SP.getString("iduser","").toString())
+    }
+
+    fun getJadwal(id: String) {
+        ApiService.endpoint.listJadwal(id).enqueue(object : Callback<ResponseListDataJadwalSiswa> {
+            override fun onFailure(call: Call<ResponseListDataJadwalSiswa>, t: Throwable) {
                 t.printStackTrace()
+                loading.visibility = View.GONE
             }
-            override fun onResponse(call: Call<ResponseDataJadwalSiswa>, response: Response<ResponseDataJadwalSiswa>) {
+
+            override fun onResponse(call: Call<ResponseListDataJadwalSiswa>, response: Response<ResponseListDataJadwalSiswa>) {
                 if(response.isSuccessful) {
+                    loading.visibility = View.GONE
                     val data = response.body()
-                    val dataJadwal : List<DataJadwalSiswa> = data!!.jadwal
-                    jadwalAdapter.setData(dataJadwal)
+                    if(data!!.response) {
+                        jadwalAdapter.setData(data.jadwal)
+                    } else {
+                        kosongJadwalSiswa.visibility = View.VISIBLE
+                    }
                 }
             }
         })

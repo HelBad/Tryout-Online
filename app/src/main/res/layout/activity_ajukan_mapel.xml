@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".guru.home.ActivityNilaiGuru">
+    tools:context=".guru.nilai.ActivityNilaiGuru">
     <androidx.appcompat.widget.Toolbar
         app:title="Ajukan Mapel"
         app:titleTextColor="@android:color/white"
@@ -22,25 +22,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mapel Dalam Pengajuan"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorBlack"
             android:padding="10dp"
             android:textSize="18sp"
-            android:background="@android:color/white"
-            android:layout_below="@id/menu"
-            />
+            android:background="@color/colorWhite"
+            android:layout_below="@id/menu" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMapelDiajukan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/mapelTersedia"
         android:layout_width="match_parent"
@@ -51,17 +49,18 @@
             android:layout_height="wrap_content"
             android:text="Mapel Tersedia"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorBlack"
             android:padding="10dp"
             android:textSize="18sp"
-            android:background="@android:color/white"
-            android:layout_below="@id/menu"
-            />
+            android:background="@color/colorWhite"
+            android:layout_below="@id/menu" />
+
         <ProgressBar
             android:id="@+id/loading"
             android:layout_marginVertical="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
+
         <RelativeLayout
             android:layout_marginVertical="20dp"
             android:visibility="gone"
@@ -75,6 +74,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:src="@drawable/ic_nilai_abu"/>
+
             <TextView
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/icon"
@@ -84,12 +84,11 @@
                 android:textColor="@color/colorGray"
                 android:text="Belum ada mapel yang tersedia"/>
         </RelativeLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMapelTersedia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            tools:listitem="@layout/cardmapel" />
     </LinearLayout>
-
-
 </LinearLayout>

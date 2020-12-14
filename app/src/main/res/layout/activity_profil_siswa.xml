@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".siswa.akun.ActivityProfil">
+    tools:context=".guru.akun.ActivityProfil">
     <androidx.appcompat.widget.Toolbar
         app:title="Profil Siswa"
         app:titleTextColor="@android:color/white"
-        android:id="@+id/toolbarProfilS"
+        android:id="@+id/toolbarProfil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
@@ -20,13 +20,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbarProfilS"
+        android:layout_below="@id/toolbarProfil"
         android:scrollbars="none">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-                android:id="@+id/mainProfilS"
+                android:id="@+id/mainProfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -35,12 +35,12 @@
                 <androidx.cardview.widget.CardView
                     app:cardCornerRadius="60dp"
                     app:cardBackgroundColor="@android:color/transparent"
-                    android:id="@+id/imgProfilS"
+                    android:id="@+id/imgProfile"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_gravity="center_horizontal">
                     <ImageView
-                        android:id="@+id/gambarProfilS"
+                        android:id="@+id/dataDesign"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
@@ -56,10 +56,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/profilNisnS"
+                android:id="@+id/profilNip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/mainProfilS"
+                android:layout_below="@id/mainProfil"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -90,8 +90,8 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <EditText
-                            android:id="@+id/nisnProfilS"
+                        <TextView
+                            android:id="@+id/nisnProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
@@ -104,10 +104,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/profilNamaS"
+                android:id="@+id/profilNama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profilNisnS"
+                android:layout_below="@id/profilNip"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -139,10 +139,13 @@
                             android:textStyle="bold"/>
 
                         <EditText
-                            android:id="@+id/namaProfilS"
+                            android:id="@+id/namaProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/white"
+                            android:background="@drawable/box_putih_abu"
+                            android:paddingVertical="5dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_marginEnd="15dp"
                             android:textColor="@color/colorGray"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
@@ -152,10 +155,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/profilUsernameS"
+                android:id="@+id/profilUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profilNamaS"
+                android:layout_below="@id/profilNama"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -186,8 +189,8 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <EditText
-                            android:id="@+id/usernameProfilS"
+                        <TextView
+                            android:id="@+id/usernameProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
@@ -200,10 +203,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/profilEmailS"
+                android:id="@+id/profilEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profilUsernameS"
+                android:layout_below="@id/profilUsername"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -234,60 +237,13 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <EditText
-                            android:id="@+id/emailProfilS"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@android:color/white"
-                            android:textColor="@color/colorGray"
-                            android:textSize="15sp"
-                            android:textStyle="bold"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/profilKelasS"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/profilEmailS"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_margin="15dp"
-                        android:layout_gravity="center_vertical"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/icon_class"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="10dp"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical">
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="2dp"
-                            android:text="Kelas"
-                            android:textColor="@android:color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold"/>
-
-                        <EditText
-                            android:id="@+id/kelasProfilS"
+                            android:id="@+id/emailProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:textColor="@color/colorGray"
+                            android:text="email@gmail.com"
                             android:textSize="15sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -296,58 +252,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/profilJurusanS"
+                android:id="@+id/profilTtl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profilKelasS"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_margin="15dp"
-                        android:layout_gravity="center_vertical"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/icon_edukasi"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="10dp"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="2dp"
-                            android:text="Jurusan"
-                            android:textColor="@android:color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold"/>
-
-                        <EditText
-                            android:id="@+id/jurusanProfilS"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@android:color/white"
-                            android:textColor="@color/colorGray"
-                            android:textSize="15sp"
-                            android:textStyle="bold"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/profilTtlS"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/profilJurusanS"
+                android:layout_below="@id/profilEmail"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -383,30 +291,37 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
                             <EditText
-                                android:id="@+id/tempatlahirProfilS"
+                                android:id="@+id/tempatlahirProfil"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@android:color/white"
+                                android:background="@drawable/box_putih_abu"
                                 android:textColor="@color/colorGray"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="5dp"
+                                android:text="Surabaya"
                                 android:textSize="15sp"
-                                android:textStyle="bold"/>
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="5dp"
-                                android:text=","
+                                android:text=" , "
                                 android:textSize="15sp"
                                 android:textStyle="bold"/>
 
-                            <EditText
-                                android:id="@+id/tgllahirProfilS"
+                            <TextView
+                                android:id="@+id/tgllahirProfil"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@android:color/white"
+                                android:paddingVertical="5dp"
+                                android:paddingHorizontal="10dp"
+                                android:background="@drawable/box_putih_abu"
                                 android:textColor="@color/colorGray"
+                                android:text="01 January 2000"
                                 android:textSize="15sp"
-                                android:textStyle="bold"/>
+                                android:textStyle="bold"
+                                android:layout_marginEnd="15dp"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -414,10 +329,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/profilGenderS"
+                android:id="@+id/profilGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profilTtlS"
+                android:layout_below="@id/profilTtl"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -448,24 +363,21 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <EditText
-                            android:id="@+id/genderProfilS"
+                        <Spinner
+                            android:id="@+id/genderProfil"
+                            android:textAlignment="center"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@android:color/white"
-                            android:textColor="@color/colorGray"
-                            android:textSize="15sp"
-                            android:textStyle="bold"/>
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/profilAlamatS"
+                android:id="@+id/profilAlamat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profilGenderS"
+                android:layout_below="@id/profilGender"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -497,12 +409,15 @@
                             android:textStyle="bold"/>
 
                         <EditText
-                            android:id="@+id/alamatProfilS"
+                            android:id="@+id/alamatProfil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/white"
+                            android:background="@drawable/box_putih_abu"
                             android:textColor="@color/colorGray"
                             android:textSize="15sp"
+                            android:paddingVertical="5dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_marginEnd="15dp"
                             android:textStyle="bold"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -510,10 +425,10 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@android:color/white"
-                android:id="@+id/profilTelpS"
+                android:id="@+id/profilTelp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profilAlamatS"
+                android:layout_below="@id/profilAlamat"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
@@ -544,25 +459,44 @@
                             android:textSize="15sp"
                             android:textStyle="bold"/>
 
-                        <EditText
-                            android:id="@+id/telpProfilS"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/white"
-                            android:textColor="@color/colorGray"
-                            android:textSize="15sp"
-                            android:textStyle="bold"/>
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorGray"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:text="+62"/>
+
+                            <EditText
+                                android:layout_marginStart="10dp"
+                                android:id="@+id/telpProfil"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/box_putih_abu"
+                                android:textColor="@color/colorGray"
+                                android:inputType="number"
+                                android:digits="0123456789"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="5dp"
+                                android:layout_marginEnd="15dp"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <Button
-                android:id="@+id/btnSaveProfilS"
+                android:id="@+id/btnSaveProfil"
                 android:layout_width="210dp"
                 android:layout_height="50dp"
                 android:layout_margin="15dp"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@id/profilTelpS"
+                android:layout_below="@id/profilTelp"
                 android:background="@color/colorAccent"
                 android:text="SAVE"
                 android:textColor="@android:color/white"
